@@ -1,0 +1,191 @@
+# depslib dependency file v1.0
+1745345496 source:e:\1. utn frgp (2024-2026)\tpi\tpi v1\main.cpp
+	<iostream>
+	"menu.h"
+
+1745345466 e:\1. utn frgp (2024-2026)\tpi\tpi v1\menu.h
+
+1745345496 source:e:\1. utn frgp (2024-2026)\tpi\tpi v1\menu.cpp
+	<iostream>
+	"menu.h"
+
+1745348032 source:c:\users\lain\desktop\tpi v1\main.cpp
+	<iostream>
+	"menu.h"
+
+1745400617 c:\users\lain\desktop\tpi v1\menu.h
+
+1745400974 source:c:\users\lain\desktop\tpi v1\menu.cpp
+	<iostream>
+	"menu.h"
+	"rlutils.h"
+
+1745348648 source:c:\users\lain\desktop\tpi v1\suscriptor.cpp
+	<iostream>
+	<string.h>
+	"suscriptor.h"
+
+1745348404 c:\users\lain\desktop\tpi v1\suscriptor.h
+
+1745399868 c:\users\lain\desktop\tpi v1\rlutils.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1745348032 source:c:\users\lain\desktop\tpi v1 rlutils\main.cpp
+	<iostream>
+	"menu.h"
+
+1745400617 c:\users\lain\desktop\tpi v1 rlutils\menu.h
+
+1746132988 source:c:\users\lain\desktop\tpi v1 rlutils\suscriptor.cpp
+	<iostream>
+	<cstring>
+	"suscriptor.h"
+	"fecha.h"
+
+1746132216 c:\users\lain\desktop\tpi v1 rlutils\suscriptor.h
+	"fecha.h"
+
+1745590582 source:c:\users\lain\desktop\tpi v1 rlutils\menu.cpp
+	<iostream>
+	"menu.h"
+	"rlutils.h"
+
+1745399868 c:\users\lain\desktop\tpi v1 rlutils\rlutils.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1746132480 source:c:\users\lain\desktop\tpi v1 rlutils\fecha.cpp
+	<iostream>
+	<cstring>
+	"fecha.h"
+
+1746132480 c:\users\lain\desktop\tpi v1 rlutils\fecha.h
+
+1746134023 source:c:\users\lain\desktop\tpi v1 rlutils\archivossuscriptor.cpp
+	"archivosSuscriptor.h"
+	"suscriptor.h"
+
+1746133980 c:\users\lain\desktop\tpi v1 rlutils\archivossuscriptor.h
+	<iostream>
+	<cstring>
+	"suscriptor.h"
+
+1746367961 source:c:\users\lain\desktop\gestormusica tpi test\archivossuscriptor.cpp
+	"archivosSuscriptor.h"
+	"suscriptor.h"
+
+1746367756 c:\users\lain\desktop\gestormusica tpi test\archivossuscriptor.h
+	<iostream>
+	<cstring>
+	"suscriptor.h"
+
+1746367907 c:\users\lain\desktop\gestormusica tpi test\suscriptor.h
+	<iostream>
+	"fecha.h"
+	<cstring>
+
+1746208764 c:\users\lain\desktop\gestormusica tpi test\fecha.h
+	<iostream>
+	<cstring>
+
+1746132480 source:c:\users\lain\desktop\gestormusica tpi test\fecha.cpp
+	<iostream>
+	<cstring>
+	"fecha.h"
+
+1745348032 source:c:\users\lain\desktop\gestormusica tpi test\main.cpp
+	<iostream>
+	"menu.h"
+
+1746300319 c:\users\lain\desktop\gestormusica tpi test\menu.h
+
+1746400481 source:c:\users\lain\desktop\gestormusica tpi test\menu.cpp
+	<iostream>
+	"menu.h"
+	"rlutils.h"
+	"managerSubscriptore.h"
+	"managerCanciones.h"
+
+1745399868 c:\users\lain\desktop\gestormusica tpi test\rlutils.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1746367901 source:c:\users\lain\desktop\gestormusica tpi test\suscriptor.cpp
+	<iostream>
+	<cstring>
+	"suscriptor.h"
+	"fecha.h"
+
+1746400333 source:c:\users\lain\desktop\gestormusica tpi test\managersubscriptore.cpp
+	"fecha.h"
+	"suscriptor.h"
+	"managerSubscriptore.h"
+	<iostream>
+	<cstring>
+	"rlutils.h"
+
+1746300319 c:\users\lain\desktop\gestormusica tpi test\managersubscriptore.h
+	"archivosSuscriptor.h"
+
+1746399692 source:c:\users\lain\desktop\gestormusica tpi test\archivoscancion.cpp
+	<iostream>
+	<cstring>
+	"archivosCancion.h"
+	"cancion.h"
+
+1746399692 c:\users\lain\desktop\gestormusica tpi test\archivoscancion.h
+	"cancion.h"
+
+1746399692 c:\users\lain\desktop\gestormusica tpi test\cancion.h
+	"fecha.h"
+	<cstring>
+
+1746399692 source:c:\users\lain\desktop\gestormusica tpi test\cancion.cpp
+	<iostream>
+	<cstring>
+	"cancion.h"
+	"fecha.h"
+
+1746399692 source:c:\users\lain\desktop\gestormusica tpi test\managercanciones.cpp
+	<iostream>
+	<cstring>
+	"cancion.h"
+	"managerCanciones.h"
+	"fecha.h"
+	"rlutils.h"
+	"archivosCancion.h"
+
+1746399692 c:\users\lain\desktop\gestormusica tpi test\managercanciones.h
+	"archivosCancion.h"
+

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TPI V1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="clases/;clases/menu/;clases/suscriptor/;clases/suscriptor/archivos/;clases/fecha/;clases/menu/manager/;clases/menu/manager/subscriptores/;clases/cancion/;clases/cancion/archivo/;clases/menu/manager/canciones/" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/TPI V1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/TPI V1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="archivosCancion.cpp">
+			<Option virtualFolder="clases/cancion/archivo/" />
+		</Unit>
+		<Unit filename="archivosCancion.h">
+			<Option virtualFolder="clases/cancion/archivo/" />
+		</Unit>
+		<Unit filename="archivosSuscriptor.cpp">
+			<Option virtualFolder="clases/suscriptor/archivos/" />
+		</Unit>
+		<Unit filename="archivosSuscriptor.h">
+			<Option virtualFolder="clases/suscriptor/archivos/" />
+		</Unit>
+		<Unit filename="cancion.cpp">
+			<Option virtualFolder="clases/cancion/" />
+		</Unit>
+		<Unit filename="cancion.h">
+			<Option virtualFolder="clases/cancion/" />
+		</Unit>
+		<Unit filename="fecha.cpp">
+			<Option virtualFolder="clases/fecha/" />
+		</Unit>
+		<Unit filename="fecha.h">
+			<Option virtualFolder="clases/fecha/" />
+		</Unit>
+		<Unit filename="main.cpp" />
+		<Unit filename="managerCanciones.cpp">
+			<Option virtualFolder="clases/menu/manager/canciones/" />
+		</Unit>
+		<Unit filename="managerCanciones.h">
+			<Option virtualFolder="clases/menu/manager/canciones/" />
+		</Unit>
+		<Unit filename="managerSubscriptore.cpp">
+			<Option virtualFolder="clases/menu/manager/subscriptores/" />
+		</Unit>
+		<Unit filename="managerSubscriptore.h">
+			<Option virtualFolder="clases/menu/manager/subscriptores/" />
+		</Unit>
+		<Unit filename="menu.cpp">
+			<Option virtualFolder="clases/menu/" />
+		</Unit>
+		<Unit filename="menu.h">
+			<Option virtualFolder="clases/menu/" />
+		</Unit>
+		<Unit filename="rlutils.h" />
+		<Unit filename="suscriptor.cpp">
+			<Option virtualFolder="clases/suscriptor/" />
+		</Unit>
+		<Unit filename="suscriptor.h">
+			<Option virtualFolder="clases/suscriptor/" />
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
