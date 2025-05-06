@@ -3,6 +3,7 @@
 
 #include "archivosSuscriptor.h"
 
+
 class ManagerSubscriptores{
 private:
     ArchivoSubscriptor _archivo;

@@ -120,12 +120,13 @@
 
 1746300319 c:\users\lain\desktop\gestormusica tpi test\menu.h
 
-1746400481 source:c:\users\lain\desktop\gestormusica tpi test\menu.cpp
+1746555640 source:c:\users\lain\desktop\gestormusica tpi test\menu.cpp
 	<iostream>
 	"menu.h"
 	"rlutils.h"
 	"managerSubscriptore.h"
 	"managerCanciones.h"
+	"managerAcceso.h"
 
 1745399868 c:\users\lain\desktop\gestormusica tpi test\rlutils.h
 	<iostream>
@@ -147,7 +148,7 @@
 	"suscriptor.h"
 	"fecha.h"
 
-1746400333 source:c:\users\lain\desktop\gestormusica tpi test\managersubscriptore.cpp
+1746555641 source:c:\users\lain\desktop\gestormusica tpi test\managersubscriptore.cpp
 	"fecha.h"
 	"suscriptor.h"
 	"managerSubscriptore.h"
@@ -155,7 +156,7 @@
 	<cstring>
 	"rlutils.h"
 
-1746300319 c:\users\lain\desktop\gestormusica tpi test\managersubscriptore.h
+1746554968 c:\users\lain\desktop\gestormusica tpi test\managersubscriptore.h
 	"archivosSuscriptor.h"
 
 1746399692 source:c:\users\lain\desktop\gestormusica tpi test\archivoscancion.cpp
@@ -188,4 +189,34 @@
 
 1746399692 c:\users\lain\desktop\gestormusica tpi test\managercanciones.h
 	"archivosCancion.h"
+
+1746556448 source:c:\users\lain\desktop\gestormusica tpi test\acceso.cpp
+	<iostream>
+	<cstring>
+	"acceso.h"
+
+1746556301 c:\users\lain\desktop\gestormusica tpi test\acceso.h
+	"cancion.h"
+	"suscriptor.h"
+	"fecha.h"
+
+1746556020 c:\users\lain\desktop\gestormusica tpi test\manageracceso.h
+	"archivoAcceso.h"
+
+1746556660 source:c:\users\lain\desktop\gestormusica tpi test\manageracceso.cpp
+	<iostream>
+	<cstring>
+	"managerAcceso.h"
+	"rlutils.h"
+	"acceso.h"
+	"archivoAcceso.h"
+
+1746555845 source:c:\users\lain\desktop\gestormusica tpi test\archivoacceso.cpp
+	<iostream>
+	<cstring>
+	"acceso.h"
+	"archivoAcceso.h"
+
+1746555803 c:\users\lain\desktop\gestormusica tpi test\archivoacceso.h
+	"acceso.h"
 

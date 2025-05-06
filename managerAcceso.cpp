@@ -1,13 +1,13 @@
-#include "fecha.h"
-#include "suscriptor.h"
-#include "managerSubscriptore.h"
 #include <iostream>
 #include <cstring>
-#include "rlutils.h"
 using namespace std;
+#include "managerAcceso.h"
+#include "rlutils.h"
+#include "acceso.h"
+#include "archivoAcceso.h"
 using namespace rlutil;
 
-void ManagerSubscriptores::mostrarSubmenuSubs(){
+void ManagerAcceso::mostrarSubmenuAccess(){
     int key;
     setBackgroundColor(MAGENTA);
     setColor(WHITE);
@@ -18,13 +18,13 @@ void ManagerSubscriptores::mostrarSubmenuSubs(){
     do{
         system("cls");
         locate(tcols()/3,3);
-        cout << "*****MENU SUSCRIPTORES*****" << endl;
+        cout << "*****MENU ACCESOS*****" << endl;
         locate(tcols()/3,4);
         cout << "------------------------" << endl;
         locate(tcols()/3,5);
-        cout << "1- Cargar Subscriptor" << endl;
+        cout << "1- Cargar Acceso" << endl;
         locate(tcols()/3,6);
-        cout << "2- Mostrar Subscriptores" << endl;
+        cout << "2- Mostrar Accesos" << endl;
         locate(tcols()/3,7);
         cout << "0- Volver atras" << endl;
         locate(tcols()/3,8);
@@ -60,11 +60,11 @@ void ManagerSubscriptores::mostrarSubmenuSubs(){
             switch(y){
             case 0:
                 cls();
-                cargarSubscriptor();
+                cargarAcceso();
                 break;
             case 1:
                 cls();
-                mostrarSubscriptores();
+                mostrarAcceso();
                 break;
             case 2:
                 cls();
@@ -82,42 +82,33 @@ void ManagerSubscriptores::mostrarSubmenuSubs(){
     while(!exit);
 }
 
-void ManagerSubscriptores::cargarSubscriptor(){
-    Subscriptor reg;
+void ManagerAcceso::cargarAcceso(){
+    int idUser, idSong, dia, mes, anio, hora;
 
-    int id, dni;
-    string nombre, apellido, telefono, email;
-    int dia, mes, anio;
+    cout << "Ingrese el ID del usuario: ";
+    cin >> idUser;
 
-    id = _archivo.getNewID();
-    cout << "ID Subscriptor: " << id << endl;
+    ///FUNCION PARA VER SI EL ID EXISTE
 
-    cout << "Ingrese DNI: ";
-    cin >> dni;
+    cout << "Ingrese el ID de la cancion: ";
+    cin >> idSong;
 
-    cout << "Ingrese nombre: ";
-    cin.ignore();
-    getline(cin, nombre);
+    ///FUNCION PARA VER SI EL ID EXISTE
 
-    cout << "Ingrese apellido: ";
-    getline(cin, apellido);
-
-    cout << "Ingrese telefono: ";
-    getline(cin, telefono);
-
-    cout << "Ingrese email: ";
-    getline(cin, email);
-
-    cout << "Ingrese dia de nacimiento: ";
+    cout << "Ingrese dia: ";
     cin >> dia;
-    cout << "Ingrese mes de nacimiento: ";
+    cout << "Ingrese mes: ";
     cin >> mes;
-    cout << "Ingrese anio de nacimiento: ";
+    cout << "Ingrese anio: ";
     cin >> anio;
+    cout << "Ingrese hora: ";
+    cin >> hora;
 
-    reg = Subscriptor(id, dni, nombre, apellido, telefono, email, Fecha(dia,mes,anio));
+    Acceso reg;
 
-    if(_archivo.guardarSubscriptor(reg)){
+    reg = Acceso(idSong, idUser, Fecha(dia,mes,anio), hora);
+
+    if(_archivo.guardarAcceso(reg)){
         cout << "Subscriptor guardado correctamente" << endl;
     }
     else{
@@ -127,31 +118,28 @@ void ManagerSubscriptores::cargarSubscriptor(){
     cls();
 }
 
-void ManagerSubscriptores::mostrarSubscriptores(){
+void ManagerAcceso::mostrarAcceso(){
     int cantidad = _archivo.getCantidadRegistros();
-    Subscriptor *vectorSubscriptores;
+    Acceso *vectorAcceso;
 
-    vectorSubscriptores = new Subscriptor[cantidad];
+    vectorAcceso = new Acceso[cantidad];
 
-    if(vectorSubscriptores==nullptr){
+    if(vectorAcceso==nullptr){
         cout << "Error en la asignacion de memoria" << endl;
         exit(-1);
     }
 
-    _archivo.leerMuchos(vectorSubscriptores, cantidad);
+    _archivo.leerMuchos(vectorAcceso, cantidad);
 
     for(int i=0; i<cantidad; i++){
-        cout << "Subscriptor ID:" << vectorSubscriptores[i].getId() << " info" << endl;
-        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
-        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
-        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
-        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
-        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+        cout << "Acceso de usuario " << vectorAcceso[i].getIdSub() << endl;
+        cout << "Cancion " << vectorAcceso[i].getIdSong() << endl;
+        cout << "Fecha: " << vectorAcceso[i].getFecha() << " Hora: " << vectorAcceso[i].getHora() << endl;
         cout << "--------------------------------------------" << endl;
     }
 
     system("pause");
-    delete []vectorSubscriptores;
+    delete []vectorAcceso;
 
     cls();
 }

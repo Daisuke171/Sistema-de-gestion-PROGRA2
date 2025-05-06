@@ -4,6 +4,7 @@ using namespace std;
 #include "rlutils.h"
 #include "managerSubscriptore.h"
 #include "managerCanciones.h"
+#include "managerAcceso.h"
 using namespace rlutil;
 
 
@@ -11,6 +12,7 @@ int Menu::mostrar(){
     int key;
     ManagerSubscriptores m;
     ManagerCanciones n;
+    ManagerAcceso l;
     setBackgroundColor(MAGENTA);
     setColor(WHITE);
 
@@ -28,7 +30,7 @@ int Menu::mostrar(){
         locate(tcols()/3,6);
         cout << "2. GESTION DE CANCIONES" << endl;
         locate(tcols()/3,7);
-        cout << "3. REGISTRO DE ACCESOS" << endl;
+        cout << "3. GESTION DE ACCESOS" << endl;
         locate(tcols()/3,8);
         cout << "4. REPORTES" << endl;
         locate(tcols()/3,9);
@@ -73,8 +75,7 @@ int Menu::mostrar(){
                 break;
             case 2:
                 cls();
-                cout << "REGISTRO DE ACCESOS" << endl;
-                cin.get();
+                l.mostrarSubmenuAccess();
                 break;
             case 3:
                 cls();
