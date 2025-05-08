@@ -4,7 +4,11 @@ using namespace std;
 #include "managerAcceso.h"
 #include "rlutils.h"
 #include "acceso.h"
+#include "cancion.h"
+#include "suscriptor.h"
+#include "archivosSuscriptor.h"
 #include "archivoAcceso.h"
+#include "archivosCancion.h"
 using namespace rlutil;
 
 void ManagerAcceso::mostrarSubmenuAccess(){
@@ -84,16 +88,28 @@ void ManagerAcceso::mostrarSubmenuAccess(){
 
 void ManagerAcceso::cargarAcceso(){
     int idUser, idSong, dia, mes, anio, hora;
+    ArchivoCancion archivo("lista de canciones.dat");
+    ArchivoSubscriptor archivo2("lista de subscriptores.dat");
+    Cancion c;
+    Subscriptor s;
 
     cout << "Ingrese el ID del usuario: ";
     cin >> idUser;
 
     ///FUNCION PARA VER SI EL ID EXISTE
+    if (!archivo2.buscarSubPorID(idUser, s)){
+        cout << "El usuario con ID " << idUser << " no existe. No se puede crear el acceso" << endl;
+        exit(-1);
+    }
 
     cout << "Ingrese el ID de la cancion: ";
     cin >> idSong;
 
     ///FUNCION PARA VER SI EL ID EXISTE
+    if (!archivo.buscarPorID(idSong, c)){
+        cout << "La cancion con ID " << idSong << " no existe. No se puede crear el acceso" << endl;
+        exit(-1);
+    }
 
     cout << "Ingrese dia: ";
     cin >> dia;

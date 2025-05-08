@@ -40,8 +40,7 @@ void Subscriptor::setNacimiento(const Fecha &nacimiento){ ///const para evitar q
 }
 
 //GETTERS
-int Subscriptor::getId() const
-{
+int Subscriptor::getIDSub() const{
     return _id;
 }
 

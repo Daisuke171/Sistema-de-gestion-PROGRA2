@@ -141,7 +141,7 @@ void ManagerSubscriptores::mostrarSubscriptores(){
     _archivo.leerMuchos(vectorSubscriptores, cantidad);
 
     for(int i=0; i<cantidad; i++){
-        cout << "Subscriptor ID:" << vectorSubscriptores[i].getId() << " info" << endl;
+        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
         cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
         cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
         cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;

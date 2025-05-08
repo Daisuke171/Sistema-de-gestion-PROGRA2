@@ -55,3 +55,28 @@ bool ArchivoCancion::leerMuchos(Cancion reg[], int cantidad){
 int ArchivoCancion::getNewID(){
     return getCantidadRegistros() + 1;
 }
+
+bool ArchivoCancion::buscarPorID(int idBuscado, Cancion &resultado){
+    FILE *pFile = fopen(_nombre_archivo.c_str(), "rb");
+    if(pFile == nullptr) return false;
+
+    Cancion reg;
+    while(fread(&reg, sizeof(Cancion), 1, pFile) == 1){
+        if(reg.getID() == idBuscado){
+            resultado = reg;
+            fclose(pFile);
+            return true;
+        }
+    }
+
+    fclose(pFile);
+    return false;
+}
+
+ArchivoCancion::ArchivoCancion(std::string nombreArchivo){
+    _nombre_archivo = nombreArchivo;
+}
+
+ArchivoCancion::ArchivoCancion(){
+    _nombre_archivo = "lista de canciones.dat";
+}

@@ -1,3 +1,6 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
 #include "archivosSuscriptor.h"
 #include "suscriptor.h"
 
@@ -51,4 +54,28 @@ bool ArchivoSubscriptor::leerMuchos(Subscriptor reg[], int cantidad){
 
 int ArchivoSubscriptor::getNewID(){
     return getCantidadRegistros() + 1;
+}
+
+ArchivoSubscriptor::ArchivoSubscriptor(std::string nombreArchivo){
+    _nombre_archivo = nombreArchivo;
+}
+ArchivoSubscriptor::ArchivoSubscriptor(){
+    _nombre_archivo = "lista de subscriptores.dat";
+}
+
+bool ArchivoSubscriptor::buscarSubPorID(int idBuscado, Subscriptor &resultado){
+    FILE *pFile = fopen(_nombre_archivo.c_str(), "rb");
+    if(pFile == nullptr) return false;
+
+    Subscriptor reg;
+    while(fread(&reg, sizeof(Subscriptor), 1, pFile) == 1){
+        if(reg.getIDSub() == idBuscado){
+            resultado = reg;
+            fclose(pFile);
+            return true;
+        }
+    }
+
+    fclose(pFile);
+    return false;
 }

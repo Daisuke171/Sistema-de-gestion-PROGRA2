@@ -5,8 +5,7 @@
 #include "fecha.h"
 #include <cstring>
 
-class Subscriptor
-{
+class Subscriptor{
 private:
     int _id;
     int _dni;
@@ -15,7 +14,6 @@ private:
     char _telefono[20];
     char _email[40];
     Fecha _nacimiento;
-
 public:
     Subscriptor();
     Subscriptor(int id, int dni, std::string nombre, std::string apellido, std::string telefono, std::string email, Fecha nacimiento);
@@ -30,7 +28,7 @@ public:
     void setNacimiento(const Fecha &fecha);
 
     //GETTERS
-    int getId() const;
+    int getIDSub() const;
     int getDni() const;
     std::string getNombre() const;
     std::string getApellido() const;

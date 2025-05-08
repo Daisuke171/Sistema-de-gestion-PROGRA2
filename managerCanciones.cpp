@@ -91,10 +91,10 @@ void ManagerCanciones::cargarCancion(){
     string nombre, autor, interprete;
     int dia, mes, anio;
 
-
     id = _archivo.getNewID();
     cout << "ID Cancion: " << id << endl;
 
+    cin.ignore();
     cout << "Ingrese nombre de la cancion: ";
     getline(cin, nombre);
     cout << "Ingrese nombre del autor: ";
@@ -111,11 +111,12 @@ void ManagerCanciones::cargarCancion(){
     reg = Cancion(id, nombre, autor, interprete, Fecha(dia,mes,anio));
 
     if(_archivo.guardarCancion(reg)){
-        cout << "Subscriptor guardado correctamente" << endl;
+        cout << "Cancion guardada correctamente" << endl;
     }
     else{
-        cout << "ERROR: El subscriptor no se pudo guardar" << endl;
+        cout << "ERROR: La cancion no se pudo guardar" << endl;
     }
+
     system("pause");
     cls();
 }
