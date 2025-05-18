@@ -9,21 +9,24 @@ private:
     int _idArtista;
     char _generoMusical[40];
     char _email[40];
+    bool _estado;
 public:
     Artista();
-    Artista(std::string nombre, int idArtista, std::string generoMusical, std::string email);
+    Artista(std::string nombre, int idArtista, std::string generoMusical, std::string email, bool estado);
 
     ///setters
     void setNombre(std::string nombre);
     void setIDArtista(int idArtista);
     void setGenero(std::string genero);
     void setEmail(std::string email);
+    void setEstado(bool estado);
 
     ///getters
     std::string getNombre() const;
     int getIDArtista() const;
     std::string getGenero() const;
     std::string getEmail() const;
+    bool getEstado() const;
 };
 
 #endif // ARTISTA_H

@@ -5,6 +5,7 @@ using namespace std;
 #include "managerSubscriptore.h"
 #include "managerCanciones.h"
 #include "managerAcceso.h"
+#include "managerAcceso.h"
 using namespace rlutil;
 
 
@@ -21,28 +22,40 @@ int Menu::mostrar(){
 
     do{
         system("cls");
-        locate(tcols()/3,3);
+        int i=2;
+        locate(tcols()/3,i);
+        i++;
         cout << "Velvet Note Management" << endl;
-        locate(tcols()/3,4);
+        locate(tcols()/3,i);
+        i++;
         cout << "------------------------" << endl;
-        locate(tcols()/3,5);
+        locate(tcols()/3,i);
+        i++;
         cout << "1. GESTION DE SUSCRIPTORES" << endl;
-        locate(tcols()/3,6);
+        locate(tcols()/3,i);
+        i++;
         cout << "2. GESTION DE CANCIONES" << endl;
-        locate(tcols()/3,7);
+        locate(tcols()/3,i);
+        i++;
         cout << "3. GESTION DE ACCESOS" << endl;
-        locate(tcols()/3,8);
-        cout << "4. REPORTES" << endl;
-        locate(tcols()/3,9);
+        locate(tcols()/3,i);
+        i++;
+        cout << "4. GESTION DE ARTISTAS" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "5. REPORTES" << endl;
+        locate(tcols()/3,i);
+        i++;
         cout << "0. FIN DEL PROGRAMA" << endl;
-        locate(tcols()/3,10);
+        locate(tcols()/3,i);
+        i++;
         cout << "------------------------" << endl;
-        locate(tcols()/3,11);
+        locate(tcols()/3,i+1);
         cout << "SELECCIONE UNA OPCION " << endl;
 
 
         ///PUNTERO PARA SELECCIONAR OPCION :P
-        locate((tcols()/3)-2, 5+y);
+        locate((tcols()/3)-2, 4+y);
         cout << (char)175;
         key = getkey();
 
@@ -59,8 +72,8 @@ int Menu::mostrar(){
                 locate((tcols()/3)-2, 5+y);
                 cout << " ";
                 y++;
-                if(y>4){
-                    y=4;
+                if(y>5){
+                    y=5;
                 }
                 break;
         case 1: /// 1 = ENTER
@@ -79,10 +92,15 @@ int Menu::mostrar(){
                 break;
             case 3:
                 cls();
-                cout << "REPORTES" << endl;
+                cout << "ARTISTAS" << endl;
                 cin.get();
                 break;
             case 4:
+                cls();
+                cout << "REPORTES" << endl;
+                cin.get();
+                break;
+            case 5:
                 cls();
                 cout << "GRACIAS POR ELEGIR NUESTRO PROGRAMA :)" << endl;
                 cin.get();

@@ -54,7 +54,7 @@ bool ArchivoSubscriptor::leerMuchos(Subscriptor reg[], int cantidad){
 
 Subscriptor ArchivoSubscriptor::Leer(int posicion){
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
-    if(pArchivo == NULL){
+    if(pArchivo == nullptr){
         return Subscriptor();
     }
     Subscriptor reg;
@@ -111,7 +111,7 @@ int ArchivoSubscriptor::buscarSubPorID(int idBuscado, Subscriptor &resultado){
 
 bool ArchivoSubscriptor::guardarSubscriptor(Subscriptor reg, int posicion){
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb+");
-    if(pArchivo == NULL){
+    if(pArchivo == nullptr){
         return false;
     }
     fseek(pArchivo, sizeof(Subscriptor) * posicion, SEEK_SET);

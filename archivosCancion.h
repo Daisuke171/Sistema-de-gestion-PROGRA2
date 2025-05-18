@@ -5,16 +5,20 @@
 
 class ArchivoCancion{
 private:
-    std::string _nombre_archivo = "lista de canciones.dat";
+    std::string _nombreArchivo = "lista de canciones.dat";
 public:
     ArchivoCancion(std::string nombreArchivo);
     ArchivoCancion();
 
-    bool guardarCancion(Cancion reg);
+    bool guardarCancion(Cancion reg); ///escritura
     int getCantidadRegistros();
-    bool leerMuchos(Cancion reg[], int cantidad);
+    Cancion Leer(int posicion); ///lectura
+    bool leerMuchos(Cancion reg[], int cantidad); ///lectura archivos
+    bool validarID(int idBuscado, Cancion &resultado);
     int getNewID();
-    bool buscarPorID(int idBuscado, Cancion &resultado);
+    bool buscarPorCancionID(int idBuscado, Cancion &resultado);
+    bool buscarPorCancionNombre(std::string nombre, Cancion &resultado);
+    bool guardarCancion(Cancion reg, int posicion); ///sobreescritura
 };
 
 #endif // ARCHIVOSCANCION_H_INCLUDED

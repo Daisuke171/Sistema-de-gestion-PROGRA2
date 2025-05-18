@@ -10,9 +10,10 @@ private:
     char _autor[60];
     char _interprete[60];
     Fecha _fechaPublicacion;
+    bool _estado;
 public:
     Cancion();
-    Cancion(int id, std::string nombre, std::string autor, std::string interprete, Fecha fechaPublicacion);
+    Cancion(int id, std::string nombre, std::string autor, std::string interprete, Fecha fechaPublicacion, bool estado);
 
     ///Setters
     void setID(int id);
@@ -20,6 +21,7 @@ public:
     void setAutor(std::string autor);
     void setInterprete(std::string interprete);
     void setFechaPublicacion(const Fecha &fechaPublicacion);
+    void setEstado(bool estado);
 
     ///Getters
     int getID() const;
@@ -27,6 +29,7 @@ public:
     std::string getAutor() const;
     std::string getInterprete() const;
     std::string getFechaPublicacion();
+    bool getEstado() const;
 };
 
 #endif // CANCION_H_INCLUDED

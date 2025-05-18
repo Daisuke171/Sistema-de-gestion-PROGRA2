@@ -9,13 +9,20 @@ Acceso::Acceso(){
     _usuario = -1;
     _fecha = Fecha();
     _hora = -1;
+    _estado = false;
 }
 
-Acceso::Acceso(int idSong, int idSub, Fecha fecha, int hora){
+Acceso::Acceso(int id, int idSong, int idSub, Fecha fecha, int hora, bool estado){
+    setID(id);
     setIdSong(idSong);
     setIdSub(idSub);
     setFecha(fecha);
     setHora(hora);
+    setEstado(estado);
+}
+
+void Acceso::setID(int id){
+    _id = id;
 }
 
 void Acceso::setIdSong(int idSong){
@@ -34,6 +41,14 @@ void Acceso::setHora(int hora){
     _hora = hora;
 }
 
+void Acceso::setEstado(bool estado){
+    _estado = estado;
+}
+
+int Acceso::getID() const{
+    return _id;
+}
+
 int Acceso::getIdSong() const{
     return _cancion;
 }
@@ -48,4 +63,8 @@ std::string Acceso::getFecha(){
 
 int Acceso::getHora() const{
     return _hora;
+}
+
+bool Acceso::getEstado() const{
+    return _estado;
 }

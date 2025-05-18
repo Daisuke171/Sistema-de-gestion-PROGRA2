@@ -47,6 +47,12 @@
 		<Unit filename="archivoAcceso.h">
 			<Option virtualFolder="clases/acceso/archivo/" />
 		</Unit>
+		<Unit filename="archivoArtista.cpp">
+			<Option virtualFolder="clases/artista/archivo/" />
+		</Unit>
+		<Unit filename="archivoArtista.h">
+			<Option virtualFolder="clases/artista/archivo/" />
+		</Unit>
 		<Unit filename="archivosCancion.cpp">
 			<Option virtualFolder="clases/cancion/archivo/" />
 		</Unit>

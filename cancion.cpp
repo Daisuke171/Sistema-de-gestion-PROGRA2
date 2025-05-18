@@ -10,14 +10,16 @@ Cancion::Cancion(){
     _autor[0] = '\0';
     _interprete[0] = '\0';
     _fechaPublicacion = Fecha();
+    _estado = false;
 }
 
-Cancion::Cancion(int id, std::string nombre, std::string autor, std::string interprete, Fecha fechaPublicacion){
+Cancion::Cancion(int id, std::string nombre, std::string autor, std::string interprete, Fecha fechaPublicacion, bool estado){
     setID(id);
     setNombre(nombre);
     setAutor(autor);
     setInterprete(interprete);
     setFechaPublicacion(fechaPublicacion);
+    setEstado(estado);
 }
 
 
@@ -42,6 +44,10 @@ void Cancion::setFechaPublicacion(const Fecha &fechaPublicacion){
     _fechaPublicacion = fechaPublicacion;
 }
 
+void Cancion::setEstado(bool estado){
+    _estado = estado;
+}
+
 
 ///GETTERS
 int Cancion::getID() const{
@@ -62,4 +68,8 @@ std::string Cancion::getInterprete() const{
 
 std::string Cancion::getFechaPublicacion(){
     return _fechaPublicacion.toString();
+}
+
+bool Cancion::getEstado() const{
+    return _estado;
 }

@@ -13,6 +13,12 @@ public:
     void cargarCancion();
     ///2 ver canciones en archivo
     void mostrarCancion();
+    ///3 buscar sub
+    void buscarCancion();
+    ///4 eliminar subs en archivo
+    void eliminarCancion();
+    ///5 sobreescribir
+    void modificarCancion();
 };
 
 #endif // MANAGERCANCIONES_H_INCLUDED

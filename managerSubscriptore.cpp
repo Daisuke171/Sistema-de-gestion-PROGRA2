@@ -198,7 +198,7 @@ void ManagerSubscriptores::buscarSubscriptor(){
     cin >> idSearch;
 
     if (!archivo.validarID(idSearch, reg)){
-        cout << "El usuario con ID " << idSearch << " no existe. No se puede crear el acceso" << endl;
+        cout << "El usuario con ID " << idSearch << " no existe." << endl;
         exit(-1);
     }
 
@@ -208,14 +208,20 @@ void ManagerSubscriptores::buscarSubscriptor(){
         reg = archivo.Leer(i);
 
         if(reg.getIDSub()==idSearch){
-            cout << "Subscriptor ID:" << reg.getIDSub() << " info" << endl;
-            cout << reg.getNombre() << " " << reg.getApellido() << endl;
-            cout << "Fecha de alta: " << reg.getFechaAlta() << endl;
-            cout << "DNI: " << reg.getDni() << endl;
-            cout << "Email: " << reg.getEmail() << endl;
-            cout << "Telefono: " << reg.getTelefono() << endl;
-            cout << "--------------------------------------------" << endl;
-            found=true;
+            if(reg.getEstado()==false){
+                cout << "El usuario fue dado de baja" << endl;
+                found=true;
+            }
+            else{
+                cout << "Subscriptor ID:" << reg.getIDSub() << " info" << endl;
+                cout << reg.getNombre() << " " << reg.getApellido() << endl;
+                cout << "Fecha de alta: " << reg.getFechaAlta() << endl;
+                cout << "DNI: " << reg.getDni() << endl;
+                cout << "Email: " << reg.getEmail() << endl;
+                cout << "Telefono: " << reg.getTelefono() << endl;
+                cout << "--------------------------------------------" << endl;
+                found=true;
+            }
         }
         if(found) break;
     }
@@ -237,7 +243,7 @@ void ManagerSubscriptores::eliminarSubscriptor(){
     cin >> idSearch;
 
     if (!archivo.validarID(idSearch, reg)){
-        cout << "El usuario con ID " << idSearch << " no existe. No se puede crear el acceso" << endl;
+        cout << "El usuario con ID " << idSearch << " no existe." << endl;
         exit(-1);
     }
 
@@ -258,7 +264,7 @@ void ManagerSubscriptores::modificarSubscriptor(){
     cin >> idSearch;
 
     if (!archivo.validarID(idSearch, reg)){
-        cout << "El usuario con ID " << idSearch << " no existe. No se puede crear el acceso" << endl;
+        cout << "El usuario con ID " << idSearch << " no existe." << endl;
         exit(-1);
     }
 
