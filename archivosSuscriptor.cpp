@@ -7,7 +7,7 @@ using namespace std;
 bool ArchivoSubscriptor::guardarSubscriptor(Subscriptor reg){
     bool result;
     FILE *pFile;
-    pFile = fopen(_nombre_archivo.c_str(), "ab");
+    pFile = fopen(_nombreArchivo.c_str(), "ab");
 
     if(pFile==nullptr){
         return false;
@@ -22,7 +22,7 @@ bool ArchivoSubscriptor::guardarSubscriptor(Subscriptor reg){
 
 int ArchivoSubscriptor::getCantidadRegistros(){
     FILE *pFile;
-    pFile = fopen(_nombre_archivo.c_str(), "rb");
+    pFile = fopen(_nombreArchivo.c_str(), "rb");
     int cantidad;
 
     if(pFile==nullptr){
@@ -40,7 +40,7 @@ int ArchivoSubscriptor::getCantidadRegistros(){
 
 bool ArchivoSubscriptor::leerMuchos(Subscriptor reg[], int cantidad){
     FILE *pFile;
-    pFile = fopen(_nombre_archivo.c_str(), "rb");
+    pFile = fopen(_nombreArchivo.c_str(), "rb");
 
     if(pFile==nullptr){
         return false;
@@ -52,19 +52,31 @@ bool ArchivoSubscriptor::leerMuchos(Subscriptor reg[], int cantidad){
     return true;
 }
 
+Subscriptor ArchivoSubscriptor::Leer(int posicion){
+    FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
+    if(pArchivo == NULL){
+        return Subscriptor();
+    }
+    Subscriptor reg;
+    fseek(pArchivo, sizeof(Subscriptor) * posicion, SEEK_SET);
+    fread(&reg, sizeof(Subscriptor), 1, pArchivo);
+    fclose(pArchivo);
+    return reg;
+}
+
 int ArchivoSubscriptor::getNewID(){
     return getCantidadRegistros() + 1;
 }
 
 ArchivoSubscriptor::ArchivoSubscriptor(std::string nombreArchivo){
-    _nombre_archivo = nombreArchivo;
+    _nombreArchivo = nombreArchivo;
 }
 ArchivoSubscriptor::ArchivoSubscriptor(){
-    _nombre_archivo = "lista de subscriptores.dat";
+    _nombreArchivo = "lista de subscriptores.dat";
 }
 
-bool ArchivoSubscriptor::buscarSubPorID(int idBuscado, Subscriptor &resultado){
-    FILE *pFile = fopen(_nombre_archivo.c_str(), "rb");
+bool ArchivoSubscriptor::validarID(int idBuscado, Subscriptor &resultado){
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
     if(pFile == nullptr) return false;
 
     Subscriptor reg;
@@ -78,4 +90,32 @@ bool ArchivoSubscriptor::buscarSubPorID(int idBuscado, Subscriptor &resultado){
 
     fclose(pFile);
     return false;
+}
+int ArchivoSubscriptor::buscarSubPorID(int idBuscado, Subscriptor &resultado){
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+    if(pFile == nullptr) return -1;
+
+    Subscriptor reg;
+    int i=0;
+    while(fread(&reg, sizeof(Subscriptor), 1, pFile) == 1){
+        if(reg.getIDSub() == idBuscado){
+            fclose(pFile);
+            return i;
+        }
+        i++;
+    }
+
+    fclose(pFile);
+    return -1;
+}
+
+bool ArchivoSubscriptor::guardarSubscriptor(Subscriptor reg, int posicion){
+    FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb+");
+    if(pArchivo == NULL){
+        return false;
+    }
+    fseek(pArchivo, sizeof(Subscriptor) * posicion, SEEK_SET);
+    bool ok = fwrite(&reg, sizeof(Subscriptor), 1, pArchivo);
+    fclose(pArchivo);
+    return ok;
 }

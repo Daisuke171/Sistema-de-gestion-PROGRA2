@@ -21,17 +21,26 @@ void ManagerAcceso::mostrarSubmenuAccess(){
 
     do{
         system("cls");
-        locate(tcols()/3,3);
+        int i=3;
+        locate(tcols()/3,i);
         cout << "*****MENU ACCESOS*****" << endl;
-        locate(tcols()/3,4);
+        i++;
+        locate(tcols()/3,i);
         cout << "------------------------" << endl;
-        locate(tcols()/3,5);
+        i++;
+        locate(tcols()/3,i);
         cout << "1- Cargar Acceso" << endl;
-        locate(tcols()/3,6);
+        i++;
+        locate(tcols()/3,i);
         cout << "2- Mostrar Accesos" << endl;
-        locate(tcols()/3,7);
+        i++;
+        locate(tcols()/3,i);
+        cout << "3- Modificar Accesos" << endl;
+        i++;
+        locate(tcols()/3,i);
         cout << "0- Volver atras" << endl;
-        locate(tcols()/3,8);
+        i++;
+        locate(tcols()/3,i);
         cout << "------------------------" << endl;
         locate(tcols()/3,11);
         cout << "SELECCIONE UNA OPCION " << endl;
@@ -72,6 +81,10 @@ void ManagerAcceso::mostrarSubmenuAccess(){
                 break;
             case 2:
                 cls();
+            /// MODIFICAR ACCESO
+                break;
+            case 3:
+                cls();
                 exit=true;
                 break;
             default:
@@ -97,7 +110,7 @@ void ManagerAcceso::cargarAcceso(){
     cin >> idUser;
 
     ///FUNCION PARA VER SI EL ID EXISTE
-    if (!archivo2.buscarSubPorID(idUser, s)){
+    if (!archivo2.validarID(idUser, s)){
         cout << "El usuario con ID " << idUser << " no existe. No se puede crear el acceso" << endl;
         exit(-1);
     }
@@ -125,10 +138,11 @@ void ManagerAcceso::cargarAcceso(){
     reg = Acceso(idSong, idUser, Fecha(dia,mes,anio), hora);
 
     if(_archivo.guardarAcceso(reg)){
-        cout << "Subscriptor guardado correctamente" << endl;
+        cout << "Acceso guardado correctamente" << endl;
     }
     else{
-        cout << "ERROR: El subscriptor no se pudo guardar" << endl;
+        cout << "ERROR: El acceso no se pudo guardar" << endl;
+        exit(-2);
     }
     system("pause");
     cls();

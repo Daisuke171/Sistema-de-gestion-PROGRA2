@@ -22,7 +22,7 @@ int Menu::mostrar(){
     do{
         system("cls");
         locate(tcols()/3,3);
-        cout << "*****APLICACION DE MUSICA*****" << endl;
+        cout << "Velvet Note Management" << endl;
         locate(tcols()/3,4);
         cout << "------------------------" << endl;
         locate(tcols()/3,5);

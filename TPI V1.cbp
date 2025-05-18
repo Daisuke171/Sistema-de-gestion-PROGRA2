@@ -5,7 +5,7 @@
 		<Option title="TPI V1" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="clases/;clases/menu/;clases/suscriptor/;clases/suscriptor/archivos/;clases/fecha/;clases/menu/manager/;clases/menu/manager/subscriptores/;clases/cancion/;clases/cancion/archivo/;clases/menu/manager/canciones/;clases/acceso/;clases/menu/manager/accesos/;clases/acceso/archivo/" />
+		<Option virtualFolders="clases/;clases/menu/;clases/suscriptor/;clases/suscriptor/archivos/;clases/fecha/;clases/menu/manager/;clases/menu/manager/subscriptores/;clases/cancion/;clases/cancion/archivo/;clases/menu/manager/canciones/;clases/acceso/;clases/menu/manager/accesos/;clases/acceso/archivo/;clases/artista/" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/TPI V1" prefix_auto="1" extension_auto="1" />
@@ -14,6 +14,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -23,6 +24,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -39,6 +41,7 @@
 		<Unit filename="acceso.h">
 			<Option virtualFolder="clases/acceso/" />
 		</Unit>
+		<Unit filename="archivo.cpp" />
 		<Unit filename="archivoAcceso.cpp">
 			<Option virtualFolder="clases/acceso/archivo/" />
 		</Unit>
@@ -56,6 +59,12 @@
 		</Unit>
 		<Unit filename="archivosSuscriptor.h">
 			<Option virtualFolder="clases/suscriptor/archivos/" />
+		</Unit>
+		<Unit filename="artista.cpp">
+			<Option virtualFolder="clases/artista/" />
+		</Unit>
+		<Unit filename="artista.h">
+			<Option virtualFolder="clases/artista/" />
 		</Unit>
 		<Unit filename="cancion.cpp">
 			<Option virtualFolder="clases/cancion/" />

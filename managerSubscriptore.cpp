@@ -17,19 +17,32 @@ void ManagerSubscriptores::mostrarSubmenuSubs(){
 
     do{
         system("cls");
-        locate(tcols()/3,3);
+        int i=3;
+        locate(tcols()/3,i);
+        i++;
         cout << "*****MENU SUSCRIPTORES*****" << endl;
-        locate(tcols()/3,4);
+        locate(tcols()/3,i);
+        i++;
         cout << "------------------------" << endl;
-        locate(tcols()/3,5);
+        locate(tcols()/3,i);
+        i++;
         cout << "1- Cargar Subscriptor" << endl;
-        locate(tcols()/3,6);
+        locate(tcols()/3,i);
+        i++;
         cout << "2- Mostrar Subscriptores" << endl;
-        locate(tcols()/3,7);
+        locate(tcols()/3,i);
+        i++;
+        cout << "3- Buscar Subscriptor" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "4- Dar de baja Subscriptor" << endl;
+        locate(tcols()/3,i+2);
+        i++;
         cout << "0- Volver atras" << endl;
-        locate(tcols()/3,8);
+        locate(tcols()/3,i+2);
+        i++;
         cout << "------------------------" << endl;
-        locate(tcols()/3,11);
+        locate(tcols()/3,i+3);
         cout << "SELECCIONE UNA OPCION " << endl;
 
 
@@ -52,8 +65,8 @@ void ManagerSubscriptores::mostrarSubmenuSubs(){
                 locate((tcols()/3)-2, 5+y);
                 cout << " ";
                 y++;
-                if(y>2){
-                    y=2;
+                if(y>6){
+                    y=6;
                 }
                 break;
         case 1: /// 1 = ENTER
@@ -67,6 +80,14 @@ void ManagerSubscriptores::mostrarSubmenuSubs(){
                 mostrarSubscriptores();
                 break;
             case 2:
+                cls();
+                buscarSubscriptor();
+                break;
+            case 3:
+                cls();
+                eliminarSubscriptor();
+                break;
+            case 5:
                 cls();
                 exit=true;
                 break;
@@ -115,7 +136,9 @@ void ManagerSubscriptores::cargarSubscriptor(){
     cout << "Ingrese anio de nacimiento: ";
     cin >> anio;
 
-    reg = Subscriptor(id, dni, nombre, apellido, telefono, email, Fecha(dia,mes,anio));
+    bool estado = true;
+
+    reg = Subscriptor(id, dni, nombre, apellido, telefono, email, Fecha(dia,mes,anio), estado);
 
     if(_archivo.guardarSubscriptor(reg)){
         cout << "Subscriptor guardado correctamente" << endl;
@@ -143,7 +166,7 @@ void ManagerSubscriptores::mostrarSubscriptores(){
     for(int i=0; i<cantidad; i++){
         cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
         cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
-        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+        cout << "Fecha de alta: " << vectorSubscriptores[i].getFechaAlta() << endl;
         cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
         cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
         cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
@@ -154,4 +177,64 @@ void ManagerSubscriptores::mostrarSubscriptores(){
     delete []vectorSubscriptores;
 
     cls();
+}
+
+void ManagerSubscriptores::buscarSubscriptor(){
+    int idSearch;
+    ArchivoSubscriptor archivo("lista de subscriptores.dat");
+    Subscriptor reg;
+    int cantRegistros = archivo.getCantidadRegistros();
+
+    cout << "Ingrese el ID que desea buscar: ";
+    cin >> idSearch;
+
+    if (!archivo.validarID(idSearch, reg)){
+        cout << "El usuario con ID " << idSearch << " no existe. No se puede crear el acceso" << endl;
+        exit(-1);
+    }
+
+    int posicion=0;
+    bool found = false;
+    for(int i=0; i<cantRegistros; i++){
+        reg = archivo.Leer(i);
+
+        if(reg.getIDSub()==idSearch){
+            cout << "Subscriptor ID:" << reg.getIDSub() << " info" << endl;
+            cout << reg.getNombre() << " " << reg.getApellido() << endl;
+            cout << "Fecha de alta: " << reg.getFechaAlta() << endl;
+            cout << "DNI: " << reg.getDni() << endl;
+            cout << "Email: " << reg.getEmail() << endl;
+            cout << "Telefono: " << reg.getTelefono() << endl;
+            cout << "--------------------------------------------" << endl;
+            found=true;
+        }
+        if(found) break;
+    }
+
+
+
+
+    system("pause");
+    cls();
+}
+
+void ManagerSubscriptores::eliminarSubscriptor(){
+    int idSearch;
+    ArchivoSubscriptor archivo("lista de subscriptores.dat");
+    Subscriptor reg;
+    int cantRegistros = archivo.getCantidadRegistros();
+
+    cout << "Ingrese el ID del subscriptor que desee dar de baja: ";
+    cin >> idSearch;
+
+    if (!archivo.validarID(idSearch, reg)){
+        cout << "El usuario con ID " << idSearch << " no existe. No se puede crear el acceso" << endl;
+        exit(-1);
+    }
+
+
+
+
+
+    system("pause");
 }

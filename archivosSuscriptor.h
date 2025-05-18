@@ -7,16 +7,19 @@
 
 class ArchivoSubscriptor{
 private:
-    std::string _nombre_archivo = "lista de subscriptores.dat";
+    std::string _nombreArchivo = "lista de subscriptores.dat";
 public:
     ArchivoSubscriptor(std::string nombreArchivo);
     ArchivoSubscriptor();
 
-    bool guardarSubscriptor(Subscriptor reg);
+    bool guardarSubscriptor(Subscriptor reg); ///escritura
     int getCantidadRegistros();
-    bool leerMuchos(Subscriptor reg[], int cantidad);
+    bool leerMuchos(Subscriptor reg[], int cantidad); ///lectura archivos
+    Subscriptor Leer(int posicion); ///lectura
     int getNewID();
-    bool buscarSubPorID(int idBuscado, Subscriptor &resultado);
+    bool validarID(int idBuscado, Subscriptor &resultado);
+    int buscarSubPorID(int idBuscado, Subscriptor &resultado);
+    bool guardarSubscriptor(Subscriptor reg, int posicion); ///sobreescritura
 };
 
 #endif // ARCHIVOSSUSCRIPTOR_H_INCLUDED

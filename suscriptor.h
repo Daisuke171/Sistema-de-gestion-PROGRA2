@@ -13,10 +13,11 @@ private:
     char _apellido[30];
     char _telefono[20];
     char _email[40];
-    Fecha _nacimiento;
+    Fecha _fechaAlta;
+    bool _estado;
 public:
     Subscriptor();
-    Subscriptor(int id, int dni, std::string nombre, std::string apellido, std::string telefono, std::string email, Fecha nacimiento);
+    Subscriptor(int id, int dni, std::string nombre, std::string apellido, std::string telefono, std::string email, Fecha fechaAlta, bool estado);
 
     //SETTERS
     void setId(int) ;
@@ -25,7 +26,8 @@ public:
     void setApellido(std::string);
     void setTelefono(std::string);
     void setEmail(std::string);
-    void setNacimiento(const Fecha &fecha);
+    void setFechaAlta(const Fecha &fecha);
+    void setEstado(bool);
 
     //GETTERS
     int getIDSub() const;
@@ -34,7 +36,8 @@ public:
     std::string getApellido() const;
     std::string getTelefono() const;
     std::string getEmail() const;
-    std::string getFechaNacimiento();
+    std::string getFechaAlta();
+    bool getEstado() const;
 };
 
 

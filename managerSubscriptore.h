@@ -14,7 +14,12 @@ public:
     void cargarSubscriptor();
     ///2 ver subs en archivo
     void mostrarSubscriptores();
-
+    ///3 buscar sub
+    void buscarSubscriptor();
+    ///4 eliminar subs en archivo
+    void eliminarSubscriptor();
+    ///5 sobreescribir
+    void modificarSubscriptor();
 };
 
 #endif // MANAGERSUBSCRIPTORE_H_INCLUDED
