@@ -164,13 +164,16 @@ void ManagerSubscriptores::mostrarSubscriptores(){
     _archivo.leerMuchos(vectorSubscriptores, cantidad);
 
     for(int i=0; i<cantidad; i++){
-        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
-        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
-        cout << "Fecha de alta: " << vectorSubscriptores[i].getFechaAlta() << endl;
-        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
-        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
-        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
-        cout << "--------------------------------------------" << endl;
+        if(vectorSubscriptores[i].getEstado()){
+            cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
+            cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
+            cout << "Fecha de alta: " << vectorSubscriptores[i].getFechaAlta() << endl;
+            cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
+            cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
+            cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+            cout << "estado: " << vectorSubscriptores[i].getEstado() << endl;
+            cout << "--------------------------------------------" << endl;
+        }
     }
 
     system("pause");
@@ -205,6 +208,7 @@ void ManagerSubscriptores::buscarSubscriptor(){
             cout << "DNI: " << reg.getDni() << endl;
             cout << "Email: " << reg.getEmail() << endl;
             cout << "Telefono: " << reg.getTelefono() << endl;
+            cout << "estado: " << reg.getEstado() << endl;
             cout << "--------------------------------------------" << endl;
             found=true;
         }
@@ -232,9 +236,9 @@ void ManagerSubscriptores::eliminarSubscriptor(){
         exit(-1);
     }
 
-
-
-
+    reg = archivo.Leer(idSearch-1);
+    reg.setEstado(false);
+    archivo.guardarSubscriptor(reg, idSearch-1);
 
     system("pause");
 }

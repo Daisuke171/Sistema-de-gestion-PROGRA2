@@ -13,6 +13,7 @@ Subscriptor::Subscriptor()
     _telefono[0] = '\0';
     _email[0] = '\0';
     _fechaAlta = Fecha(0,0,0);
+    _estado = false;
 }
 
 Subscriptor::Subscriptor(int id, int dni, std::string nombre, std::string apellido, std::string telefono, std::string email, Fecha fechaAlta, bool estado){
@@ -23,6 +24,7 @@ Subscriptor::Subscriptor(int id, int dni, std::string nombre, std::string apelli
     setTelefono(telefono);
     setEmail(email);
     setFechaAlta(fechaAlta);
+    setEstado(estado);
 }
 
 //SETTERS

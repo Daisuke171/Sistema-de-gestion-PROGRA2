@@ -5,7 +5,7 @@
 		<Option title="TPI V1" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="clases/;clases/menu/;clases/suscriptor/;clases/suscriptor/archivos/;clases/fecha/;clases/menu/manager/;clases/menu/manager/subscriptores/;clases/cancion/;clases/cancion/archivo/;clases/menu/manager/canciones/;clases/acceso/;clases/menu/manager/accesos/;clases/acceso/archivo/;clases/artista/" />
+		<Option virtualFolders="clases/;clases/manager/;clases/menu/;clases/suscriptor/;clases/suscriptor/archivos/;clases/fecha/;clases/cancion/;clases/cancion/archivo/;clases/acceso/;clases/acceso/archivo/;clases/artista/;clases/manager/subscriptores/;clases/manager/canciones/;clases/manager/accesos/;clases/manager/artista/;clases/artista/archivo/" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/TPI V1" prefix_auto="1" extension_auto="1" />
@@ -41,7 +41,6 @@
 		<Unit filename="acceso.h">
 			<Option virtualFolder="clases/acceso/" />
 		</Unit>
-		<Unit filename="archivo.cpp" />
 		<Unit filename="archivoAcceso.cpp">
 			<Option virtualFolder="clases/acceso/archivo/" />
 		</Unit>
@@ -72,6 +71,7 @@
 		<Unit filename="cancion.h">
 			<Option virtualFolder="clases/cancion/" />
 		</Unit>
+		<Unit filename="coco funciones.txt" />
 		<Unit filename="fecha.cpp">
 			<Option virtualFolder="clases/fecha/" />
 		</Unit>
@@ -80,22 +80,22 @@
 		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="managerAcceso.cpp">
-			<Option virtualFolder="clases/menu/manager/accesos/" />
+			<Option virtualFolder="clases/manager/accesos/" />
 		</Unit>
 		<Unit filename="managerAcceso.h">
-			<Option virtualFolder="clases/menu/manager/accesos/" />
+			<Option virtualFolder="clases/manager/accesos/" />
 		</Unit>
 		<Unit filename="managerCanciones.cpp">
-			<Option virtualFolder="clases/menu/manager/canciones/" />
+			<Option virtualFolder="clases/manager/canciones/" />
 		</Unit>
 		<Unit filename="managerCanciones.h">
-			<Option virtualFolder="clases/menu/manager/canciones/" />
+			<Option virtualFolder="clases/manager/canciones/" />
 		</Unit>
 		<Unit filename="managerSubscriptore.cpp">
-			<Option virtualFolder="clases/menu/manager/subscriptores/" />
+			<Option virtualFolder="clases/manager/subscriptores/" />
 		</Unit>
 		<Unit filename="managerSubscriptore.h">
-			<Option virtualFolder="clases/menu/manager/subscriptores/" />
+			<Option virtualFolder="clases/manager/subscriptores/" />
 		</Unit>
 		<Unit filename="menu.cpp">
 			<Option virtualFolder="clases/menu/" />

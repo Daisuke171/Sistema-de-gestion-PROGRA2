@@ -344,7 +344,7 @@
 1747559260 c:\users\lain\desktop\c++\gestormusica tpi test\managercanciones.h
 	"archivosCancion.h"
 
-1747559260 source:c:\users\lain\desktop\c++\gestormusica tpi test\managersubscriptore.cpp
+1747561036 source:c:\users\lain\desktop\c++\gestormusica tpi test\managersubscriptore.cpp
 	"fecha.h"
 	"suscriptor.h"
 	"managerSubscriptore.h"
@@ -355,7 +355,7 @@
 1747559260 c:\users\lain\desktop\c++\gestormusica tpi test\managersubscriptore.h
 	"archivosSuscriptor.h"
 
-1747559260 source:c:\users\lain\desktop\c++\gestormusica tpi test\suscriptor.cpp
+1747560482 source:c:\users\lain\desktop\c++\gestormusica tpi test\suscriptor.cpp
 	<iostream>
 	<cstring>
 	"suscriptor.h"
@@ -375,6 +375,15 @@
 	"artista.h"
 
 1747536073 c:\users\lain\desktop\c++\gestormusica tpi test\include\artista.h
+	<iostream>
+	<cstring>
+
+1747559260 source:c:\users\lain\desktop\c++\gestormusica tpi test\artista.cpp
+	<iostream>
+	<cstring>
+	"artista.h"
+
+1747559260 c:\users\lain\desktop\c++\gestormusica tpi test\artista.h
 	<iostream>
 	<cstring>
 
