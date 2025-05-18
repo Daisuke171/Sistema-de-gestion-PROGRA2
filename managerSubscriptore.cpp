@@ -20,7 +20,7 @@ void ManagerSubscriptores::mostrarSubmenuSubs(){
         int i=3;
         locate(tcols()/3,i);
         i++;
-        cout << "*****MENU SUSCRIPTORES*****" << endl;
+        cout << "Velvet Note Subscriptor" << endl;
         locate(tcols()/3,i);
         i++;
         cout << "------------------------" << endl;
@@ -36,13 +36,16 @@ void ManagerSubscriptores::mostrarSubmenuSubs(){
         locate(tcols()/3,i);
         i++;
         cout << "4- Dar de baja Subscriptor" << endl;
-        locate(tcols()/3,i+2);
+        locate(tcols()/3,i);
+        i++;
+        cout << "5- Editar subscriptor" << endl;
+        locate(tcols()/3,i);
         i++;
         cout << "0- Volver atras" << endl;
-        locate(tcols()/3,i+2);
+        locate(tcols()/3,i);
         i++;
         cout << "------------------------" << endl;
-        locate(tcols()/3,i+3);
+        locate(tcols()/3,i+2);
         cout << "SELECCIONE UNA OPCION " << endl;
 
 
@@ -65,8 +68,8 @@ void ManagerSubscriptores::mostrarSubmenuSubs(){
                 locate((tcols()/3)-2, 5+y);
                 cout << " ";
                 y++;
-                if(y>6){
-                    y=6;
+                if(y>5){
+                    y=5;
                 }
                 break;
         case 1: /// 1 = ENTER
@@ -86,6 +89,10 @@ void ManagerSubscriptores::mostrarSubmenuSubs(){
             case 3:
                 cls();
                 eliminarSubscriptor();
+                break;
+            case 4:
+                cls();
+                modificarSubscriptor();
                 break;
             case 5:
                 cls();
@@ -171,7 +178,6 @@ void ManagerSubscriptores::mostrarSubscriptores(){
             cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
             cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
             cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
-            cout << "estado: " << vectorSubscriptores[i].getEstado() << endl;
             cout << "--------------------------------------------" << endl;
         }
     }
@@ -208,7 +214,6 @@ void ManagerSubscriptores::buscarSubscriptor(){
             cout << "DNI: " << reg.getDni() << endl;
             cout << "Email: " << reg.getEmail() << endl;
             cout << "Telefono: " << reg.getTelefono() << endl;
-            cout << "estado: " << reg.getEstado() << endl;
             cout << "--------------------------------------------" << endl;
             found=true;
         }
@@ -239,6 +244,60 @@ void ManagerSubscriptores::eliminarSubscriptor(){
     reg = archivo.Leer(idSearch-1);
     reg.setEstado(false);
     archivo.guardarSubscriptor(reg, idSearch-1);
+
+    system("pause");
+}
+
+void ManagerSubscriptores::modificarSubscriptor(){
+    int idSearch;
+    ArchivoSubscriptor archivo("lista de subscriptores.dat");
+    Subscriptor reg;
+    int cantRegistros = archivo.getCantidadRegistros();
+
+    cout << "Ingrese el ID del subscriptor que desee modificar: ";
+    cin >> idSearch;
+
+    if (!archivo.validarID(idSearch, reg)){
+        cout << "El usuario con ID " << idSearch << " no existe. No se puede crear el acceso" << endl;
+        exit(-1);
+    }
+
+    int id, dni;
+    string nombre, apellido, telefono, email;
+    int dia, mes, anio;
+    reg = archivo.Leer(idSearch-1);
+
+    id = idSearch;
+    cout << "ID Subscriptor: " << id << endl;
+
+    cout << "Ingrese DNI: ";
+    cin >> dni;
+    reg.setDni(dni);
+    cout << "Ingrese nombre: ";
+    cin.ignore();
+    getline(cin, nombre);
+    reg.setNombre(nombre);
+    cout << "Ingrese apellido: ";
+    getline(cin, apellido);
+    reg.setApellido(apellido);
+    cout << "Ingrese telefono: ";
+    getline(cin, telefono);
+    reg.setTelefono(telefono);
+    cout << "Ingrese email: ";
+    getline(cin, email);
+    reg.setEmail(email);
+    cout << "Ingrese dia de nacimiento: ";
+    cin >> dia;
+    cout << "Ingrese mes de nacimiento: ";
+    cin >> mes;
+    cout << "Ingrese anio de nacimiento: ";
+    cin >> anio;
+    reg.setFechaAlta(Fecha(dia,mes,anio));
+    bool estado = true;
+    reg.setEstado(estado);
+
+    archivo.guardarSubscriptor(reg, idSearch-1);
+
 
     system("pause");
 }
