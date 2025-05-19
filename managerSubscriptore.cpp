@@ -111,6 +111,7 @@ void ManagerSubscriptores::mostrarSubmenuSubs(){
 }
 
 void ManagerSubscriptores::cargarSubscriptor(){
+    fflush(stdin);
     Subscriptor reg;
 
     int id, dni;
@@ -122,6 +123,25 @@ void ManagerSubscriptores::cargarSubscriptor(){
 
     cout << "Ingrese DNI: ";
     cin >> dni;
+
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese DNI: ";
+            cin >> dni;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
 
     cout << "Ingrese nombre: ";
     cin.ignore();
@@ -155,9 +175,12 @@ void ManagerSubscriptores::cargarSubscriptor(){
     }
     system("pause");
     cls();
+    fflush(stdin);
 }
 
 void ManagerSubscriptores::mostrarSubscriptores(){
+    fflush(stdin);
+    cin.clear();
     int cantidad = _archivo.getCantidadRegistros();
     Subscriptor *vectorSubscriptores;
 
@@ -186,9 +209,12 @@ void ManagerSubscriptores::mostrarSubscriptores(){
     delete []vectorSubscriptores;
 
     cls();
+    fflush(stdin);
 }
 
 void ManagerSubscriptores::buscarSubscriptor(){
+    fflush(stdin);
+    cin.clear();
     int idSearch;
     ArchivoSubscriptor archivo("lista de subscriptores.dat");
     Subscriptor reg;
@@ -227,13 +253,14 @@ void ManagerSubscriptores::buscarSubscriptor(){
     }
 
 
-
-
     system("pause");
     cls();
+    fflush(stdin);
 }
 
 void ManagerSubscriptores::eliminarSubscriptor(){
+    fflush(stdin);
+    cin.clear();
     int idSearch;
     ArchivoSubscriptor archivo("lista de subscriptores.dat");
     Subscriptor reg;
@@ -252,9 +279,12 @@ void ManagerSubscriptores::eliminarSubscriptor(){
     archivo.guardarSubscriptor(reg, idSearch-1);
 
     system("pause");
+    fflush(stdin);
 }
 
 void ManagerSubscriptores::modificarSubscriptor(){
+    fflush(stdin);
+    cin.clear();
     int idSearch;
     ArchivoSubscriptor archivo("lista de subscriptores.dat");
     Subscriptor reg;
@@ -279,19 +309,24 @@ void ManagerSubscriptores::modificarSubscriptor(){
     cout << "Ingrese DNI: ";
     cin >> dni;
     reg.setDni(dni);
+
     cout << "Ingrese nombre: ";
     cin.ignore();
     getline(cin, nombre);
     reg.setNombre(nombre);
+
     cout << "Ingrese apellido: ";
     getline(cin, apellido);
     reg.setApellido(apellido);
+
     cout << "Ingrese telefono: ";
     getline(cin, telefono);
     reg.setTelefono(telefono);
+
     cout << "Ingrese email: ";
     getline(cin, email);
     reg.setEmail(email);
+
     cout << "Ingrese dia de nacimiento: ";
     cin >> dia;
     cout << "Ingrese mes de nacimiento: ";
@@ -299,6 +334,7 @@ void ManagerSubscriptores::modificarSubscriptor(){
     cout << "Ingrese anio de nacimiento: ";
     cin >> anio;
     reg.setFechaAlta(Fecha(dia,mes,anio));
+
     bool estado = true;
     reg.setEstado(estado);
 
@@ -306,4 +342,5 @@ void ManagerSubscriptores::modificarSubscriptor(){
 
 
     system("pause");
+    fflush(stdin);
 }

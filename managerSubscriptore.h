@@ -20,6 +20,11 @@ public:
     void eliminarSubscriptor();
     ///5 sobreescribir
     void modificarSubscriptor();
+
+    ///ADMIN
+    ///RESTAURAR ARCHIVO DEFAULT
+
+    ///ELIMINAR ARCHIVO
 };
 
 #endif // MANAGERSUBSCRIPTORE_H_INCLUDED

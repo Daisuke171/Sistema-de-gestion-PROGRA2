@@ -94,7 +94,6 @@ int Menu::mostrar(){
             case 3:
                 cls();
                 p.mostrarSubmenuArtista();
-                cin.get();
                 break;
             case 4:
                 cls();

@@ -80,19 +80,19 @@ void ManagerArtista::mostrarSubmenuArtista(){
                 break;
             case 1:
                 cls();
-
+                mostrarArtista();
                 break;
             case 2:
                 cls();
-
+                buscarArtista();
                 break;
             case 3:
                 cls();
-
+                eliminarArtista();
                 break;
             case 4:
                 cls();
-
+                modificarArtista();
                 break;
             case 5:
                 cls();
@@ -111,6 +111,7 @@ void ManagerArtista::mostrarSubmenuArtista(){
 }
 
 void ManagerArtista::cargarArtista(){
+    fflush(stdin);
     Artista reg;
 
     int idArtista = _archivo.getNewID();
@@ -119,7 +120,6 @@ void ManagerArtista::cargarArtista(){
     string nombreArtista, genero, email, pais;
 
     cout << "Ingrese nombre de la banda: ";
-    cin.ignore();
     getline(cin, nombreArtista);
 
     cout << "Ingrese genero musical: ";
@@ -128,7 +128,7 @@ void ManagerArtista::cargarArtista(){
     cout << "Ingrese email: ";
     getline(cin, email);
 
-    cout << "Ingrese pais: ";
+    cout << "Ingrese pais de origen: ";
     getline(cin, pais);
 
     bool estado = true;
@@ -136,22 +136,159 @@ void ManagerArtista::cargarArtista(){
     reg = Artista(nombreArtista, idArtista, genero, email, pais, estado);
 
     if(_archivo.guardarArtista(reg)){
-        cout << "Subscriptor guardado correctamente" << endl;
+        cout << "Artista guardado correctamente" << endl;
     }
     else{
         cout << "ERROR: El subscriptor no se pudo guardar" << endl;
     }
 
+    fflush(stdin);
     system("pause");
     cls();
 }
 
 void ManagerArtista::mostrarArtista(){
+    fflush(stdin);
+    int cantidad = _archivo.getCantidadRegistros();
+    Artista *vectorArtista;
 
+    vectorArtista = new Artista[cantidad];
+
+    if(vectorArtista==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
+
+    _archivo.leerMuchos(vectorArtista, cantidad);
+
+    for(int i=0; i<cantidad; i++){
+        if(vectorArtista[i].getEstado()){
+            cout << "Artista ID:" << vectorArtista[i].getIDArtista() << " info" << endl;
+            cout << "Nombre de la banda: " << vectorArtista[i].getNombre() << endl;
+            cout << "Genero musicial: " << vectorArtista[i].getGenero() << endl;
+            cout << "Pais de origen: " << vectorArtista[i].getPais() << endl;
+            cout << "Email: " << vectorArtista[i].getEmail() << endl;
+            cout << "--------------------------------------------" << endl;
+        }
+    }
+
+    system("pause");
+    delete []vectorArtista;
+
+    cls();
+    fflush(stdin);
 }
 
-void ManagerArtista::buscarArtista(){}
+void ManagerArtista::buscarArtista(){
+    fflush(stdin);
+    int idSearch;
+    ArchivoArtista archivo("lista de artista.dat");
+    Artista reg;
+    int cantRegistros = archivo.getCantidadRegistros();
 
-void ManagerArtista::eliminarArtista(){}
+    cout << "Ingrese el ID que desea buscar: ";
+    cin >> idSearch;
 
-void ManagerArtista::modificarArtista(){}
+    if (!archivo.validarID(idSearch, reg)){
+        cout << "El artista con ID " << idSearch << " no existe." << endl;
+        exit(-1);
+    }
+
+    int posicion=0;
+    bool found = false;
+    for(int i=0; i<cantRegistros; i++){
+        reg = archivo.Leer(i);
+
+        if(reg.getIDArtista()==idSearch){
+            if(reg.getEstado()==false){
+                cout << "El artista fue dado de baja" << endl;
+                found=true;
+            }
+            else{
+                cout << "Artista ID:" << reg.getIDArtista() << " info" << endl;
+                cout << "Nombre de la banda: " << reg.getNombre() << endl;
+                cout << "Genero musicial: " << reg.getGenero() << endl;
+                cout << "Pais de origen: " << reg.getPais() << endl;
+                cout << "Email: " << reg.getEmail() << endl;
+                cout << "--------------------------------------------" << endl;
+                found=true;
+            }
+        }
+        if(found) break;
+    }
+
+
+    system("pause");
+    cls();
+    fflush(stdin);
+}
+
+void ManagerArtista::eliminarArtista(){
+    fflush(stdin);
+    int idSearch;
+    ArchivoArtista archivo("lista de artista.dat");
+    Artista reg;
+    int cantRegistros = archivo.getCantidadRegistros();
+
+    cout << "Ingrese el ID del subscriptor que desee dar de baja: ";
+    cin >> idSearch;
+
+    if (!archivo.validarID(idSearch, reg)){
+        cout << "El artista con ID " << idSearch << " no existe." << endl;
+        exit(-1);
+    }
+
+    reg = archivo.Leer(idSearch-1);
+    reg.setEstado(false);
+    archivo.guardarArtista(reg, idSearch-1);
+
+    system("pause");
+    fflush(stdin);
+}
+
+void ManagerArtista::modificarArtista(){
+    fflush(stdin);
+    int idSearch;
+    ArchivoArtista archivo("lista de artista.dat");
+    Artista reg;
+    int cantRegistros = archivo.getCantidadRegistros();
+
+    cout << "Ingrese el ID del subscriptor que desee modificar: ";
+    cin >> idSearch;
+    cin.ignore();
+    if (!archivo.validarID(idSearch, reg)){
+        cout << "El artista con ID " << idSearch << " no existe." << endl;
+        exit(-1);
+    }
+
+    string nombreArtista, genero, pais, email;
+
+    reg = archivo.Leer(idSearch-1);
+
+    int id = idSearch;
+    cout << "ID Subscriptor: " << id << endl;
+
+    cout << "Ingrese nombre de la banda: ";
+    getline(cin, nombreArtista);
+    reg.setNombre(nombreArtista);
+
+    cout << "Ingrese genero musical: ";
+    getline(cin, genero);
+    reg.setGenero(genero);
+
+    cout << "Ingrese email: ";
+    getline(cin, email);
+    reg.setEmail(email);
+
+    cout << "Ingrese pais de origen: ";
+    getline(cin, pais);
+    reg.setPais(pais);
+
+    bool estado = true;
+    reg.setEstado(estado);
+
+    archivo.guardarArtista(reg, idSearch-1);
+
+    system("pause");
+    fflush(stdin);
+}
