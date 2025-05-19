@@ -12,14 +12,14 @@ public:
     ArchivoArtista(std::string nombreArchivo);
     ArchivoArtista();
 
-    bool guardarArtista(Artista reg); ///escritura
-    int getCantidadRegistros();
-    bool leerMuchos(Artista reg[], int cantidad); ///lectura archivos
-    Artista Leer(int posicion); ///lectura
-    int getNewID();
-    bool validarID(int idBuscado, Artista &resultado);
-    bool validarNombreArtista(std::string nombre, Artista &resultado);
-    int buscarArtistaPorID(int idBuscado, Artista &resultado);
+     bool guardarArtista(Artista reg); ///escritura
+     int getCantidadRegistros();
+     bool validarNombreArtista(std::string nombre, Artista &resultado);
+     bool leerMuchos(Artista reg[], int cantidad); ///lectura archivos
+     Artista Leer(int posicion); ///lectura
+     int getNewID();
+     bool validarID(int idBuscado, Artista &resultado);
+     int buscarArtistaPorID(int idBuscado, Artista &resultado);
     bool guardarArtista(Artista reg, int posicion); ///sobreescritura
 };
 

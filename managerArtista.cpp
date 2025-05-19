@@ -1,64 +1,59 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
-#include "menu.h"
-#include "rlutils.h"
-#include "managerSubscriptore.h"
-#include "managerCanciones.h"
-#include "managerAcceso.h"
+#include "artista.h"
+#include "archivoArtista.h"
 #include "managerArtista.h"
+#include "rlutils.h"
 using namespace rlutil;
 
-
-int Menu::mostrar(){
+void ManagerArtista::mostrarSubmenuArtista(){
     int key;
-    ManagerSubscriptores m;
-    ManagerCanciones n;
-    ManagerAcceso l;
-    ManagerArtista p;
     setBackgroundColor(MAGENTA);
     setColor(WHITE);
-
+    bool exit = false;
     int y=0;
     hidecursor();
 
     do{
         system("cls");
-        int i=2;
+        int i=3;
         locate(tcols()/3,i);
         i++;
-        cout << "Velvet Note Management" << endl;
-        locate(tcols()/3,i);
-        i++;
-        cout << "------------------------" << endl;
-        locate(tcols()/3,i);
-        i++;
-        cout << "1. GESTION DE SUSCRIPTORES" << endl;
-        locate(tcols()/3,i);
-        i++;
-        cout << "2. GESTION DE CANCIONES" << endl;
-        locate(tcols()/3,i);
-        i++;
-        cout << "3. GESTION DE ACCESOS" << endl;
-        locate(tcols()/3,i);
-        i++;
-        cout << "4. GESTION DE ARTISTAS" << endl;
-        locate(tcols()/3,i);
-        i++;
-        cout << "5. REPORTES" << endl;
-        locate(tcols()/3,i);
-        i++;
-        cout << "0. FIN DEL PROGRAMA" << endl;
+        cout << "Velvet Note Artistas" << endl;
         locate(tcols()/3,i);
         i++;
         cout << "------------------------" << endl;
-        locate(tcols()/3,i+1);
+        locate(tcols()/3,i);
+        i++;
+        cout << "1- Cargar Artista" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "2- Mostrar Artista" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "3- Buscar Artista" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "4- Dar de baja Artista" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "5- Editar Artista" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "0- Volver atras" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i+2);
         cout << "SELECCIONE UNA OPCION " << endl;
 
 
         ///PUNTERO PARA SELECCIONAR OPCION :P
-        locate((tcols()/3)-2, 4+y);
+        locate((tcols()/3)-2, 5+y);
         cout << (char)175;
         key = getkey();
+        ///PUNTERO PARA SELECCIONAR OPCION :P
 
         switch (key){
             case 14: //up
@@ -81,31 +76,28 @@ int Menu::mostrar(){
             switch(y){
             case 0:
                 cls();
-                m.mostrarSubmenuSubs();
+                cargarArtista();
                 break;
             case 1:
                 cls();
-                n.mostrarSubmenuCanciones();
+
                 break;
             case 2:
                 cls();
-                l.mostrarSubmenuAccess();
+
                 break;
             case 3:
                 cls();
-                p.mostrarSubmenuArtista();
-                cin.get();
+
                 break;
             case 4:
                 cls();
-                cout << "REPORTES" << endl;
-                cin.get();
+
                 break;
             case 5:
                 cls();
-                cout << "GRACIAS POR ELEGIR NUESTRO PROGRAMA :)" << endl;
-                cin.get();
-                return 0;
+                exit=true;
+                break;
             default:
                 cls();
                 cout << "OPCION INCORRECTA. VUELVA A INGRESAR" << endl;
@@ -115,5 +107,51 @@ int Menu::mostrar(){
         }
 
     }
-    while (true);
+    while(!exit);
 }
+
+void ManagerArtista::cargarArtista(){
+    Artista reg;
+
+    int idArtista = _archivo.getNewID();
+    cout << "ID Artista: " << idArtista << endl;
+
+    string nombreArtista, genero, email, pais;
+
+    cout << "Ingrese nombre de la banda: ";
+    cin.ignore();
+    getline(cin, nombreArtista);
+
+    cout << "Ingrese genero musical: ";
+    getline(cin, genero);
+
+    cout << "Ingrese email: ";
+    getline(cin, email);
+
+    cout << "Ingrese pais: ";
+    getline(cin, pais);
+
+    bool estado = true;
+
+    reg = Artista(nombreArtista, idArtista, genero, email, pais, estado);
+
+    if(_archivo.guardarArtista(reg)){
+        cout << "Subscriptor guardado correctamente" << endl;
+    }
+    else{
+        cout << "ERROR: El subscriptor no se pudo guardar" << endl;
+    }
+
+    system("pause");
+    cls();
+}
+
+void ManagerArtista::mostrarArtista(){
+
+}
+
+void ManagerArtista::buscarArtista(){}
+
+void ManagerArtista::eliminarArtista(){}
+
+void ManagerArtista::modificarArtista(){}

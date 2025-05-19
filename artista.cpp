@@ -10,14 +10,14 @@ Artista::Artista(){
     _email[0] = '\0';
 }
 
-Artista::Artista(std::string nombre, int idArtista, std::string generoMusical, std::string email, bool estado){
+Artista::Artista(std::string nombre, int idArtista, std::string generoMusical, std::string email, std::string pais, bool estado){
     setNombre(nombre);
     setIDArtista(idArtista);
     setGenero(generoMusical);
     setEmail(email);
+    setPais(pais);
     setEstado(estado);
 }
-
 
 void Artista::setNombre(std::string nombre){
     strcpy(_nombre, nombre.c_str());
@@ -35,9 +35,14 @@ void Artista::setEmail(std::string email){
     strcpy(_email, email.c_str());
 }
 
+void Artista::setPais(std::string pais){
+    strcpy(_pais, pais.c_str());
+}
+
 void Artista::setEstado(bool estado){
     _estado = estado;
 }
+
 
 std::string Artista::getNombre() const{
     return _nombre;
@@ -53,4 +58,12 @@ std::string Artista::getGenero() const{
 
 std::string Artista::getEmail() const{
     return _email;
+}
+
+std::string Artista::getPais() const{
+    return _pais;
+}
+
+bool Artista::getEstado() const{
+    return _estado;
 }

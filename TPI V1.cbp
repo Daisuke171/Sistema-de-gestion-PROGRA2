@@ -91,6 +91,12 @@
 		<Unit filename="managerAcceso.h">
 			<Option virtualFolder="clases/manager/accesos/" />
 		</Unit>
+		<Unit filename="managerArtista.cpp">
+			<Option virtualFolder="clases/manager/artista/" />
+		</Unit>
+		<Unit filename="managerArtista.h">
+			<Option virtualFolder="clases/manager/artista/" />
+		</Unit>
 		<Unit filename="managerCanciones.cpp">
 			<Option virtualFolder="clases/manager/canciones/" />
 		</Unit>
