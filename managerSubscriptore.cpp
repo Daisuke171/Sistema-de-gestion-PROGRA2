@@ -279,7 +279,8 @@ void ManagerSubscriptores::buscarSubscriptor(){
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "El usuario con ID " << idSearch << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     int posicion=0;
@@ -325,7 +326,8 @@ void ManagerSubscriptores::eliminarSubscriptor(){
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "El usuario con ID " << idSearch << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     reg = archivo.Leer(idSearch-1);
@@ -349,7 +351,8 @@ void ManagerSubscriptores::modificarSubscriptor(){
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "El usuario con ID " << idSearch << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     int id, dni;

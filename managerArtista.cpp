@@ -199,7 +199,8 @@ void ManagerArtista::buscarArtista(){
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "El artista con ID " << idSearch << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     int posicion=0;
@@ -243,7 +244,8 @@ void ManagerArtista::eliminarArtista(){
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "El artista con ID " << idSearch << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     reg = archivo.Leer(idSearch-1);
@@ -284,6 +286,7 @@ void ManagerArtista::modificarArtista(){
     cin.ignore();
     if (!archivo.validarID(idSearch, reg)){
         cout << "El artista con ID " << idSearch << " no existe." << endl;
+        system("pause");
         return;
     }
 

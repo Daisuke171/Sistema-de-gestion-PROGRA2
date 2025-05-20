@@ -115,11 +115,12 @@ void ManagerCanciones::mostrarSubmenuCanciones(){
 }
 
 void ManagerCanciones::cargarCancion(){
+    fflush(stdin);
     Cancion reg;
 
     Artista regArtistas;
     ManagerArtista manArtista;
-    ArchivoArtista archivoArtistas("lista de canciones.dat");
+    ArchivoArtista archivoArtistas("lista de artista.dat");
 
     int id;
     string nombre, autor, interprete;
@@ -133,6 +134,8 @@ void ManagerCanciones::cargarCancion(){
     cout << "Ingrese nombre del autor: ";
     getline(cin, autor);
 
+
+
     if(!archivoArtistas.validarNombreArtista(autor, regArtistas)){
         cout << "El artista no se encuentra en la base de datos. Desea crearlo? (0= no, 1=si)" << endl;
         bool crearArtista = false;
@@ -140,15 +143,15 @@ void ManagerCanciones::cargarCancion(){
         if(crearArtista){
             manArtista.cargarArtista(autor);
         }
-    }
+    } else cls();
 
-    ///CargarArtista hace un cls()
+    ///El if-else de arriba hace un cls() si o si
     cout << "ID Cancion: " << id << endl;
-    cout << "Ingrese nombre de la cancion: "<< endl;
+    cout << "Ingrese nombre de la cancion: ";
     cout << nombre << endl;
-    cout << "Ingrese nombre del autor: "<< endl;
+    cout << "Ingrese nombre del autor: ";
     cout << autor << endl;
-    ///CargarArtista hace un cls()
+    ///El if-else de arriba hace un cls() si o si
 
     cout << "Ingrese nombre del interprete: ";
     getline(cin, interprete);
@@ -226,9 +229,11 @@ void ManagerCanciones::cargarCancion(){
 
     system("pause");
     cls();
+    fflush(stdin);
 }
 
 void ManagerCanciones::mostrarCancion(){
+    fflush(stdin);
     int cantidad = _archivo.getCantidadRegistros();
     Cancion *vectorCanciones;
 
@@ -253,20 +258,41 @@ void ManagerCanciones::mostrarCancion(){
     delete []vectorCanciones;
 
     cls();
+    fflush(stdin);
 }
 
 void ManagerCanciones::buscarCancion(){
+    fflush(stdin);
     int idSearch;
-    ArchivoCancion archivo("lista de subscriptores.dat");
+    ArchivoCancion archivo("lista de canciones.dat");
     Cancion reg;
     int cantRegistros = archivo.getCantidadRegistros();
 
     cout << "Ingrese el ID que desea buscar: ";
     cin >> idSearch;
+    if(std::cin.fail()) {
+    std::cin.clear();
+    std::cin.ignore();
+    std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+    while(true){
+        cout << "Ingrese el ID que desea buscar: ";
+        cin >> idSearch;
+
+        if(std::cin.fail()){
+            std::cin.clear();
+            std::cin.ignore();
+            std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        }
+        else{
+            break;
+        }
+    }
+    }
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "La cancion con ID " << idSearch << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     int posicion=0;
@@ -277,6 +303,7 @@ void ManagerCanciones::buscarCancion(){
         if(reg.getID()==idSearch){
             if(reg.getEstado()==false){
                 cout << "La cancion fue dada de baja" << endl;
+                system("pause");
                 found=true;
             }
             else{
@@ -296,9 +323,11 @@ void ManagerCanciones::buscarCancion(){
 
     system("pause");
     cls();
+    fflush(stdin);
 }
 
 void ManagerCanciones::eliminarCancion(){
+    fflush(stdin);
     int idSearch;
     ArchivoCancion archivo("lista de subscriptores.dat");
     Cancion reg;
@@ -309,7 +338,8 @@ void ManagerCanciones::eliminarCancion(){
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "La cancion con ID " << idSearch << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     reg = archivo.Leer(idSearch-1);
@@ -317,50 +347,142 @@ void ManagerCanciones::eliminarCancion(){
     archivo.guardarCancion(reg, idSearch-1);
 
     system("pause");
+    fflush(stdin);
 }
 
 void ManagerCanciones::modificarCancion(){
-   int idSearch;
-    ArchivoCancion archivo("lista de subscriptores.dat");
+    fflush(stdin);
+    int idSearch;
+    ArchivoCancion archivo("lista de canciones.dat");
+    ArchivoArtista archivo2("lista de artista.dat");
     Cancion reg;
+    Artista reg2;
+    ManagerArtista manArtista;
     int cantRegistros = archivo.getCantidadRegistros();
 
-    cout << "Ingrese el ID del subscriptor que desee modificar: ";
+    cout << "Ingrese el ID de la cancion que desee modificar: ";
     cin >> idSearch;
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "La cancion con ID " << idSearch << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     string nombre, autor, interprete;
     int dia, mes, anio;
 
-
     cout << "ID Cancion: " << idSearch << endl;
 
-    cin.ignore();
-    cout << "Ingrese nombre de la cancion: ";
-    getline(cin, nombre);
-    reg.setNombre(nombre);
-    cout << "Ingrese nombre del autor: ";
-    getline(cin, autor);
-    reg.setAutor(autor);
-    cout << "Ingrese nombre del interprete: ";
-    getline(cin, interprete);
-    reg.setInterprete(interprete);
-    cout << "Ingrese dia de publicacion: ";
-    cin >> dia;
-    cout << "Ingrese mes de publicacion: ";
-    cin >> mes;
-    cout << "Ingrese anio de publicacion: ";
-    cin >> anio;
-    reg.setFechaPublicacion(Fecha(dia,mes,anio));
-    bool estado = true;
-    reg.setEstado(estado);
+    int option;
+    cout << "Ingrese que quiere modificar: " << endl;
+    cout << "1- Nombre" << endl;
+    cout << "2- Autor" << endl;
+    cout << "3- Interprete" << endl;
+    cout << "4- Fecha" << endl;
+    cin >> option;
+    switch(option){
+    case 1:
+        {
+            cout << "Ingrese nombre de la cancion: ";
+            getline(cin, nombre);
+            reg.setNombre(nombre);
+            break;
+        }
+    case 2:
+        {
+            cout << "Ingrese nombre del autor: ";
+            getline(cin, autor);
+
+            if(!archivo2.validarNombreArtista(autor, reg2)){
+                cout << "El artista no se encuentra en la base de datos. Desea crearlo? (0= no, 1=si)" << endl;
+                bool crearArtista = false;
+                cin >> crearArtista;
+                if(crearArtista){
+                    manArtista.cargarArtista(autor);
+                }
+            }
+            reg.setAutor(autor);
+            break;
+        }
+    case 3:
+        {
+            cout << "Ingrese nombre del interprete: ";
+            getline(cin, interprete);
+            reg.setInterprete(interprete);
+            break;
+        }
+    case 4:
+        {
+            cout << "Ingrese dia: ";
+            cin >> dia;
+            if(std::cin.fail()) {
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+                while(true){
+                    cout << "Ingrese dia: ";
+                    cin >> dia;
+
+                    if(std::cin.fail()){
+                        std::cin.clear();
+                        std::cin.ignore();
+                        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+                    }
+                    else{
+                        break;
+                    }
+                }
+            }
+            cout << "Ingrese mes: ";
+            cin >> mes;
+            if(std::cin.fail()) {
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+                while(true){
+                    cout << "Ingrese mes: ";
+                    cin >> mes;
+
+                    if(std::cin.fail()){
+                        std::cin.clear();
+                        std::cin.ignore();
+                        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+                    }
+                    else{
+                        break;
+                    }
+                }
+            }
+            cout << "Ingrese anio: ";
+            cin >> anio;
+            if(std::cin.fail()) {
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+                while(true){
+                    cout << "Ingrese anio: ";
+                    cin >> anio;
+
+                    if(std::cin.fail()){
+                        std::cin.clear();
+                        std::cin.ignore();
+                        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+                    }
+                    else{
+                        break;
+                    }
+                }
+            }
+            reg.setFechaPublicacion(Fecha(dia,mes,anio));
+            break;
+        }
+    default:
+        break;
+    }
 
     archivo.guardarCancion(reg, idSearch);
 
-
     system("pause");
+    fflush(stdin);
 }

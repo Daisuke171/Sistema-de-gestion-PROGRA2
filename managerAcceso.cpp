@@ -123,6 +123,7 @@ void ManagerAcceso::mostrarSubmenuAccess(){
 }
 
 void ManagerAcceso::cargarAcceso(){
+    fflush(stdin);
     int idUser, idSong, dia, mes, anio, hora;
     ArchivoCancion archivo("lista de canciones.dat");
     ArchivoSubscriptor archivo2("lista de subscriptores.dat");
@@ -138,7 +139,8 @@ void ManagerAcceso::cargarAcceso(){
     ///FUNCION PARA VER SI EL ID EXISTE
     if (!archivo2.validarID(idUser, s)){
         cout << "El usuario con ID " << idUser << " no existe. No se puede crear el acceso" << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     cout << "Ingrese el ID de la cancion: ";
@@ -147,7 +149,8 @@ void ManagerAcceso::cargarAcceso(){
     ///FUNCION PARA VER SI EL ID EXISTE
     if (!archivo.buscarPorCancionID(idSong, c)){
         cout << "La cancion con ID " << idSong << " no existe. No se puede crear el acceso" << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     cout << "Ingrese dia: ";
@@ -236,20 +239,28 @@ void ManagerAcceso::cargarAcceso(){
 
     if(_archivo.guardarAcceso(reg)){
         cout << "Acceso guardado correctamente" << endl;
+        system("pause");
     }
     else{
         cout << "ERROR: El acceso no se pudo guardar" << endl;
-        exit(-2);
+        system("pause");
+        return;
     }
     system("pause");
     cls();
+    fflush(stdin);
 }
 
 void ManagerAcceso::mostrarAcceso(){
+    fflush(stdin);
     int cantidad = _archivo.getCantidadRegistros();
     Acceso *vectorAcceso;
-
     vectorAcceso = new Acceso[cantidad];
+
+    ArchivoSubscriptor archivo("lista de subscriptores.dat");
+    Subscriptor regSub;
+    ArchivoCancion archivo2("lista de canciones.dat");
+    Cancion regCancion;
 
     if(vectorAcceso==nullptr){
         cout << "Error en la asignacion de memoria" << endl;
@@ -259,8 +270,12 @@ void ManagerAcceso::mostrarAcceso(){
     _archivo.leerMuchos(vectorAcceso, cantidad);
 
     for(int i=0; i<cantidad; i++){
-        cout << "Acceso de usuario " << vectorAcceso[i].getIdSub() << endl;
-        cout << "Cancion " << vectorAcceso[i].getIdSong() << endl;
+        regSub = archivo.Leer(vectorAcceso[i].getIdSub()-1);
+        regCancion = archivo2.Leer(vectorAcceso[i].getIdSong()-1);
+
+        cout << "Acceso de usuario #" << vectorAcceso[i].getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
+        cout << "Cancion #" << vectorAcceso[i].getIdSong() << ": " << regCancion.getNombre() << endl;
+        cout << "Banda: " << regCancion.getAutor() << endl;
         cout << "Fecha: " << vectorAcceso[i].getFecha() << " Hora: " << vectorAcceso[i].getHora() << endl;
         cout << "--------------------------------------------" << endl;
     }
@@ -269,22 +284,27 @@ void ManagerAcceso::mostrarAcceso(){
     delete []vectorAcceso;
 
     cls();
+    fflush(stdin);
 }
 
 void ManagerAcceso::filtrarAccesoPorCancion(){
+    fflush(stdin);
     std::string nombreCancion;
-    Cancion reg;
+    Cancion regCancion;
+    Subscriptor regSub;
     ArchivoCancion archivo("lista de canciones.dat");
     ArchivoAcceso archivo2("lista de accesos.dat");
-    int cantRegistros = archivo.getCantidadRegistros();
+    ArchivoSubscriptor archivo3("lista de subscriptores.dat");
+    int cantRegistros = archivo2.getCantidadRegistros();
     Acceso regAcceso;
 
     cout << "Ingrese el nombre de la cancion que desee buscar en los accesos: ";
     cin >> nombreCancion;
 
-    if(!archivo.buscarPorCancionNombre(nombreCancion, reg)){
+    if(!archivo.buscarPorCancionNombre(nombreCancion, regCancion)){
         cout << "La cancion con nombre " << nombreCancion << " no existe. No se puede crear el acceso" << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     int j=0;
@@ -292,10 +312,14 @@ void ManagerAcceso::filtrarAccesoPorCancion(){
         regAcceso = archivo2.Leer(i);
 
         if(regAcceso.getEstado()){
-            if(reg.getNombre()==nombreCancion){
-                cout << "Acceso de usuario " << regAcceso.getIdSub() << endl;
-                cout << "Cancion " << regAcceso.getIdSong() << endl;
-                cout << "Fecha: " <<regAcceso.getFecha() << " Hora: " << regAcceso.getHora() << endl;
+            if(regCancion.getNombre()==nombreCancion){
+                regSub = archivo3.Leer(regAcceso.getIdSub()-1);
+                regCancion = archivo.Leer(regAcceso.getIdSong()-1);
+
+                cout << "Acceso de usuario #" << regAcceso.getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
+                cout << "Cancion #" << regAcceso.getIdSong() << ": " << regCancion.getNombre() << endl;
+                cout << "Banda: " << regCancion.getAutor() << endl;
+                cout << "Fecha: " << regAcceso.getFecha() << " Hora: " << regAcceso.getHora() << endl;
                 cout << "--------------------------------------------" << endl;
                 j++;
             }
@@ -308,9 +332,11 @@ void ManagerAcceso::filtrarAccesoPorCancion(){
 
     system("pause");
     cls();
+    fflush(stdin);
 }
 
 void ManagerAcceso::filtrarAccesoPorArtista(){
+    fflush(stdin);
     std::string nombreArtista;
     Artista reg;
     ArchivoArtista archivo("lista de canciones.dat");
@@ -323,7 +349,8 @@ void ManagerAcceso::filtrarAccesoPorArtista(){
 
     if(!archivo.validarNombreArtista(nombreArtista, reg)){
         cout << "La cancion con nombre " << nombreArtista << " no existe. No se puede crear el acceso" << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     int j=0;
@@ -347,9 +374,11 @@ void ManagerAcceso::filtrarAccesoPorArtista(){
 
     system("pause");
     cls();
+    fflush(stdin);
 }
 
 void ManagerAcceso::eliminarAcceso(){
+    fflush(stdin);
     int idSearch;
     ArchivoAcceso archivo("lista de accesos.dat");
     Acceso reg;
@@ -378,7 +407,8 @@ void ManagerAcceso::eliminarAcceso(){
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "El usuario con ID " << idSearch << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     reg = archivo.Leer(idSearch-1);
@@ -386,9 +416,11 @@ void ManagerAcceso::eliminarAcceso(){
     archivo.guardarAcceso(reg, idSearch-1);
 
     system("pause");
+    fflush(stdin);
 }
 
 void ManagerAcceso::modificarAcceso(){
+    fflush(stdin);
     int idSearch;
     ArchivoAcceso archivo("lista de accesos.dat");
     ArchivoCancion archivo2("lista de cancion.dat");
@@ -421,7 +453,8 @@ void ManagerAcceso::modificarAcceso(){
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "El acceso con ID " << idSearch << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
 
     int idCancion;
@@ -439,7 +472,8 @@ void ManagerAcceso::modificarAcceso(){
     Cancion c;
     if(!archivo2.buscarPorCancionID(idCancion, c)){
         cout << "La cancion con nombre " << idCancion << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
     reg.setIdSong(idCancion);
     int idSubscriptor;
@@ -466,7 +500,8 @@ void ManagerAcceso::modificarAcceso(){
     Subscriptor s;
     if(!archivo3.validarID(idSubscriptor, s)){
         cout << "El Usuario con ID " << idSubscriptor << " no existe." << endl;
-        exit(-1);
+        system("pause");
+        return;
     }
     reg.setIdSub(idSubscriptor);
     cout << "Ingrese dia: ";
@@ -536,5 +571,6 @@ void ManagerAcceso::modificarAcceso(){
     archivo.guardarAcceso(reg, idSearch-1);
 
     system("pause");
+    fflush(stdin);
 }
 
