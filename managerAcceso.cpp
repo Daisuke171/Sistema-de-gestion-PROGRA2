@@ -152,13 +152,84 @@ void ManagerAcceso::cargarAcceso(){
 
     cout << "Ingrese dia: ";
     cin >> dia;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese dia: ";
+            cin >> dia;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
     cout << "Ingrese mes: ";
     cin >> mes;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese mes: ";
+            cin >> mes;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
     cout << "Ingrese anio: ";
     cin >> anio;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese anio: ";
+            cin >> anio;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
     cout << "Ingrese hora: ";
     cin >> hora;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese hora: ";
+            cin >> hora;
 
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
     Acceso reg;
     bool estado = true;
     reg = Acceso(id, idSong, idUser, Fecha(dia,mes,anio), hora, estado);
@@ -286,6 +357,24 @@ void ManagerAcceso::eliminarAcceso(){
 
     cout << "Ingrese el ID del acceso que desee dar de baja: ";
     cin >> idSearch;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese el ID del acceso que desee dar de baja: ";
+            cin >> idSearch;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "El usuario con ID " << idSearch << " no existe." << endl;
@@ -310,6 +399,25 @@ void ManagerAcceso::modificarAcceso(){
 
     cout << "Ingrese el ID del acceso que desee dar de baja: ";
     cin >> idSearch;
+
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese el ID del acceso que desee dar de baja: ";
+            cin >> idSearch;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "El acceso con ID " << idSearch << " no existe." << endl;
@@ -337,6 +445,24 @@ void ManagerAcceso::modificarAcceso(){
     int idSubscriptor;
     cout << "Ingrese ID del subscriptor: ";
     cin >> idSubscriptor;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese ID del subscriptor: ";
+            cin >> idSubscriptor;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
     Subscriptor s;
     if(!archivo3.validarID(idSubscriptor, s)){
         cout << "El Usuario con ID " << idSubscriptor << " no existe." << endl;
@@ -345,10 +471,64 @@ void ManagerAcceso::modificarAcceso(){
     reg.setIdSub(idSubscriptor);
     cout << "Ingrese dia: ";
     cin >> dia;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese dia: ";
+            cin >> dia;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
     cout << "Ingrese mes: ";
     cin >> mes;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese mes: ";
+            cin >> mes;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
     cout << "Ingrese anio: ";
     cin >> anio;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese anio: ";
+            cin >> anio;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
     reg.setFecha(Fecha(dia,mes,anio));
     bool estado = true;
     reg.setEstado(estado);
@@ -357,3 +537,4 @@ void ManagerAcceso::modificarAcceso(){
 
     system("pause");
 }
+

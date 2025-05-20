@@ -11,6 +11,7 @@ public:
      void mostrarSubmenuArtista();
     ///1 agregar subs a archivo
      void cargarArtista();
+     void cargarArtista(std::string nombre);
     ///2 ver subs en archivo
      void mostrarArtista();
     ///3 buscar sub

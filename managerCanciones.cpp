@@ -5,6 +5,8 @@
 #include "fecha.h"
 #include "rlutils.h"
 #include "archivosCancion.h"
+#include "archivoArtista.h"
+#include "managerArtista.h"
 using namespace std;
 using namespace rlutil;
 
@@ -115,6 +117,10 @@ void ManagerCanciones::mostrarSubmenuCanciones(){
 void ManagerCanciones::cargarCancion(){
     Cancion reg;
 
+    Artista regArtistas;
+    ManagerArtista manArtista;
+    ArchivoArtista archivoArtistas("lista de canciones.dat");
+
     int id;
     string nombre, autor, interprete;
     int dia, mes, anio;
@@ -122,19 +128,90 @@ void ManagerCanciones::cargarCancion(){
     id = _archivo.getNewID();
     cout << "ID Cancion: " << id << endl;
 
-    cin.ignore();
     cout << "Ingrese nombre de la cancion: ";
     getline(cin, nombre);
     cout << "Ingrese nombre del autor: ";
     getline(cin, autor);
+
+    if(!archivoArtistas.validarNombreArtista(autor, regArtistas)){
+        cout << "El artista no se encuentra en la base de datos. Desea crearlo? (0= no, 1=si)" << endl;
+        bool crearArtista = false;
+        cin >> crearArtista;
+        if(crearArtista){
+            manArtista.cargarArtista(autor);
+        }
+    }
+
+    ///CargarArtista hace un cls()
+    cout << "ID Cancion: " << id << endl;
+    cout << "Ingrese nombre de la cancion: "<< endl;
+    cout << nombre << endl;
+    cout << "Ingrese nombre del autor: "<< endl;
+    cout << autor << endl;
+    ///CargarArtista hace un cls()
+
     cout << "Ingrese nombre del interprete: ";
     getline(cin, interprete);
-    cout << "Ingrese dia de publicacion: ";
+    cout << "Ingrese dia: ";
     cin >> dia;
-    cout << "Ingrese mes de publicacion: ";
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese dia: ";
+            cin >> dia;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    cout << "Ingrese mes: ";
     cin >> mes;
-    cout << "Ingrese anio de publicacion: ";
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese mes: ";
+            cin >> mes;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    cout << "Ingrese anio: ";
     cin >> anio;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese anio: ";
+            cin >> anio;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
 
     bool estado = true;
 

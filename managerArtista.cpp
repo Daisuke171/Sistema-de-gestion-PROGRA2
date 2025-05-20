@@ -113,6 +113,7 @@ void ManagerArtista::mostrarSubmenuArtista(){
 void ManagerArtista::cargarArtista(){
     fflush(stdin);
     Artista reg;
+    ArchivoArtista archivo("lista de artista.dat");
 
     int idArtista = _archivo.getNewID();
     cout << "ID Artista: " << idArtista << endl;
@@ -121,6 +122,13 @@ void ManagerArtista::cargarArtista(){
 
     cout << "Ingrese nombre de la banda: ";
     getline(cin, nombreArtista);
+
+    ///Para ver si ya hay un registro con ese nombre
+    if(archivo.validarNombreArtista(nombreArtista, reg)){
+        cout << "El artista ya se encuentra en la base de datos." << endl;
+        system("pause");
+        return;
+    }
 
     cout << "Ingrese genero musical: ";
     getline(cin, genero);
@@ -255,10 +263,28 @@ void ManagerArtista::modificarArtista(){
 
     cout << "Ingrese el ID del subscriptor que desee modificar: ";
     cin >> idSearch;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese el ID del subscriptor que desee modificar: ";
+            cin >> idSearch;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
     cin.ignore();
     if (!archivo.validarID(idSearch, reg)){
         cout << "El artista con ID " << idSearch << " no existe." << endl;
-        exit(-1);
+        return;
     }
 
     string nombreArtista, genero, pais, email;
@@ -270,6 +296,13 @@ void ManagerArtista::modificarArtista(){
 
     cout << "Ingrese nombre de la banda: ";
     getline(cin, nombreArtista);
+
+    ///Para ver si ya hay un registro con ese nombre
+    if(archivo.validarNombreArtista(nombreArtista, reg)){
+        cout << "El artista ya se encuentra en la base de datos." << endl;
+        system("pause");
+        return;
+    }
     reg.setNombre(nombreArtista);
 
     cout << "Ingrese genero musical: ";
@@ -291,4 +324,40 @@ void ManagerArtista::modificarArtista(){
 
     system("pause");
     fflush(stdin);
+}
+
+void ManagerArtista::cargarArtista(std::string nombre){
+    fflush(stdin);
+    Artista reg;
+
+    int idArtista = _archivo.getNewID();
+    cout << "ID Artista: " << idArtista << endl;
+
+    string nombreArtista=nombre, genero, email, pais;
+
+    cout << endl;
+    cout << "CREACION ARTISTA" << endl;
+    cout << "Ingrese genero musical: ";
+    getline(cin, genero);
+
+    cout << "Ingrese email: ";
+    getline(cin, email);
+
+    cout << "Ingrese pais de origen: ";
+    getline(cin, pais);
+
+    bool estado = true;
+
+    reg = Artista(nombreArtista, idArtista, genero, email, pais, estado);
+
+    if(_archivo.guardarArtista(reg)){
+        cout << "Artista guardado correctamente" << endl;
+    }
+    else{
+        cout << "ERROR: El subscriptor no se pudo guardar" << endl;
+    }
+    cout << endl;
+    fflush(stdin);
+    system("pause");
+    cls();
 }

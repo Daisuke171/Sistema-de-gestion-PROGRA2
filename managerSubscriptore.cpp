@@ -156,12 +156,66 @@ void ManagerSubscriptores::cargarSubscriptor(){
     cout << "Ingrese email: ";
     getline(cin, email);
 
-    cout << "Ingrese dia de nacimiento: ";
+    cout << "Ingrese dia: ";
     cin >> dia;
-    cout << "Ingrese mes de nacimiento: ";
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese dia: ";
+            cin >> dia;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    cout << "Ingrese mes: ";
     cin >> mes;
-    cout << "Ingrese anio de nacimiento: ";
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese mes: ";
+            cin >> mes;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    cout << "Ingrese anio: ";
     cin >> anio;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese anio: ";
+            cin >> anio;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
 
     bool estado = true;
 
@@ -308,6 +362,24 @@ void ManagerSubscriptores::modificarSubscriptor(){
 
     cout << "Ingrese DNI: ";
     cin >> dni;
+        if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese DNI: ";
+            cin >> dni;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
     reg.setDni(dni);
 
     cout << "Ingrese nombre: ";
@@ -327,12 +399,66 @@ void ManagerSubscriptores::modificarSubscriptor(){
     getline(cin, email);
     reg.setEmail(email);
 
-    cout << "Ingrese dia de nacimiento: ";
+    cout << "Ingrese dia: ";
     cin >> dia;
-    cout << "Ingrese mes de nacimiento: ";
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese dia: ";
+            cin >> dia;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    cout << "Ingrese mes: ";
     cin >> mes;
-    cout << "Ingrese anio de nacimiento: ";
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese mes: ";
+            cin >> mes;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    cout << "Ingrese anio: ";
     cin >> anio;
+    if(std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+        while(true){
+            cout << "Ingrese anio: ";
+            cin >> anio;
+
+            if(std::cin.fail()){
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
+            }
+            else{
+                break;
+            }
+        }
+    }
     reg.setFechaAlta(Fecha(dia,mes,anio));
 
     bool estado = true;
