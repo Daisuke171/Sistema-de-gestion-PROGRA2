@@ -116,3 +116,71 @@ int Menu::mostrar(){
     }
     while (true);
 }
+
+void Menu::logo(){
+    setBackgroundColor(MAGENTA);
+    setColor(WHITE);
+    hidecursor();
+    int coordinates = (trows()/3)-7;
+    system("cls");
+
+    int marcoX = coordinates+16;
+    int marcoY = coordinates+11;
+    int ancho = 61;
+    ///Marco superior
+    locate(marcoX-3, coordinates);
+    cout << (char)201;
+    for(int i=0; i<ancho; i++){
+        cout << (char)205;
+    }
+    cout << (char)187 <<endl;
+    ///
+
+
+
+
+
+
+    ///marco inferior
+    locate(marcoX-3, marcoY);
+    cout << (char)200;
+    for(int i=0; i<ancho; i++){
+        cout << (char)205;
+    }
+    cout << (char)188;
+
+
+
+
+    locate(coordinates, coordinates);
+    std::cout << R"(
+
+                     _    __     __           __     _   __      __
+                    | |  / /__  / /   _____  / /_   / | / /___  / /____
+                    | | / / _ \/ / | / / _ \/ __/  /  |/ / __ \/ __/ _ \
+                    | |/ /  __/ /| |/ /  __/ /_   / /|  / /_/ / /_/  __/
+                    |___/\___/_/ |___/\___/\__/  /_/ |_/\____/\__/\___/
+
+
+    )" << '\n';
+
+    ///lateral izquierdo
+    for(int i=1; i<11; i++){
+        locate(marcoX-3, coordinates+i);
+        cout << (char)186 << endl;
+    }
+    ///lateral derecho
+    for(int i=1; i<11; i++){
+        locate(marcoX+59, coordinates+i);
+        cout << (char)186 << endl;
+    }
+
+
+    locate(tcols()/3-8, 12);
+    std::cout << "Bienvenido a Velvet Note Manager" << std::endl;
+    locate(tcols()/3-12, 16);
+    std::cout << "Presione cualquier tecla para continuar" << std::endl;
+
+    system("pause > null");
+    cls();
+}

@@ -2,10 +2,10 @@
 #define MENU_H_INCLUDED
 
 
-class Menu
-{
+class Menu{
 public:
     int mostrar();
+    void logo();
 };
 
 #endif // MENU_H_INCLUDED

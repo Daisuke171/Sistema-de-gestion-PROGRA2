@@ -116,13 +116,13 @@
 	<cstring>
 	"fecha.h"
 
-1747686765 source:c:\users\lain\desktop\gestormusica tpi test\main.cpp
+1747786892 source:c:\users\lain\desktop\gestormusica tpi test\main.cpp
 	<iostream>
 	"menu.h"
 
-1747559260 c:\users\lain\desktop\gestormusica tpi test\menu.h
+1747786891 c:\users\lain\desktop\gestormusica tpi test\menu.h
 
-1747685836 source:c:\users\lain\desktop\gestormusica tpi test\menu.cpp
+1747788554 source:c:\users\lain\desktop\gestormusica tpi test\menu.cpp
 	<iostream>
 	"menu.h"
 	"rlutils.h"
@@ -181,7 +181,7 @@
 	"cancion.h"
 	"fecha.h"
 
-1747740752 source:c:\users\lain\desktop\gestormusica tpi test\managercanciones.cpp
+1747743825 source:c:\users\lain\desktop\gestormusica tpi test\managercanciones.cpp
 	<iostream>
 	<cstring>
 	"cancion.h"

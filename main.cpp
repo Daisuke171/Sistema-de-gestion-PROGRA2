@@ -13,9 +13,9 @@ using namespace std;
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 */
 
-int main()
-{
+int main(){
     Menu m;
+    m.logo();
     m.mostrar();
     return 0;
 }
