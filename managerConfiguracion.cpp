@@ -74,7 +74,7 @@ void ManagerConfiguracion::mostrarSubmenuConfig(){
             switch(y){
             case 0:
                 cls();
-
+                a.guardarData();
                 break;
             case 1:
                 cls();
@@ -103,7 +103,143 @@ void ManagerConfiguracion::mostrarSubmenuConfig(){
 }
 
 bool ManagerConfiguracion::guardarData(){
+    cls();
+    fflush(stdin);
+    bool result = false;
+    ArchivoArtista archivoArt("lista de artista.dat");
+    ArchivoCancion archivoCan("lista de canciones.dat");
+    ArchivoHistorial archivoHis("lista de accesos.dat");
+    ArchivoSubscriptor archivoSub("lista de subscriptores.dat");
 
+    int y=0;
+    int key;
+
+    do{
+        system("cls");
+        int i=2;
+        locate(tcols()/3,i);
+        i++;
+        cout << "Velvet Note Back-Up" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "1. Hacer Backup Artistas" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "2. Hacer Backup Canciones" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "3. Hacer Backup Historiales" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "4. Hacer Backup Subscriptores" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "5. Hacer Backup Todos" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "0. Salir" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i+1);
+        cout << "SELECCIONE UNA OPCION " << endl;
+
+
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+        locate((tcols()/3)-2, 4+y);
+        cout << (char)175;
+        key = getkey();
+
+        switch (key){
+            case 14: //up
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y--;
+                if(y<0){
+                    y=0;
+                }
+                break;
+            case 15: //dwn
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y++;
+                if(y>5){
+                    y=5;
+                }
+                break;
+        case 1: /// 1 = ENTER
+            switch(y){
+            case 0:
+                {
+                    cls();
+                    bool isAdmin = logon();
+                    if(!isAdmin){
+                        cout << "Usuario o contraseña incorrecta" << endl;
+                        system("pause");
+                        break;
+                    }
+                    else{
+                        cout << "Bienvenido Administrador" << endl;
+                    }
+
+                    FILE *pFile;
+                    pFile = fopen(".\\backups\\lista de artistas.bak", "wb+");
+                    if (pFile == nullptr) {
+                        perror("Error al abrir archivo");
+                        system("pause");
+                        return false;
+                    }
+
+                    Artista regArt;
+                    int cantReg = archivoArt.getCantidadRegistros();
+                    for(int i=0; i<cantReg; i++){
+                        regArt = archivoArt.Leer(i);
+                        fwrite(&regArt, sizeof(Artista), 1, pFile);
+                    }
+
+
+                    fclose(pFile);
+                    cout << "Se creo el BackUp exitosamente" << endl;
+                    system("pause");
+                    break;
+                }
+            case 1:
+                {
+                    break;
+                }
+            case 2:
+                {
+                    break;
+                }
+            case 3:
+                {
+                    break;
+                }
+            case 4:
+                {
+                    break;
+                }
+            case 5:
+                {
+                    break;
+                }
+            case 6:
+                {
+                    result=true;
+                    break;
+                }
+            default:
+                cls();
+                cout << "OPCION INCORRECTA. VUELVA A INGRESAR" << endl;
+                cin.get();
+            }
+        }
+    }while(!result);
+
+    system("pause");
 }
 
 bool ManagerConfiguracion::restaurarData(){
@@ -122,7 +258,6 @@ bool ManagerConfiguracion::exportarData(){
 
     int y=0;
     int key;
-    ManagerConfiguracion a;
 
     do{
         system("cls");
@@ -545,7 +680,8 @@ cls();
                 break;
                 }
             case 5:
-                return 1;
+                result = true;
+                break;
             default:
                 cls();
                 cout << "OPCION INCORRECTA. VUELVA A INGRESAR" << endl;
@@ -554,7 +690,7 @@ cls();
             }
         }
     }
-    while (true);
+    while (!result);
 
 
     system("pause");

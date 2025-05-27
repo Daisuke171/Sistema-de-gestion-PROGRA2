@@ -78,6 +78,10 @@
 			<Option virtualFolder="clases/cancion/" />
 		</Unit>
 		<Unit filename="coco funciones.txt" />
+		<Unit filename="exports/artistas.csv" />
+		<Unit filename="exports/canciones.csv" />
+		<Unit filename="exports/historiales.csv" />
+		<Unit filename="exports/subscriptores.csv" />
 		<Unit filename="fecha.cpp">
 			<Option virtualFolder="clases/fecha/" />
 		</Unit>
@@ -128,6 +132,7 @@
 		<Unit filename="suscriptor.h">
 			<Option virtualFolder="clases/suscriptor/" />
 		</Unit>
+		<Unit filename="userAccess.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
