@@ -472,7 +472,7 @@
 
 1748277418 c:\users\lain\desktop\gestormusica tpi test\managerconfiguracion.h
 
-1748372594 source:c:\users\lain\desktop\gestormusica tpi test\managerconfiguracion.cpp
+1748379002 source:c:\users\lain\desktop\gestormusica tpi test\managerconfiguracion.cpp
 	<iostream>
 	<cstring>
 	<cstdio>
@@ -486,4 +486,7 @@
 	"acceso.h"
 	"cancion.h"
 	"suscriptor.h"
+	"userAccess.h"
+
+1748375292 c:\users\lain\desktop\gestormusica tpi test\useraccess.h
 
