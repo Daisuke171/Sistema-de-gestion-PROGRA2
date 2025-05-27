@@ -4,15 +4,15 @@ using namespace std;
 #include "acceso.h"
 
 
-Acceso::Acceso(){
-    _cancion = -1;
-    _usuario = -1;
+HistorialUsuario::HistorialUsuario(){
+    _idCancion = -1;
+    _idUsuario = -1;
     _fecha = Fecha();
     _hora = -1;
     _estado = false;
 }
 
-Acceso::Acceso(int id, int idSong, int idSub, Fecha fecha, int hora, bool estado){
+HistorialUsuario::HistorialUsuario(int id, int idSong, int idSub, Fecha fecha, int hora, bool estado){
     setID(id);
     setIdSong(idSong);
     setIdSub(idSub);
@@ -21,50 +21,50 @@ Acceso::Acceso(int id, int idSong, int idSub, Fecha fecha, int hora, bool estado
     setEstado(estado);
 }
 
-void Acceso::setID(int id){
-    _id = id;
+void HistorialUsuario::setID(int id){
+    _idHistorial = id;
 }
 
-void Acceso::setIdSong(int idSong){
-    _cancion = idSong;
+void HistorialUsuario::setIdSong(int idSong){
+    _idCancion = idSong;
 }
 
-void Acceso::setIdSub(int idSub){
-    _usuario = idSub;
+void HistorialUsuario::setIdSub(int idSub){
+    _idUsuario = idSub;
 }
 
-void Acceso::setFecha(const Fecha &fecha){
+void HistorialUsuario::setFecha(const Fecha &fecha){
     _fecha = fecha;
 }
 
-void Acceso::setHora(int hora){
+void HistorialUsuario::setHora(int hora){
     _hora = hora;
 }
 
-void Acceso::setEstado(bool estado){
+void HistorialUsuario::setEstado(bool estado){
     _estado = estado;
 }
 
-int Acceso::getID() const{
-    return _id;
+int HistorialUsuario::getID() const{
+    return _idHistorial;
 }
 
-int Acceso::getIdSong() const{
-    return _cancion;
+int HistorialUsuario::getIdSong() const{
+    return _idCancion;
 }
 
-int Acceso::getIdSub() const{
-    return _usuario;
+int HistorialUsuario::getIdSub() const{
+    return _idUsuario;
 }
 
-std::string Acceso::getFecha(){
+std::string HistorialUsuario::getFecha(){
     return _fecha.toString();
 }
 
-int Acceso::getHora() const{
+int HistorialUsuario::getHora() const{
     return _hora;
 }
 
-bool Acceso::getEstado() const{
+bool HistorialUsuario::getEstado() const{
     return _estado;
 }

@@ -8,15 +8,15 @@ using namespace std;
 #include "archivosCancion.h"
 #include "archivoArtista.h"
 
-ArchivoAcceso::ArchivoAcceso(std::string nombreArchivo){
+ArchivoHistorial::ArchivoHistorial(std::string nombreArchivo){
     _nombreArchivo = nombreArchivo;
 }
-ArchivoAcceso::ArchivoAcceso(){
+ArchivoHistorial::ArchivoHistorial(){
     _nombreArchivo = "lista de accesos.dat";
 }
 
 
-bool ArchivoAcceso::guardarAcceso(Acceso reg){
+bool ArchivoHistorial::guardarHistorial(HistorialUsuario reg){
     bool result;
     FILE *pFile;
     pFile = fopen(_nombreArchivo.c_str(), "ab");
@@ -25,14 +25,14 @@ bool ArchivoAcceso::guardarAcceso(Acceso reg){
         return false;
     }
 
-    result = fwrite(&reg, sizeof(Acceso), 1, pFile);
+    result = fwrite(&reg, sizeof(HistorialUsuario), 1, pFile);
 
     fclose(pFile);
 
     return result;
 }
 
-int ArchivoAcceso::getCantidadRegistros(){
+int ArchivoHistorial::getCantidadRegistros(){
     FILE *pFile;
     pFile = fopen(_nombreArchivo.c_str(), "rb");
     int cantidad;
@@ -43,14 +43,14 @@ int ArchivoAcceso::getCantidadRegistros(){
 
     fseek(pFile, 0, SEEK_END); ///el cursor del puntero se mueve sin leer el archivo hasta el final del archivo
 
-    cantidad = ftell(pFile) / sizeof(Acceso); ///ftell nos da el byte donde se encuentra el cursor actualmente, al estar al final nos va a dar el peso total del archivo
+    cantidad = ftell(pFile) / sizeof(HistorialUsuario); ///ftell nos da el byte donde se encuentra el cursor actualmente, al estar al final nos va a dar el peso total del archivo
 
     fclose(pFile);
 
     return cantidad;
 }
 
-bool ArchivoAcceso::leerMuchos(Acceso reg[], int cantidad){
+bool ArchivoHistorial::leerMuchos(HistorialUsuario reg[], int cantidad){
     FILE *pFile;
     pFile = fopen(_nombreArchivo.c_str(), "rb");
 
@@ -58,25 +58,25 @@ bool ArchivoAcceso::leerMuchos(Acceso reg[], int cantidad){
         return false;
     }
 
-    fread(reg, sizeof(Acceso), cantidad, pFile);
+    fread(reg, sizeof(HistorialUsuario), cantidad, pFile);
 
     fclose(pFile);
     return true;
 }
 
-Acceso ArchivoAcceso::Leer(int posicion){
+HistorialUsuario ArchivoHistorial::Leer(int posicion){
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
     if(pArchivo == nullptr){
-        return Acceso();
+        return HistorialUsuario();
     }
-    Acceso reg;
-    fseek(pArchivo, sizeof(Acceso) * posicion, SEEK_SET);
-    fread(&reg, sizeof(Acceso), 1, pArchivo);
+    HistorialUsuario reg;
+    fseek(pArchivo, sizeof(HistorialUsuario) * posicion, SEEK_SET);
+    fread(&reg, sizeof(HistorialUsuario), 1, pArchivo);
     fclose(pArchivo);
     return reg;
 }
 
-int ArchivoAcceso::buscarAccesoPorCancion(std::string cancion, Acceso &resultado){
+int ArchivoHistorial::buscarHistorialPorCancion(std::string cancion, HistorialUsuario &resultado){
     FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
     if(pFile == nullptr) return -1;
 
@@ -94,7 +94,7 @@ int ArchivoAcceso::buscarAccesoPorCancion(std::string cancion, Acceso &resultado
     return -1;
 }
 
-int ArchivoAcceso::buscarAccesoPorArtista(std::string artista, Acceso &resultado){
+int ArchivoHistorial::buscarHistorialPorArtista(std::string artista, HistorialUsuario &resultado){
     FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
     if(pFile == nullptr) return -1;
 
@@ -112,27 +112,27 @@ int ArchivoAcceso::buscarAccesoPorArtista(std::string artista, Acceso &resultado
     return -1;
 }
 
-bool ArchivoAcceso::guardarAcceso(Acceso reg, int posicion){
+bool ArchivoHistorial::guardarHistorial(HistorialUsuario reg, int posicion){
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb+");
     if(pArchivo == nullptr){
         return false;
     }
-    fseek(pArchivo, sizeof(Acceso) * posicion, SEEK_SET);
-    bool ok = fwrite(&reg, sizeof(Acceso), 1, pArchivo);
+    fseek(pArchivo, sizeof(HistorialUsuario) * posicion, SEEK_SET);
+    bool ok = fwrite(&reg, sizeof(HistorialUsuario), 1, pArchivo);
     fclose(pArchivo);
     return ok;
 }
 
-int ArchivoAcceso::getNewID(){
+int ArchivoHistorial::getNewID(){
     return getCantidadRegistros() + 1;
 }
 
-bool ArchivoAcceso::validarID(int idBuscado, Acceso &resultado){
+bool ArchivoHistorial::validarID(int idBuscado, HistorialUsuario &resultado){
     FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
     if(pFile == nullptr) return false;
 
-    Acceso reg;
-    while(fread(&reg, sizeof(Acceso), 1, pFile) == 1){
+    HistorialUsuario reg;
+    while(fread(&reg, sizeof(HistorialUsuario), 1, pFile) == 1){
         if(reg.getID() == idBuscado){
             resultado = reg;
             fclose(pFile);

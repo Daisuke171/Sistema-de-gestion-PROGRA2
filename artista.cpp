@@ -4,10 +4,10 @@ using namespace std;
 #include "artista.h"
 
 Artista::Artista(){
-    _nombre[0] = '\0';
+    _nombreArtista[0] = '\0';
     _idArtista = -1;
     _generoMusical[0] = '\0';
-    _email[0] = '\0';
+    _emailArtista[0] = '\0';
 }
 
 Artista::Artista(std::string nombre, int idArtista, std::string generoMusical, std::string email, std::string pais, bool estado){
@@ -20,7 +20,7 @@ Artista::Artista(std::string nombre, int idArtista, std::string generoMusical, s
 }
 
 void Artista::setNombre(std::string nombre){
-    strcpy(_nombre, nombre.c_str());
+    strcpy(_nombreArtista, nombre.c_str());
 }
 
 void Artista::setIDArtista(int idArtista){
@@ -32,20 +32,20 @@ void Artista::setGenero(std::string genero){
 }
 
 void Artista::setEmail(std::string email){
-    strcpy(_email, email.c_str());
+    strcpy(_emailArtista, email.c_str());
 }
 
 void Artista::setPais(std::string pais){
-    strcpy(_pais, pais.c_str());
+    strcpy(_paisArtista, pais.c_str());
 }
 
 void Artista::setEstado(bool estado){
-    _estado = estado;
+    _estadoArtista = estado;
 }
 
 
 std::string Artista::getNombre() const{
-    return _nombre;
+    return _nombreArtista;
 }
 
 int Artista::getIDArtista() const{
@@ -57,13 +57,13 @@ std::string Artista::getGenero() const{
 }
 
 std::string Artista::getEmail() const{
-    return _email;
+    return _emailArtista;
 }
 
 std::string Artista::getPais() const{
-    return _pais;
+    return _paisArtista;
 }
 
 bool Artista::getEstado() const{
-    return _estado;
+    return _estadoArtista;
 }

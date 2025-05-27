@@ -24,7 +24,7 @@ void ManagerCanciones::mostrarSubmenuCanciones(){
         int i=3;
         locate(tcols()/3,i);
         i++;
-        cout << "Velvet Note Cancion" << endl;
+        cout << "Velvet Note Songs" << endl;
         locate(tcols()/3,i);
         i++;
         cout << "------------------------" << endl;

@@ -5,17 +5,17 @@
 #include "suscriptor.h"
 #include "fecha.h"
 
-class Acceso{
+class HistorialUsuario{
 private:
-    int _id;
-    int _cancion;                   /// id cancion escuchada
-    int _usuario;                   /// id usuario que escucho la cancion
+    int _idHistorial;
+    int _idCancion;                   /// id cancion escuchada
+    int _idUsuario;                   /// id usuario que escucho la cancion
     Fecha _fecha;                   /// fecha de acceso a la cancion (dd/mm/yy)
     int _hora;                      /// hora de acceso a la cancion (24hrs)
     bool _estado;
 public:
-    Acceso();
-    Acceso(int id, int idSong, int idSub, Fecha fecha, int hora, bool estado);
+    HistorialUsuario();
+    HistorialUsuario(int id, int idSong, int idSub, Fecha fecha, int hora, bool estado);
 
     ///setters
     void setID(int id);

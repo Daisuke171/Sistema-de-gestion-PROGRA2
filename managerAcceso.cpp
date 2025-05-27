@@ -13,7 +13,7 @@ using namespace std;
 #include "archivoArtista.h"
 using namespace rlutil;
 
-void ManagerAcceso::mostrarSubmenuAccess(){
+void ManagerHistorial::mostrarSubmenuHistorial(){
     int key;
     setBackgroundColor(MAGENTA);
     setColor(WHITE);
@@ -25,28 +25,28 @@ void ManagerAcceso::mostrarSubmenuAccess(){
         system("cls");
         int i=3;
         locate(tcols()/3,i);
-        cout << "Red Note Acceso" << endl;
+        cout << "Velvet Note Register" << endl;
         i++;
         locate(tcols()/3,i);
         cout << "------------------------" << endl;
         i++;
         locate(tcols()/3,i);
-        cout << "1- Cargar Acceso" << endl;
+        cout << "1- Cargar Historial" << endl;
         i++;
         locate(tcols()/3,i);
-        cout << "2- Mostrar Accesos" << endl;
+        cout << "2- Mostrar Historial" << endl;
         i++;
         locate(tcols()/3,i);
-        cout << "3- Filtrar Listado de Accesos por Cancion" << endl;
+        cout << "3- Filtrar Listado de Historial por Cancion" << endl;
         i++;
         locate(tcols()/3,i);
-        cout << "4- Filtrar Listado de Accesos por Artista" << endl;
+        cout << "4- Filtrar Listado de Historial por Artista" << endl;
         i++;
         locate(tcols()/3,i);
-        cout << "5- Eliminar Acceso" << endl;
+        cout << "5- Eliminar Historial" << endl;
         i++;
         locate(tcols()/3,i);
-        cout << "5- Modificar Acceso" << endl;
+        cout << "5- Modificar Historial" << endl;
         i++;
         locate(tcols()/3,i);
         cout << "0- Volver atras" << endl;
@@ -84,27 +84,27 @@ void ManagerAcceso::mostrarSubmenuAccess(){
             switch(y){
             case 0:
                 cls();
-                cargarAcceso();
+                cargarHistorial();
                 break;
             case 1:
                 cls();
-                mostrarAcceso();
+                mostrarHistorial();
                 break;
             case 2:
                 cls();
-                filtrarAccesoPorCancion();
+                filtrarHistorialPorCancion();
                 break;
             case 3:
                 cls();
-                filtrarAccesoPorArtista();
+                filtrarHistorialPorArtista();
                 break;
             case 4:
                 cls();
-                eliminarAcceso();
+                eliminarHistorial();
                 break;
             case 5:
                 cls();
-                modificarAcceso();
+                modificarHistorial();
                 break;
             case 6:
                 cls();
@@ -122,14 +122,14 @@ void ManagerAcceso::mostrarSubmenuAccess(){
     while(!exit);
 }
 
-void ManagerAcceso::cargarAcceso(){
+void ManagerHistorial::cargarHistorial(){
     fflush(stdin);
     int idUser, idSong, dia, mes, anio, hora;
     ArchivoCancion archivo("lista de canciones.dat");
     ArchivoSubscriptor archivo2("lista de subscriptores.dat");
     Cancion c;
     Subscriptor s;
-    ArchivoAcceso archivo3("lista de accesos");
+    ArchivoHistorial archivo3("lista de accesos");
 
     int id = archivo3.getNewID();
 
@@ -233,16 +233,16 @@ void ManagerAcceso::cargarAcceso(){
             }
         }
     }
-    Acceso reg;
+    HistorialUsuario reg;
     bool estado = true;
-    reg = Acceso(id, idSong, idUser, Fecha(dia,mes,anio), hora, estado);
+    reg = HistorialUsuario(id, idSong, idUser, Fecha(dia,mes,anio), hora, estado);
 
-    if(_archivo.guardarAcceso(reg)){
-        cout << "Acceso guardado correctamente" << endl;
+    if(_archivo.guardarHistorial(reg)){
+        cout << "Historial guardado correctamente" << endl;
         system("pause");
     }
     else{
-        cout << "ERROR: El acceso no se pudo guardar" << endl;
+        cout << "ERROR: El historial no se pudo guardar" << endl;
         system("pause");
         return;
     }
@@ -251,52 +251,52 @@ void ManagerAcceso::cargarAcceso(){
     fflush(stdin);
 }
 
-void ManagerAcceso::mostrarAcceso(){
+void ManagerHistorial::mostrarHistorial(){
     fflush(stdin);
     int cantidad = _archivo.getCantidadRegistros();
-    Acceso *vectorAcceso;
-    vectorAcceso = new Acceso[cantidad];
+    HistorialUsuario *vectorHistorial;
+    vectorHistorial = new HistorialUsuario[cantidad];
 
     ArchivoSubscriptor archivo("lista de subscriptores.dat");
     Subscriptor regSub;
     ArchivoCancion archivo2("lista de canciones.dat");
     Cancion regCancion;
 
-    if(vectorAcceso==nullptr){
+    if(vectorHistorial==nullptr){
         cout << "Error en la asignacion de memoria" << endl;
         exit(-1);
     }
 
-    _archivo.leerMuchos(vectorAcceso, cantidad);
+    _archivo.leerMuchos(vectorHistorial, cantidad);
 
     for(int i=0; i<cantidad; i++){
-        regSub = archivo.Leer(vectorAcceso[i].getIdSub()-1);
-        regCancion = archivo2.Leer(vectorAcceso[i].getIdSong()-1);
+        regSub = archivo.Leer(vectorHistorial[i].getIdSub()-1);
+        regCancion = archivo2.Leer(vectorHistorial[i].getIdSong()-1);
 
-        cout << "Acceso de usuario #" << vectorAcceso[i].getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
-        cout << "Cancion #" << vectorAcceso[i].getIdSong() << ": " << regCancion.getNombre() << endl;
+        cout << "Historial de usuario #" << vectorHistorial[i].getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
+        cout << "Cancion #" << vectorHistorial[i].getIdSong() << ": " << regCancion.getNombre() << endl;
         cout << "Banda: " << regCancion.getAutor() << endl;
-        cout << "Fecha: " << vectorAcceso[i].getFecha() << " Hora: " << vectorAcceso[i].getHora() << endl;
+        cout << "Fecha: " << vectorHistorial[i].getFecha() << " Hora: " << vectorHistorial[i].getHora() << endl;
         cout << "--------------------------------------------" << endl;
     }
 
     system("pause");
-    delete []vectorAcceso;
+    delete []vectorHistorial;
 
     cls();
     fflush(stdin);
 }
 
-void ManagerAcceso::filtrarAccesoPorCancion(){
+void ManagerHistorial::filtrarHistorialPorCancion(){
     fflush(stdin);
     std::string nombreCancion;
     Cancion regCancion;
     Subscriptor regSub;
     ArchivoCancion archivo("lista de canciones.dat");
-    ArchivoAcceso archivo2("lista de accesos.dat");
+    ArchivoHistorial archivo2("lista de accesos.dat");
     ArchivoSubscriptor archivo3("lista de subscriptores.dat");
     int cantRegistros = archivo2.getCantidadRegistros();
-    Acceso regAcceso;
+    HistorialUsuario regHistorial;
 
     cout << "Ingrese el nombre de la cancion que desee buscar en los accesos: ";
     cin >> nombreCancion;
@@ -309,17 +309,17 @@ void ManagerAcceso::filtrarAccesoPorCancion(){
 
     int j=0;
     for(int i=0; i<cantRegistros; i++){
-        regAcceso = archivo2.Leer(i);
+        regHistorial = archivo2.Leer(i);
 
-        if(regAcceso.getEstado()){
+        if(regHistorial.getEstado()){
             if(regCancion.getNombre()==nombreCancion){
-                regSub = archivo3.Leer(regAcceso.getIdSub()-1);
-                regCancion = archivo.Leer(regAcceso.getIdSong()-1);
+                regSub = archivo3.Leer(regHistorial.getIdSub()-1);
+                regCancion = archivo.Leer(regHistorial.getIdSong()-1);
 
-                cout << "Acceso de usuario #" << regAcceso.getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
-                cout << "Cancion #" << regAcceso.getIdSong() << ": " << regCancion.getNombre() << endl;
+                cout << "Acceso de usuario #" << regHistorial.getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
+                cout << "Cancion #" << regHistorial.getIdSong() << ": " << regCancion.getNombre() << endl;
                 cout << "Banda: " << regCancion.getAutor() << endl;
-                cout << "Fecha: " << regAcceso.getFecha() << " Hora: " << regAcceso.getHora() << endl;
+                cout << "Fecha: " << regHistorial.getFecha() << " Hora: " << regHistorial.getHora() << endl;
                 cout << "--------------------------------------------" << endl;
                 j++;
             }
@@ -327,7 +327,7 @@ void ManagerAcceso::filtrarAccesoPorCancion(){
     }
 
     if(j==0){
-        cout << "No se encontraron accesos a la cancion indicada" << endl;
+        cout << "No se encontraron historiales a la cancion indicada" << endl;
     }
 
     system("pause");
@@ -335,16 +335,16 @@ void ManagerAcceso::filtrarAccesoPorCancion(){
     fflush(stdin);
 }
 
-void ManagerAcceso::filtrarAccesoPorArtista(){
+void ManagerHistorial::filtrarHistorialPorArtista(){
     fflush(stdin);
     std::string nombreArtista;
     Artista reg;
     ArchivoArtista archivo("lista de canciones.dat");
-    ArchivoAcceso archivo2("lista de accesos.dat");
+    ArchivoHistorial archivo2("lista de accesos.dat");
     int cantRegistros = archivo.getCantidadRegistros();
-    Acceso regAcceso;
+    HistorialUsuario regHistorial;
 
-    cout << "Ingrese el artista de la cancion que desee buscar en los accesos: ";
+    cout << "Ingrese el artista de la cancion que desee buscar en los historiales: ";
     cin >> nombreArtista;
 
     if(!archivo.validarNombreArtista(nombreArtista, reg)){
@@ -355,13 +355,13 @@ void ManagerAcceso::filtrarAccesoPorArtista(){
 
     int j=0;
     for(int i=0; i<cantRegistros; i++){
-        regAcceso = archivo2.Leer(i);
+        regHistorial = archivo2.Leer(i);
 
-        if(regAcceso.getEstado()){
+        if(regHistorial.getEstado()){
             if(reg.getNombre()==nombreArtista){
-                cout << "Acceso de usuario " << regAcceso.getIdSub() << endl;
-                cout << "Cancion " << regAcceso.getIdSong() << endl;
-                cout << "Fecha: " <<regAcceso.getFecha() << " Hora: " << regAcceso.getHora() << endl;
+                cout << "Historial de usuario " << regHistorial.getIdSub() << endl;
+                cout << "Cancion " << regHistorial.getIdSong() << endl;
+                cout << "Fecha: " <<regHistorial.getFecha() << " Hora: " << regHistorial.getHora() << endl;
                 cout << "--------------------------------------------" << endl;
                 j++;
             }
@@ -369,7 +369,7 @@ void ManagerAcceso::filtrarAccesoPorArtista(){
     }
 
     if(j==0){
-        cout << "No se encontraron accesos con el artista indicado" << endl;
+        cout << "No se encontraron historiales con el artista indicado" << endl;
     }
 
     system("pause");
@@ -377,21 +377,21 @@ void ManagerAcceso::filtrarAccesoPorArtista(){
     fflush(stdin);
 }
 
-void ManagerAcceso::eliminarAcceso(){
+void ManagerHistorial::eliminarHistorial(){
     fflush(stdin);
     int idSearch;
-    ArchivoAcceso archivo("lista de accesos.dat");
-    Acceso reg;
+    ArchivoHistorial archivo("lista de accesos.dat");
+    HistorialUsuario reg;
     int cantRegistros = archivo.getCantidadRegistros();
 
-    cout << "Ingrese el ID del acceso que desee dar de baja: ";
+    cout << "Ingrese el ID del historial que desee dar de baja: ";
     cin >> idSearch;
     if(std::cin.fail()) {
         std::cin.clear();
         std::cin.ignore();
         std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
         while(true){
-            cout << "Ingrese el ID del acceso que desee dar de baja: ";
+            cout << "Ingrese el ID del historial que desee dar de baja: ";
             cin >> idSearch;
 
             if(std::cin.fail()){
@@ -413,23 +413,23 @@ void ManagerAcceso::eliminarAcceso(){
 
     reg = archivo.Leer(idSearch-1);
     reg.setEstado(false);
-    archivo.guardarAcceso(reg, idSearch-1);
+    archivo.guardarHistorial(reg, idSearch-1);
 
     system("pause");
     fflush(stdin);
 }
 
-void ManagerAcceso::modificarAcceso(){
+void ManagerHistorial::modificarHistorial(){
     fflush(stdin);
     int idSearch;
-    ArchivoAcceso archivo("lista de accesos.dat");
+    ArchivoHistorial archivo("lista de accesos.dat");
     ArchivoCancion archivo2("lista de cancion.dat");
     ArchivoSubscriptor archivo3("lista de subscriptores.dat");
 
-    Acceso reg;
+    HistorialUsuario reg;
     int cantRegistros = archivo.getCantidadRegistros();
 
-    cout << "Ingrese el ID del acceso que desee dar de baja: ";
+    cout << "Ingrese el ID del historial que desee dar de baja: ";
     cin >> idSearch;
 
     if(std::cin.fail()) {
@@ -437,7 +437,7 @@ void ManagerAcceso::modificarAcceso(){
         std::cin.ignore();
         std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
         while(true){
-            cout << "Ingrese el ID del acceso que desee dar de baja: ";
+            cout << "Ingrese el ID del historial que desee dar de baja: ";
             cin >> idSearch;
 
             if(std::cin.fail()){
@@ -464,7 +464,7 @@ void ManagerAcceso::modificarAcceso(){
     int id = idSearch;
     cout << "ID acceso: " << id << endl;
 
-    Acceso reg2;
+    HistorialUsuario reg2;
 
     cout << "Ingrese nombre de la cancion: ";
     cin >> idCancion;
@@ -568,7 +568,7 @@ void ManagerAcceso::modificarAcceso(){
     bool estado = true;
     reg.setEstado(estado);
 
-    archivo.guardarAcceso(reg, idSearch-1);
+    archivo.guardarHistorial(reg, idSearch-1);
 
     system("pause");
     fflush(stdin);

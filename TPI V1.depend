@@ -102,7 +102,7 @@
 	<cstring>
 	"suscriptor.h"
 
-1747559260 c:\users\lain\desktop\gestormusica tpi test\suscriptor.h
+1748372387 c:\users\lain\desktop\gestormusica tpi test\suscriptor.h
 	<iostream>
 	"fecha.h"
 	<cstring>
@@ -122,7 +122,7 @@
 
 1747786891 c:\users\lain\desktop\gestormusica tpi test\menu.h
 
-1747788554 source:c:\users\lain\desktop\gestormusica tpi test\menu.cpp
+1748277719 source:c:\users\lain\desktop\gestormusica tpi test\menu.cpp
 	<iostream>
 	"menu.h"
 	"rlutils.h"
@@ -130,6 +130,7 @@
 	"managerCanciones.h"
 	"managerAcceso.h"
 	"managerArtista.h"
+	"managerConfiguracion.h"
 
 1747559260 c:\users\lain\desktop\gestormusica tpi test\rlutils.h
 	<iostream>
@@ -145,13 +146,13 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1747560482 source:c:\users\lain\desktop\gestormusica tpi test\suscriptor.cpp
+1748372392 source:c:\users\lain\desktop\gestormusica tpi test\suscriptor.cpp
 	<iostream>
 	<cstring>
 	"suscriptor.h"
 	"fecha.h"
 
-1747740020 source:c:\users\lain\desktop\gestormusica tpi test\managersubscriptore.cpp
+1748372387 source:c:\users\lain\desktop\gestormusica tpi test\managersubscriptore.cpp
 	"fecha.h"
 	"suscriptor.h"
 	"managerSubscriptore.h"
@@ -171,17 +172,17 @@
 1747579484 c:\users\lain\desktop\gestormusica tpi test\archivoscancion.h
 	"cancion.h"
 
-1747574742 c:\users\lain\desktop\gestormusica tpi test\cancion.h
+1748371954 c:\users\lain\desktop\gestormusica tpi test\cancion.h
 	"fecha.h"
 	<cstring>
 
-1747574737 source:c:\users\lain\desktop\gestormusica tpi test\cancion.cpp
+1748371963 source:c:\users\lain\desktop\gestormusica tpi test\cancion.cpp
 	<iostream>
 	<cstring>
 	"cancion.h"
 	"fecha.h"
 
-1747743825 source:c:\users\lain\desktop\gestormusica tpi test\managercanciones.cpp
+1748371954 source:c:\users\lain\desktop\gestormusica tpi test\managercanciones.cpp
 	<iostream>
 	<cstring>
 	"cancion.h"
@@ -195,20 +196,20 @@
 1747574841 c:\users\lain\desktop\gestormusica tpi test\managercanciones.h
 	"archivosCancion.h"
 
-1747581740 source:c:\users\lain\desktop\gestormusica tpi test\acceso.cpp
+1747840894 source:c:\users\lain\desktop\gestormusica tpi test\acceso.cpp
 	<iostream>
 	<cstring>
 	"acceso.h"
 
-1747581740 c:\users\lain\desktop\gestormusica tpi test\acceso.h
+1747840894 c:\users\lain\desktop\gestormusica tpi test\acceso.h
 	"cancion.h"
 	"suscriptor.h"
 	"fecha.h"
 
-1747579263 c:\users\lain\desktop\gestormusica tpi test\manageracceso.h
+1748271780 c:\users\lain\desktop\gestormusica tpi test\manageracceso.h
 	"archivoAcceso.h"
 
-1747742190 source:c:\users\lain\desktop\gestormusica tpi test\manageracceso.cpp
+1748278016 source:c:\users\lain\desktop\gestormusica tpi test\manageracceso.cpp
 	<iostream>
 	<cstring>
 	"managerAcceso.h"
@@ -222,7 +223,7 @@
 	"archivosCancion.h"
 	"archivoArtista.h"
 
-1747582219 source:c:\users\lain\desktop\gestormusica tpi test\archivoacceso.cpp
+1748271826 source:c:\users\lain\desktop\gestormusica tpi test\archivoacceso.cpp
 	<iostream>
 	<cstring>
 	"acceso.h"
@@ -232,7 +233,7 @@
 	"archivosCancion.h"
 	"archivoArtista.h"
 
-1747582254 c:\users\lain\desktop\gestormusica tpi test\archivoacceso.h
+1748271826 c:\users\lain\desktop\gestormusica tpi test\archivoacceso.h
 	<iostream>
 	<cstring>
 	"acceso.h"
@@ -431,7 +432,7 @@
 1747737712 c:\users\lain\desktop\c++\gestormusica tpi test\managerartista.h
 	"archivoArtista.h"
 
-1747666169 c:\users\lain\desktop\gestormusica tpi test\artista.h
+1747840978 c:\users\lain\desktop\gestormusica tpi test\artista.h
 	<iostream>
 	<cstring>
 
@@ -446,12 +447,12 @@
 	"archivoArtista.h"
 	"artista.h"
 
-1747666186 source:c:\users\lain\desktop\gestormusica tpi test\artista.cpp
+1747840981 source:c:\users\lain\desktop\gestormusica tpi test\artista.cpp
 	<iostream>
 	<cstring>
 	"artista.h"
 
-1747740020 source:c:\users\lain\desktop\gestormusica tpi test\managerartista.cpp
+1748277980 source:c:\users\lain\desktop\gestormusica tpi test\managerartista.cpp
 	<iostream>
 	<cstring>
 	"artista.h"
@@ -461,4 +462,28 @@
 
 1747737712 c:\users\lain\desktop\gestormusica tpi test\managerartista.h
 	"archivoArtista.h"
+
+1748273104 source:c:\users\lain\desktop\gestormusica tpi test\archivomadre.cpp
+	<iostream>
+	<cstring>
+	"archivoMadre.h"
+
+1748273172 c:\users\lain\desktop\gestormusica tpi test\archivomadre.h
+
+1748277418 c:\users\lain\desktop\gestormusica tpi test\managerconfiguracion.h
+
+1748372594 source:c:\users\lain\desktop\gestormusica tpi test\managerconfiguracion.cpp
+	<iostream>
+	<cstring>
+	<cstdio>
+	"managerConfiguracion.h"
+	"rlutils.h"
+	"archivoAcceso.h"
+	"archivoArtista.h"
+	"archivosCancion.h"
+	"archivosSuscriptor.h"
+	"artista.h"
+	"acceso.h"
+	"cancion.h"
+	"suscriptor.h"
 

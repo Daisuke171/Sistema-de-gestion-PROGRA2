@@ -5,12 +5,12 @@
 
 class Cancion{
 private:
-    int _id;
+    int _idCancion;
     char _nombre[60];
     char _autor[60];
     char _interprete[60];
     Fecha _fechaPublicacion;
-    bool _estado;
+    bool _estadoCancion;
 public:
     Cancion();
     Cancion(int id, std::string nombre, std::string autor, std::string interprete, Fecha fechaPublicacion, bool estado);

@@ -7,36 +7,36 @@
 
 class Subscriptor{
 private:
-    int _id;
-    int _dni;
-    char _nombre[30];
-    char _apellido[30];
-    char _telefono[20];
+    int _idUsuario;
+    char _dniUsuario[15];
+    char _nombreUsuario[30];
+    char _apellidoUsuario[30];
+    char _telefonoUsuario[20];
     char _email[40];
-    Fecha _fechaAlta;
+    Fecha _fechaNacimientoUsuario;
     bool _estado;
 public:
     Subscriptor();
-    Subscriptor(int id, int dni, std::string nombre, std::string apellido, std::string telefono, std::string email, Fecha fechaAlta, bool estado);
+    Subscriptor(int id, std::string dni, std::string nombre, std::string apellido, std::string telefono, std::string email, Fecha fechaNaci, bool estado);
 
     //SETTERS
     void setId(int) ;
-    void setDni(int);
+    void setDni(std::string);
     void setNombre(std::string);
     void setApellido(std::string);
     void setTelefono(std::string);
     void setEmail(std::string);
-    void setFechaAlta(const Fecha &fecha);
+    void setFechaNacimiento(const Fecha &fecha);
     void setEstado(bool);
 
     //GETTERS
     int getIDSub() const;
-    int getDni() const;
+    std::string getDni() const;
     std::string getNombre() const;
     std::string getApellido() const;
     std::string getTelefono() const;
     std::string getEmail() const;
-    std::string getFechaAlta();
+    std::string getFechaNacimiento();
     bool getEstado() const;
 };
 

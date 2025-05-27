@@ -20,7 +20,7 @@ void ManagerArtista::mostrarSubmenuArtista(){
         int i=3;
         locate(tcols()/3,i);
         i++;
-        cout << "Velvet Note Artistas" << endl;
+        cout << "Velvet Note Artists" << endl;
         locate(tcols()/3,i);
         i++;
         cout << "------------------------" << endl;

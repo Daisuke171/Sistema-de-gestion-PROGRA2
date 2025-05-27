@@ -5,12 +5,12 @@
 
 class Artista{
 private:
-    char _nombre[40];
+    char _nombreArtista[40];
     int _idArtista;
     char _generoMusical[40];
-    char _email[40];
-    char _pais[40];
-    bool _estado;
+    char _emailArtista[40];
+    char _paisArtista[40];
+    bool _estadoArtista;
 public:
     Artista();
     Artista(std::string nombre, int idArtista, std::string generoMusical, std::string email, std::string pais, bool estado);

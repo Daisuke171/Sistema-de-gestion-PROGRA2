@@ -3,24 +3,24 @@
 
 #include "archivoAcceso.h"
 
-class ManagerAcceso{
+class ManagerHistorial{
 private:
-    ArchivoAcceso _archivo;
+    ArchivoHistorial _archivo;
 public:
     /// SUBMENU ACCESO
-    void mostrarSubmenuAccess();
+    void mostrarSubmenuHistorial();
     ///1 agregar acceso a archivo
-    void cargarAcceso();
+    void cargarHistorial();
     ///2 ver acceso en archivo
-    void mostrarAcceso();
+    void mostrarHistorial();
     ///3 buscar acceso (cancion)
-    void filtrarAccesoPorCancion();
+    void filtrarHistorialPorCancion();
     ///4 buscar acceso (artista)
-    void filtrarAccesoPorArtista();
+    void filtrarHistorialPorArtista();
     ///5 eliminar acceso en archivo
-    void eliminarAcceso();
+    void eliminarHistorial();
     ///6 sobreescribir acceso en archivo
-    void modificarAcceso();
+    void modificarHistorial();
 };
 
 #endif // MANAGERACCESO_H_INCLUDED

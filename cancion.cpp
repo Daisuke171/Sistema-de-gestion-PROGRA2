@@ -5,12 +5,12 @@ using namespace std;
 #include "fecha.h"
 
 Cancion::Cancion(){
-    _id = 0;
+    _idCancion = 0;
     _nombre[0] = '\0';
     _autor[0] = '\0';
     _interprete[0] = '\0';
     _fechaPublicacion = Fecha();
-    _estado = false;
+    _estadoCancion = false;
 }
 
 Cancion::Cancion(int id, std::string nombre, std::string autor, std::string interprete, Fecha fechaPublicacion, bool estado){
@@ -25,7 +25,7 @@ Cancion::Cancion(int id, std::string nombre, std::string autor, std::string inte
 
 ///SETTERS
 void Cancion::setID(int id){
-    _id = id;
+    _idCancion = id;
 }
 
 void Cancion::setNombre(std::string nombre){
@@ -45,13 +45,13 @@ void Cancion::setFechaPublicacion(const Fecha &fechaPublicacion){
 }
 
 void Cancion::setEstado(bool estado){
-    _estado = estado;
+    _estadoCancion = estado;
 }
 
 
 ///GETTERS
 int Cancion::getID() const{
-    return _id;
+    return _idCancion;
 }
 
 std::string Cancion::getNombre() const{
@@ -71,5 +71,5 @@ std::string Cancion::getFechaPublicacion(){
 }
 
 bool Cancion::getEstado() const{
-    return _estado;
+    return _estadoCancion;
 }

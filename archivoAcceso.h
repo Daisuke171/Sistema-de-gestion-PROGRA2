@@ -5,22 +5,22 @@
 #include <cstring>
 #include "acceso.h"
 
-class ArchivoAcceso{
+class ArchivoHistorial{
 private:
     std::string _nombreArchivo = "lista de accesos.dat";
 public:
-    ArchivoAcceso(std::string nombreArchivo);
-    ArchivoAcceso();
+    ArchivoHistorial(std::string nombreArchivo);
+    ArchivoHistorial();
 
-    bool guardarAcceso(Acceso reg); ///escritura
+    bool guardarHistorial(HistorialUsuario reg); ///escritura
     int getCantidadRegistros();
-    bool leerMuchos(Acceso reg[], int cantidad); ///lectura archivos
-    Acceso Leer(int posicion); ///lectura
+    bool leerMuchos(HistorialUsuario reg[], int cantidad); ///lectura archivos
+    HistorialUsuario Leer(int posicion); ///lectura
     int getNewID();
-    bool validarID(int idBuscado, Acceso &resultado);
-    int buscarAccesoPorCancion(std::string cancion, Acceso &resultado);
-    int buscarAccesoPorArtista(std::string artista, Acceso &resultado);
-    bool guardarAcceso(Acceso reg, int posicion); ///sobreescritura
+    bool validarID(int idBuscado, HistorialUsuario &resultado);
+    int buscarHistorialPorCancion(std::string cancion, HistorialUsuario &resultado);
+    int buscarHistorialPorArtista(std::string artista, HistorialUsuario &resultado);
+    bool guardarHistorial(HistorialUsuario reg, int posicion); ///sobreescritura
 };
 
 #endif // ARCHIVOACCESO_H_INCLUDED

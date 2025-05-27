@@ -6,6 +6,7 @@ using namespace std;
 #include "managerCanciones.h"
 #include "managerAcceso.h"
 #include "managerArtista.h"
+#include "managerConfiguracion.h"
 using namespace rlutil;
 
 
@@ -13,8 +14,9 @@ int Menu::mostrar(){
     int key;
     ManagerSubscriptores m;
     ManagerCanciones n;
-    ManagerAcceso l;
+    ManagerHistorial l;
     ManagerArtista p;
+    ManagerConfiguracion q;
     setBackgroundColor(MAGENTA);
     setColor(WHITE);
 
@@ -38,13 +40,16 @@ int Menu::mostrar(){
         cout << "2. GESTION DE CANCIONES" << endl;
         locate(tcols()/3,i);
         i++;
-        cout << "3. GESTION DE ACCESOS" << endl;
+        cout << "3. GESTION DE HISTORIALES" << endl;
         locate(tcols()/3,i);
         i++;
         cout << "4. GESTION DE ARTISTAS" << endl;
         locate(tcols()/3,i);
         i++;
         cout << "5. REPORTES" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "6. CONFIGURACIONES" << endl;
         locate(tcols()/3,i);
         i++;
         cout << "0. FIN DEL PROGRAMA" << endl;
@@ -73,8 +78,8 @@ int Menu::mostrar(){
                 locate((tcols()/3)-2, 5+y);
                 cout << " ";
                 y++;
-                if(y>5){
-                    y=5;
+                if(y>6){
+                    y=6;
                 }
                 break;
         case 1: /// 1 = ENTER
@@ -89,7 +94,7 @@ int Menu::mostrar(){
                 break;
             case 2:
                 cls();
-                l.mostrarSubmenuAccess();
+                l.mostrarSubmenuHistorial();
                 break;
             case 3:
                 cls();
@@ -101,6 +106,10 @@ int Menu::mostrar(){
                 cin.get();
                 break;
             case 5:
+                cls();
+                q.mostrarSubmenuConfig();
+                break;
+            case 6:
                 cls();
                 cout << "GRACIAS POR ELEGIR NUESTRO PROGRAMA :)" << endl;
                 cin.get();
@@ -134,12 +143,6 @@ void Menu::logo(){
         cout << (char)205;
     }
     cout << (char)187 <<endl;
-    ///
-
-
-
-
-
 
     ///marco inferior
     locate(marcoX-3, marcoY);
@@ -148,9 +151,6 @@ void Menu::logo(){
         cout << (char)205;
     }
     cout << (char)188;
-
-
-
 
     locate(coordinates, coordinates);
     std::cout << R"(
