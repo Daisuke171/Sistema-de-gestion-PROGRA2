@@ -202,31 +202,174 @@ bool ManagerConfiguracion::guardarData(){
 
 
                     fclose(pFile);
-                    cout << "Se creo el BackUp exitosamente" << endl;
+                    cout << "Se creo el Back-Up exitosamente" << endl;
                     system("pause");
                     break;
                 }
             case 1:
                 {
+                    cls();
+                    bool isAdmin = logon();
+                    if(!isAdmin){
+                        cout << "Usuario o contraseña incorrecta" << endl;
+                        system("pause");
+                        break;
+                    }
+                    else{
+                        cout << "Bienvenido Administrador" << endl;
+                    }
+
+                    FILE *pFile;
+                    pFile = fopen(".\\backups\\lista de canciones.bak", "wb+");
+                    if (pFile == nullptr) {
+                        perror("Error al abrir archivo");
+                        system("pause");
+                        return false;
+                    }
+
+                    Cancion regCan;
+                    int cantReg = archivoCan.getCantidadRegistros();
+                    for(int i=0; i<cantReg; i++){
+                        regCan = archivoCan.Leer(i);
+                        fwrite(&regCan, sizeof(Cancion), 1, pFile);
+                    }
+
+
+                    fclose(pFile);
+                    cout << "Se creo el Back-Up exitosamente" << endl;
+                    system("pause");
                     break;
                 }
             case 2:
                 {
+                    cls();
+                    bool isAdmin = logon();
+                    if(!isAdmin){
+                        cout << "Usuario o contraseña incorrecta" << endl;
+                        system("pause");
+                        break;
+                    }
+                    else{
+                        cout << "Bienvenido Administrador" << endl;
+                    }
+
+                    FILE *pFile;
+                    pFile = fopen(".\\backups\\lista de historiales.bak", "wb+");
+                    if (pFile == nullptr) {
+                        perror("Error al abrir archivo");
+                        system("pause");
+                        return false;
+                    }
+
+                    HistorialUsuario regHis;
+                    int cantReg = archivoHis.getCantidadRegistros();
+                    for(int i=0; i<cantReg; i++){
+                        regHis = archivoHis.Leer(i);
+                        fwrite(&regHis, sizeof(HistorialUsuario), 1, pFile);
+                    }
+
+
+                    fclose(pFile);
+                    cout << "Se creo el Back-Up exitosamente" << endl;
+                    system("pause");
                     break;
                 }
             case 3:
                 {
+                    cls();
+                    bool isAdmin = logon();
+                    if(!isAdmin){
+                        cout << "Usuario o contraseña incorrecta" << endl;
+                        system("pause");
+                        break;
+                    }
+                    else{
+                        cout << "Bienvenido Administrador" << endl;
+                    }
+
+                    FILE *pFile;
+                    pFile = fopen(".\\backups\\lista de subscriptores.bak", "wb+");
+                    if (pFile == nullptr) {
+                        perror("Error al abrir archivo");
+                        system("pause");
+                        return false;
+                    }
+
+                    Subscriptor regSub;
+                    int cantReg = archivoSub.getCantidadRegistros();
+                    for(int i=0; i<cantReg; i++){
+                        regSub = archivoSub.Leer(i);
+                        fwrite(&regSub, sizeof(Subscriptor), 1, pFile);
+                    }
+
+
+                    fclose(pFile);
+                    cout << "Se creo el Back-Up exitosamente" << endl;
+                    system("pause");
                     break;
                 }
             case 4:
                 {
+                    cls();
+                    bool isAdmin = logon();
+                    if(!isAdmin){
+                        cout << "Usuario o contraseña incorrecta" << endl;
+                        system("pause");
+                        break;
+                    }
+                    else{
+                        cout << "Bienvenido Administrador" << endl;
+                    }
+
+                    FILE *pFile1, *pFile2, *pFile3, *pFile4;
+                    pFile1 = fopen(".\\backups\\lista de artistas.bak", "wb+");
+                    pFile2 = fopen(".\\backups\\lista de canciones.bak", "wb+");
+                    pFile3 = fopen(".\\backups\\lista de historiales.bak", "wb+");
+                    pFile4 = fopen(".\\backups\\lista de subscriptores.bak", "wb+");
+                    if (pFile1 == nullptr || pFile2 == nullptr || pFile3 == nullptr || pFile4 == nullptr) {
+                        perror("Error al abrir los archivos");
+                        system("pause");
+                        return false;
+                    }
+
+                    Artista regArt;
+                    Cancion regCan;
+                    HistorialUsuario regHis;
+                    Subscriptor regSub;
+
+                    int cantArtist, cantCanciones, cantHistorial, cantSubs;
+                    cantArtist = archivoArt.getCantidadRegistros();
+                    cantCanciones = archivoCan.getCantidadRegistros();
+                    cantHistorial = archivoHis.getCantidadRegistros();
+                    cantSubs = archivoSub.getCantidadRegistros();
+
+                    for(int i=0; i<cantArtist; i++){
+                        regArt = archivoArt.Leer(i);
+                        fwrite(&regArt, sizeof(Artista), 1, pFile1);
+                    }
+                    for(int i=0; i<cantCanciones; i++){
+                        regCan = archivoCan.Leer(i);
+                        fwrite(&regCan, sizeof(Cancion), 1, pFile2);
+                    }
+                    for(int i=0; i<cantHistorial; i++){
+                        regHis = archivoHis.Leer(i);
+                        fwrite(&regHis, sizeof(HistorialUsuario), 1, pFile3);
+                    }
+                    for(int i=0; i<cantSubs; i++){
+                        regSub = archivoSub.Leer(i);
+                        fwrite(&regSub, sizeof(Subscriptor), 1, pFile4);
+                    }
+
+                    fclose(pFile1);
+                    fclose(pFile2);
+                    fclose(pFile3);
+                    fclose(pFile4);
+                    cout << "Se crearon los Back-Ups exitosamente" << endl;
+                    system("pause");
+
                     break;
                 }
             case 5:
-                {
-                    break;
-                }
-            case 6:
                 {
                     result=true;
                     break;
@@ -238,8 +381,6 @@ bool ManagerConfiguracion::guardarData(){
             }
         }
     }while(!result);
-
-    system("pause");
 }
 
 bool ManagerConfiguracion::restaurarData(){
