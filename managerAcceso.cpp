@@ -246,7 +246,7 @@ void ManagerHistorial::cargarHistorial(){
         system("pause");
         return;
     }
-    system("pause");
+
     cls();
     fflush(stdin);
 }

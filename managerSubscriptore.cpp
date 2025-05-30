@@ -231,7 +231,7 @@ void ManagerSubscriptores::mostrarSubscriptores(){
         if(vectorSubscriptores[i].getEstado()){
             cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
             cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
-            cout << "Fecha de alta: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+            cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
             cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
             cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
             cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;

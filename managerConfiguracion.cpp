@@ -78,7 +78,7 @@ void ManagerConfiguracion::mostrarSubmenuConfig(){
                 break;
             case 1:
                 cls();
-
+                a.restaurarData();
                 break;
             case 2:
                 cls();
@@ -381,11 +381,344 @@ bool ManagerConfiguracion::guardarData(){
             }
         }
     }while(!result);
+
+    return result;
 }
 
 bool ManagerConfiguracion::restaurarData(){
+    bool exit=false;
+    int y=0;
+    int key;
 
+    ArchivoArtista archivoArt("lista de artista.dat");
+    ArchivoArtista archivoArtBKP(".\\backups\\lista de artistas.bak");
+    ArchivoCancion archivoCan("lista de canciones.dat");
+    ArchivoCancion archivoCanBKP(".\\backups\\lista de canciones.bak");
+    ArchivoHistorial archivoHis("lista de accesos.dat");
+    ArchivoHistorial archivoHisBKP(".\\backups\\lista de historiales.bak");
+    ArchivoSubscriptor archivoSub("lista de subscriptores.dat");
+    ArchivoSubscriptor archivoSubBKP(".\\backups\\lista de subscriptores.bak");
+
+    do{
+        system("cls");
+        int i=2;
+        locate(tcols()/3,i);
+        i++;
+        cout << "Velvet Note Restore" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "1. Restaurar Artistas" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "2. Restaurar Canciones" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "3. Restaurar Historiales" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "4. Restaurar Subscriptores" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "5. Restaurar Todos" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "6. Reinicializar con Datos Predeterminados" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "0. Salir" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i+1);
+        cout << "SELECCIONE UNA OPCION " << endl;
+
+
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+        locate((tcols()/3)-2, 4+y);
+        cout << (char)175;
+        key = getkey();
+
+        switch (key){
+            case 14: //up
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y--;
+                if(y<0){
+                    y=0;
+                }
+                break;
+            case 15: //dwn
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y++;
+                if(y>6){
+                    y=6;
+                }
+                break;
+        case 1: /// 1 = ENTER
+            switch(y){
+            case 0:
+                {
+                    cls();
+                    FILE *pFile1, *pFile2;
+                    pFile1 = fopen("lista de artista.dat", "wb+");
+                    pFile2 = fopen(".\\backups\\lista de artistas.bak", "rb");
+
+                    if(pFile1 == nullptr || pFile2 == nullptr){
+                        perror("Error al abrir archivos");
+                        system("pause");
+                        return false;
+                    }
+
+                    Artista regBkp;
+
+                    int cantReg = archivoArtBKP.getCantidadRegistros();
+                    std::remove("lista de artista.dat");
+
+                    for(int i=0; i<cantReg; i++){
+                        regBkp = archivoArtBKP.Leer(i);
+
+                        fwrite(&regBkp, sizeof(Artista), 1, pFile1);
+                    }
+
+
+                    fclose(pFile1);
+                    fclose(pFile2);
+
+                    cout << "Se restauro correctamente los datos" << endl;
+                    system("pause");
+                    break;
+                }
+            case 1:
+                {
+                    cls();
+                    FILE *pFile1, *pFile2;
+                    pFile1 = fopen("lista de canciones.dat", "wb+");
+                    pFile2 = fopen(".\\backups\\lista de canciones.bak", "rb");
+
+                    if(pFile1 == nullptr || pFile2 == nullptr){
+                        perror("Error al abrir archivos");
+                        system("pause");
+                        return false;
+                    }
+
+                    Cancion regBkp;
+
+                    int cantReg = archivoCanBKP.getCantidadRegistros();
+                    std::remove("lista de canciones.dat");
+
+                    for(int i=0; i<cantReg; i++){
+                        regBkp = archivoCanBKP.Leer(i);
+
+                        fwrite(&regBkp, sizeof(Cancion), 1, pFile1);
+                    }
+
+
+                    fclose(pFile1);
+                    fclose(pFile2);
+
+                    cout << "Se restauro correctamente los datos" << endl;
+                    system("pause");
+                    break;
+                }
+            case 2:
+                {
+                    cls();
+                    FILE *pFile1, *pFile2;
+                    pFile1 = fopen("lista de historiales.dat", "wb+");
+                    pFile2 = fopen(".\\backups\\lista de historiales.bak", "rb");
+
+                    if(pFile1 == nullptr || pFile2 == nullptr){
+                        perror("Error al abrir archivos");
+                        system("pause");
+                        return false;
+                    }
+
+                    HistorialUsuario regBkp;
+
+                    int cantReg = archivoHisBKP.getCantidadRegistros();
+                    std::remove("lista de historiales.dat");
+
+                    for(int i=0; i<cantReg; i++){
+                        regBkp = archivoHisBKP.Leer(i);
+
+                        fwrite(&regBkp, sizeof(HistorialUsuario), 1, pFile1);
+                    }
+
+
+                    fclose(pFile1);
+                    fclose(pFile2);
+
+                    cout << "Se restauro correctamente los datos" << endl;
+                    system("pause");
+                    break;
+                }
+            case 3:
+                {
+                    cls();
+                    FILE *pFile1, *pFile2;
+                    pFile1 = fopen("lista de subscriptores.dat", "wb+");
+                    pFile2 = fopen(".\\backups\\lista de subscriptores.bak", "rb");
+
+                    if(pFile1 == nullptr || pFile2 == nullptr){
+                        perror("Error al abrir archivos");
+                        system("pause");
+                        return false;
+                    }
+
+                    Subscriptor regBkp;
+
+                    int cantReg = archivoSubBKP.getCantidadRegistros();
+                    std::remove("lista de subscriptores.dat");
+
+                    for(int i=0; i<cantReg; i++){
+                        regBkp = archivoSubBKP.Leer(i);
+
+                        fwrite(&regBkp, sizeof(Subscriptor), 1, pFile1);
+                    }
+
+
+                    fclose(pFile1);
+                    fclose(pFile2);
+
+                    cout << "Se restauro correctamente los datos" << endl;
+                    system("pause");
+                    break;
+                }
+            case 4:
+                {
+                    cls();
+                    FILE *pFile1, *pFile2, *pFile3, *pFile4;
+                    FILE *pFile1BKP, *pFile2BKP, *pFile3BKP, *pFile4BKP;
+
+                    pFile1 = fopen("lista de artista.dat", "wb+");
+                    pFile1BKP = fopen(".\\backups\\lista de artistas.bak", "rb");
+                    pFile2 = fopen("lista de canciones.dat", "wb+");
+                    pFile2BKP = fopen(".\\backups\\lista de canciones.bak", "rb");
+                    pFile3 = fopen("lista de historiales.dat", "wb+");
+                    pFile3BKP = fopen(".\\backups\\lista de historiales.bak", "rb");
+                    pFile4 = fopen("lista de subscriptores.dat", "wb+");
+                    pFile4BKP = fopen(".\\backups\\lista de subscriptores.bak", "rb");
+
+                    if(pFile1 == nullptr || pFile1BKP == nullptr || pFile2 == nullptr || pFile2BKP == nullptr || pFile3 == nullptr || pFile3BKP == nullptr || pFile4 == nullptr || pFile4BKP == nullptr){
+                        perror("Error al abrir archivos");
+                        system("pause");
+                        return false;
+                    }
+
+                    Artista regBkpArt;
+                    Cancion regBkpCan;
+                    HistorialUsuario regBkpHis;
+                    Subscriptor regBkpSub;
+
+                    int cantRegArt = archivoArtBKP.getCantidadRegistros();
+                    int cantRegCan = archivoCanBKP.getCantidadRegistros();
+                    int cantRegHis = archivoHisBKP.getCantidadRegistros();
+                    int cantRegSub = archivoSubBKP.getCantidadRegistros();
+
+                    std::remove("lista de artista.dat");
+                    std::remove("lista de canciones.dat");
+                    std::remove("lista de historiales.dat");
+                    std::remove("lista de subscriptores.dat");
+
+                    for(int i=0; i<cantRegArt; i++){
+                        regBkpArt = archivoArtBKP.Leer(i);
+                        fwrite(&regBkpArt, sizeof(Artista), 1, pFile1);
+                    }
+                    for(int i=0; i<cantRegCan; i++){
+                        regBkpCan = archivoCanBKP.Leer(i);
+                        fwrite(&regBkpCan, sizeof(Cancion), 1, pFile2);
+                    }
+                    for(int i=0; i<cantRegHis; i++){
+                        regBkpHis = archivoHisBKP.Leer(i);
+                        fwrite(&regBkpHis, sizeof(HistorialUsuario), 1, pFile3);
+                    }
+                    for(int i=0; i<cantRegCan; i++){
+                        regBkpSub = archivoSubBKP.Leer(i);
+                        fwrite(&regBkpSub, sizeof(Subscriptor), 1, pFile4);
+                    }
+
+                    fclose(pFile1);
+                    fclose(pFile2);
+                    fclose(pFile3);
+                    fclose(pFile4);
+                    fclose(pFile1BKP);
+                    fclose(pFile2BKP);
+                    fclose(pFile3BKP);
+                    fclose(pFile4BKP);
+
+                    cout << "Se restauraron correctamente los datos" << endl;
+                    system("pause");
+                    break;
+                }
+            case 5:
+                {
+                    cls();
+                    FILE *pFile1, *pFile2, *pFile3, *pFile4;
+                    pFile1 = fopen("lista de artista.dat", "rb");
+                    pFile2 = fopen("lista de canciones.dat", "rb");
+                    pFile3 = fopen("lista de historiales.dat", "rb");
+                    pFile4 = fopen("lista de subscriptores.dat", "rb");
+
+                    FILE *pFile1INIT, *pFile2INIT, *pFile3INIT, *pFile4INIT;
+                    pFile1INIT = fopen(".\\INIT\\lista de artista.ini", "wb");
+                    pFile2INIT = fopen(".\\INIT\\lista de canciones.ini", "wb");
+                    pFile3INIT = fopen(".\\INIT\\lista de historiales.ini", "wb");
+                    pFile4INIT = fopen(".\\INIT\\lista de subscriptores.ini", "wb");
+
+                    Artista regArt;
+                    int cantRegArt = archivoArt.getCantidadRegistros();
+                    for(int i=0; i<cantRegArt; i++){
+                        regArt = archivoArt.Leer(i);
+                        fwrite(&regArt, sizeof(Artista), 1, pFile1INIT);
+                    }
+
+                    Cancion regCan;
+                    int cantRegCan = archivoCan.getCantidadRegistros();
+                    for(int i=0; i<cantRegCan; i++){
+                        regCan = archivoCan.Leer(i);
+                        fwrite(&regCan, sizeof(Cancion), 1, pFile2INIT);
+                    }
+
+                    HistorialUsuario regHis;
+                    int cantRegHis = archivoHis.getCantidadRegistros();
+                    for(int i=0; i<cantRegHis; i++){
+                        regHis = archivoHis.Leer(i);
+                        fwrite(&regHis, sizeof(HistorialUsuario), 1, pFile3INIT);
+                    }
+
+                    Subscriptor regSub;
+                    int cantRegSub = archivoSub.getCantidadRegistros();
+                    for(int i=0; i<cantRegSub; i++){
+                        regSub = archivoSub.Leer(i);
+                        fwrite(&regSub, sizeof(Subscriptor), 1, pFile4INIT);
+                    }
+
+                    fclose(pFile1);
+                    fclose(pFile1INIT);
+                    fclose(pFile2);
+                    fclose(pFile2INIT);
+                    fclose(pFile3);
+                    fclose(pFile3INIT);
+                    fclose(pFile4);
+                    fclose(pFile4INIT);
+                    system("pause");
+                    break;
+                }
+            case 6:
+                {
+                    exit = true;
+                    break;
+                }
+            }
+        }
+    }while(!exit);
+    return exit;
 }
+
 
 bool ManagerConfiguracion::exportarData(){
     cls();

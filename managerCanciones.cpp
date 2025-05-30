@@ -248,6 +248,7 @@ void ManagerCanciones::mostrarCancion(){
 
     for(int i=0; i<cantidad; i++){
         cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
+        cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
         cout << "Autor: " << vectorCanciones[i].getAutor() << '\t';
         cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
         cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
@@ -384,6 +385,7 @@ void ManagerCanciones::modificarCancion(){
     switch(option){
     case 1:
         {
+            cin.ignore();
             cout << "Ingrese nombre de la cancion: ";
             getline(cin, nombre);
             reg.setNombre(nombre);
@@ -391,6 +393,7 @@ void ManagerCanciones::modificarCancion(){
         }
     case 2:
         {
+            cin.ignore();
             cout << "Ingrese nombre del autor: ";
             getline(cin, autor);
 
@@ -407,6 +410,7 @@ void ManagerCanciones::modificarCancion(){
         }
     case 3:
         {
+            cin.ignore();
             cout << "Ingrese nombre del interprete: ";
             getline(cin, interprete);
             reg.setInterprete(interprete);
