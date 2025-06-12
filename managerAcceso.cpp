@@ -124,12 +124,13 @@ void ManagerHistorial::mostrarSubmenuHistorial(){
 
 void ManagerHistorial::cargarHistorial(){
     fflush(stdin);
+    cin.clear();
     int idUser, idSong, dia, mes, anio, hora;
     ArchivoCancion archivo("lista de canciones.dat");
     ArchivoSubscriptor archivo2("lista de subscriptores.dat");
     Cancion c;
     Subscriptor s;
-    ArchivoHistorial archivo3("lista de accesos");
+    ArchivoHistorial archivo3("lista de accesos.dat");
 
     int id = archivo3.getNewID();
 
@@ -272,7 +273,7 @@ void ManagerHistorial::mostrarHistorial(){
     for(int i=0; i<cantidad; i++){
         regSub = archivo.Leer(vectorHistorial[i].getIdSub()-1);
         regCancion = archivo2.Leer(vectorHistorial[i].getIdSong()-1);
-
+        cout << "ID HISTORIAL: " << vectorHistorial[i].getID() << endl;
         cout << "Historial de usuario #" << vectorHistorial[i].getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
         cout << "Cancion #" << vectorHistorial[i].getIdSong() << ": " << regCancion.getNombre() << endl;
         cout << "Banda: " << regCancion.getAutor() << endl;

@@ -5,6 +5,7 @@
 #include "fecha.h"
 #include "rlutils.h"
 #include "archivosCancion.h"
+#include "artista.h"
 #include "archivoArtista.h"
 #include "managerArtista.h"
 using namespace std;
@@ -117,12 +118,13 @@ void ManagerCanciones::mostrarSubmenuCanciones(){
 void ManagerCanciones::cargarCancion(){
     fflush(stdin);
     Cancion reg;
+    FILE *pFile;
 
     Artista regArtistas;
     ManagerArtista manArtista;
     ArchivoArtista archivoArtistas("lista de artista.dat");
 
-    int id;
+    int id, idArtista;
     string nombre, autor, interprete;
     int dia, mes, anio;
 
@@ -142,8 +144,29 @@ void ManagerCanciones::cargarCancion(){
         cin >> crearArtista;
         if(crearArtista){
             manArtista.cargarArtista(autor);
+            idArtista = archivoArtistas.getCantidadRegistros(); ///como es un registro nuevo el ID es igual a la cantidad de registros
         }
-    } else cls();
+        else{
+            return;
+        }
+    }
+    else{
+        pFile = fopen("lista de artista.dat", "rb");
+        Artista regArt;
+        int cantRegArt = archivoArtistas.getCantidadRegistros();
+
+        for(int i=0; i<cantRegArt; i++){
+            regArt = archivoArtistas.Leer(i);
+            if(regArt.getNombre() == autor){
+                idArtista = regArt.getIDArtista();
+                break;
+            }
+        }
+
+        fclose(pFile);
+        cls();
+    }
+
 
     ///El if-else de arriba hace un cls() si o si
     cout << "ID Cancion: " << id << endl;
@@ -218,7 +241,7 @@ void ManagerCanciones::cargarCancion(){
 
     bool estado = true;
 
-    reg = Cancion(id, nombre, autor, interprete, Fecha(dia,mes,anio), estado);
+    reg = Cancion(id, idArtista, nombre, autor, interprete, Fecha(dia,mes,anio), estado);
 
     if(_archivo.guardarCancion(reg)){
         cout << "Cancion guardada correctamente" << endl;
@@ -249,7 +272,7 @@ void ManagerCanciones::mostrarCancion(){
     for(int i=0; i<cantidad; i++){
         cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
         cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
-        cout << "Autor: " << vectorCanciones[i].getAutor() << '\t';
+        cout << "Autor: " << vectorCanciones[i].getAutor() << '\t' << "ID Autor: " << vectorCanciones[i].getIDArtista() << '\t';
         cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
         cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
         cout << "--------------------------------------------" << endl;
@@ -309,7 +332,7 @@ void ManagerCanciones::buscarCancion(){
             }
             else{
                 cout << "Cancion ID:" << reg.getID() << " info" << endl;
-                cout << "Autor: " << reg.getAutor() << '\t';
+                cout << "Autor: " << reg.getAutor() << '\t' << "ID Autor: " << reg.getIDArtista() << '\t';
                 cout << " | Interprete: " << reg.getInterprete() << endl;
                 cout << "Fecha de publicacion: " << reg.getFechaPublicacion() << endl;
                 cout << "--------------------------------------------" << endl;
@@ -330,11 +353,11 @@ void ManagerCanciones::buscarCancion(){
 void ManagerCanciones::eliminarCancion(){
     fflush(stdin);
     int idSearch;
-    ArchivoCancion archivo("lista de subscriptores.dat");
+    ArchivoCancion archivo("lista de canciones.dat");
     Cancion reg;
     int cantRegistros = archivo.getCantidadRegistros();
 
-    cout << "Ingrese el ID del subscriptor que desee dar de baja: ";
+    cout << "Ingrese el ID de la cancion que desee dar de baja: ";
     cin >> idSearch;
 
     if (!archivo.validarID(idSearch, reg)){
@@ -357,7 +380,6 @@ void ManagerCanciones::modificarCancion(){
     ArchivoCancion archivo("lista de canciones.dat");
     ArchivoArtista archivo2("lista de artista.dat");
     Cancion reg;
-    Artista reg2;
     ManagerArtista manArtista;
     int cantRegistros = archivo.getCantidadRegistros();
 
@@ -371,7 +393,7 @@ void ManagerCanciones::modificarCancion(){
     }
 
     string nombre, autor, interprete;
-    int dia, mes, anio;
+    int dia, mes, anio, idArtista;
 
     cout << "ID Cancion: " << idSearch << endl;
 
@@ -397,14 +419,34 @@ void ManagerCanciones::modificarCancion(){
             cout << "Ingrese nombre del autor: ";
             getline(cin, autor);
 
-            if(!archivo2.validarNombreArtista(autor, reg2)){
+            ArchivoArtista archivoArtistas("lista de artista.dat");
+            Artista regArtistas;
+            FILE *pfile;
+            pfile = fopen("lista de artista.dat", "r");
+            int cantReg = archivoArtistas.getCantidadRegistros();
+
+            if(archivoArtistas.validarNombreArtista(autor, regArtistas)){
+                for(int i=0; i<cantReg; i++){
+                    regArtistas = archivoArtistas.Leer(i);
+                    if(regArtistas.getNombre() == autor){
+                        idArtista = regArtistas.getIDArtista();
+                        break;
+                    }
+                }
+            }
+            else{
                 cout << "El artista no se encuentra en la base de datos. Desea crearlo? (0= no, 1=si)" << endl;
                 bool crearArtista = false;
                 cin >> crearArtista;
                 if(crearArtista){
                     manArtista.cargarArtista(autor);
+                    idArtista = archivoArtistas.getCantidadRegistros(); ///como es un registro nuevo el ID es igual a la cantidad de registros
+                }
+                else{
+                    return;
                 }
             }
+            reg.setIDArtista(idArtista);
             reg.setAutor(autor);
             break;
         }

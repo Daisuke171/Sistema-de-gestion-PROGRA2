@@ -6,6 +6,7 @@
 class Cancion{
 private:
     int _idCancion;
+    int _idArtista;
     char _nombre[60];
     char _autor[60];
     char _interprete[60];
@@ -13,10 +14,11 @@ private:
     bool _estadoCancion;
 public:
     Cancion();
-    Cancion(int id, std::string nombre, std::string autor, std::string interprete, Fecha fechaPublicacion, bool estado);
+    Cancion(int id, int idArtista, std::string nombre, std::string autor, std::string interprete, Fecha fechaPublicacion, bool estado);
 
     ///Setters
     void setID(int id);
+    void setIDArtista(int idArtista);
     void setNombre(std::string nombre);
     void setAutor(std::string autor);
     void setInterprete(std::string interprete);
@@ -25,6 +27,7 @@ public:
 
     ///Getters
     int getID() const;
+    int getIDArtista() const;
     std::string getNombre() const;
     std::string getAutor() const;
     std::string getInterprete() const;

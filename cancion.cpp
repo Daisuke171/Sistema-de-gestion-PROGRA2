@@ -6,6 +6,7 @@ using namespace std;
 
 Cancion::Cancion(){
     _idCancion = 0;
+    _idArtista = 0;
     _nombre[0] = '\0';
     _autor[0] = '\0';
     _interprete[0] = '\0';
@@ -13,8 +14,9 @@ Cancion::Cancion(){
     _estadoCancion = false;
 }
 
-Cancion::Cancion(int id, std::string nombre, std::string autor, std::string interprete, Fecha fechaPublicacion, bool estado){
+Cancion::Cancion(int id, int idArtista, std::string nombre, std::string autor, std::string interprete, Fecha fechaPublicacion, bool estado){
     setID(id);
+    setIDArtista(idArtista);
     setNombre(nombre);
     setAutor(autor);
     setInterprete(interprete);
@@ -26,6 +28,10 @@ Cancion::Cancion(int id, std::string nombre, std::string autor, std::string inte
 ///SETTERS
 void Cancion::setID(int id){
     _idCancion = id;
+}
+
+void Cancion::setIDArtista(int idArtista){
+    _idArtista = idArtista;;
 }
 
 void Cancion::setNombre(std::string nombre){
@@ -52,6 +58,10 @@ void Cancion::setEstado(bool estado){
 ///GETTERS
 int Cancion::getID() const{
     return _idCancion;
+}
+
+int Cancion::getIDArtista() const{
+    return _idArtista;
 }
 
 std::string Cancion::getNombre() const{

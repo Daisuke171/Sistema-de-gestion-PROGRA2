@@ -18,7 +18,7 @@ bool logon(){
     if(user!=admin || password!=passwordAdmin){
         return false;
     }
-    else if(user==admin && password==password){
+    else if(user==admin && password==passwordAdmin){
         return true;
     }
 }

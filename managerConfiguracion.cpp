@@ -564,7 +564,7 @@ bool ManagerConfiguracion::restaurarData(){
                     pFile2 = fopen(".\\backups\\lista de subscriptores.bak", "rb");
 
                     if(pFile1 == nullptr || pFile2 == nullptr){
-                        perror("Error al abrir archivos");
+                        perror("Error al abrir archivos: ");
                         system("pause");
                         return false;
                     }
@@ -594,63 +594,76 @@ bool ManagerConfiguracion::restaurarData(){
                     FILE *pFile1, *pFile2, *pFile3, *pFile4;
                     FILE *pFile1BKP, *pFile2BKP, *pFile3BKP, *pFile4BKP;
 
-                    pFile1 = fopen("lista de artista.dat", "wb+");
-                    pFile1BKP = fopen(".\\backups\\lista de artistas.bak", "rb");
-                    pFile2 = fopen("lista de canciones.dat", "wb+");
-                    pFile2BKP = fopen(".\\backups\\lista de canciones.bak", "rb");
-                    pFile3 = fopen("lista de historiales.dat", "wb+");
-                    pFile3BKP = fopen(".\\backups\\lista de historiales.bak", "rb");
-                    pFile4 = fopen("lista de subscriptores.dat", "wb+");
-                    pFile4BKP = fopen(".\\backups\\lista de subscriptores.bak", "rb");
+                    int confirmation;
+                    cout << "Usted esta seguro de querer restaurar desde su backup mas reciente? (se borrara todo los datos que tiene hasta el momento)" << endl;
+                    cout << "SI = 1     NO = 0" << endl;
+                    cin >> confirmation;
 
-                    if(pFile1 == nullptr || pFile1BKP == nullptr || pFile2 == nullptr || pFile2BKP == nullptr || pFile3 == nullptr || pFile3BKP == nullptr || pFile4 == nullptr || pFile4BKP == nullptr){
-                        perror("Error al abrir archivos");
-                        system("pause");
-                        return false;
+
+
+
+
+                    if(confirmation==0){
+                        cout << "Se cancelo el proceso" << endl;
+                    }
+                    else if(confirmation==1){
+                        pFile1 = fopen("lista de artista.dat", "wb+");
+                        pFile1BKP = fopen(".\\backups\\lista de artistas.bak", "rb");
+                        pFile2 = fopen("lista de canciones.dat", "wb+");
+                        pFile2BKP = fopen(".\\backups\\lista de canciones.bak", "rb");
+                        pFile3 = fopen("lista de accesos.dat", "wb+");
+                        pFile3BKP = fopen(".\\backups\\lista de historiales.bak", "rb");
+                        pFile4 = fopen("lista de subscriptores.dat", "wb+");
+                        pFile4BKP = fopen(".\\backups\\lista de subscriptores.bak", "rb");
+
+                        if(pFile1 == nullptr || pFile1BKP == nullptr || pFile2 == nullptr || pFile2BKP == nullptr || pFile3 == nullptr || pFile3BKP == nullptr || pFile4 == nullptr || pFile4BKP == nullptr){
+                            perror("Error al abrir archivos: ");
+                            system("pause");
+                            return false;
+                        }
+
+                        std::remove("lista de artista.dat");
+                        cout << "Se borro lista de artista.dat" << endl;
+                        std::remove("lista de canciones.dat");
+                        cout << "Se borro lista de canciones.dat" << endl;
+                        std::remove("lista de accesos.dat");
+                        cout << "Se borro lista de accesos.dat" << endl;
+                        std::remove("lista de subscriptores.dat");
+                        cout << "Se borro lista de subscriptores.dat" << endl;
+
+                        Artista regBkpArt;
+                        Cancion regBkpCan;
+                        HistorialUsuario regBkpHis;
+                        Subscriptor regBkpSub;
+
+                        if(!validarBKP(regBkpArt, archivoArtBKP, pFile1)){
+                            break;
+                        }
+                        if(!validarBKP(regBkpCan, archivoCanBKP, pFile2)){
+                            break;
+                        }
+                        if(!validarBKP(regBkpHis, archivoHisBKP, pFile3)){
+                            break;
+                        }
+                        if(!validarBKP(regBkpSub, archivoSubBKP, pFile4)){
+                            break;
+                        }
+
+                        cout << "Se restablecieron los datos desde los backups correctamente" << endl;
+                        fclose(pFile1);
+                        fclose(pFile2);
+                        fclose(pFile3);
+                        fclose(pFile4);
+                        fclose(pFile1BKP);
+                        fclose(pFile2BKP);
+                        fclose(pFile3BKP);
+                        fclose(pFile4BKP);
+                    }
+                    else{
+                        cout << "Opcion incorrecta" << endl;
+
                     }
 
-                    Artista regBkpArt;
-                    Cancion regBkpCan;
-                    HistorialUsuario regBkpHis;
-                    Subscriptor regBkpSub;
-
-                    int cantRegArt = archivoArtBKP.getCantidadRegistros();
-                    int cantRegCan = archivoCanBKP.getCantidadRegistros();
-                    int cantRegHis = archivoHisBKP.getCantidadRegistros();
-                    int cantRegSub = archivoSubBKP.getCantidadRegistros();
-
-                    std::remove("lista de artista.dat");
-                    std::remove("lista de canciones.dat");
-                    std::remove("lista de historiales.dat");
-                    std::remove("lista de subscriptores.dat");
-
-                    for(int i=0; i<cantRegArt; i++){
-                        regBkpArt = archivoArtBKP.Leer(i);
-                        fwrite(&regBkpArt, sizeof(Artista), 1, pFile1);
-                    }
-                    for(int i=0; i<cantRegCan; i++){
-                        regBkpCan = archivoCanBKP.Leer(i);
-                        fwrite(&regBkpCan, sizeof(Cancion), 1, pFile2);
-                    }
-                    for(int i=0; i<cantRegHis; i++){
-                        regBkpHis = archivoHisBKP.Leer(i);
-                        fwrite(&regBkpHis, sizeof(HistorialUsuario), 1, pFile3);
-                    }
-                    for(int i=0; i<cantRegCan; i++){
-                        regBkpSub = archivoSubBKP.Leer(i);
-                        fwrite(&regBkpSub, sizeof(Subscriptor), 1, pFile4);
-                    }
-
-                    fclose(pFile1);
-                    fclose(pFile2);
-                    fclose(pFile3);
-                    fclose(pFile4);
-                    fclose(pFile1BKP);
-                    fclose(pFile2BKP);
-                    fclose(pFile3BKP);
-                    fclose(pFile4BKP);
-
-                    cout << "Se restauraron correctamente los datos" << endl;
                     system("pause");
                     break;
                 }
@@ -658,53 +671,62 @@ bool ManagerConfiguracion::restaurarData(){
                 {
                     cls();
                     FILE *pFile1, *pFile2, *pFile3, *pFile4;
-                    pFile1 = fopen("lista de artista.dat", "rb");
-                    pFile2 = fopen("lista de canciones.dat", "rb");
-                    pFile3 = fopen("lista de historiales.dat", "rb");
-                    pFile4 = fopen("lista de subscriptores.dat", "rb");
-
                     FILE *pFile1INIT, *pFile2INIT, *pFile3INIT, *pFile4INIT;
-                    pFile1INIT = fopen(".\\INIT\\lista de artista.ini", "wb");
-                    pFile2INIT = fopen(".\\INIT\\lista de canciones.ini", "wb");
-                    pFile3INIT = fopen(".\\INIT\\lista de historiales.ini", "wb");
-                    pFile4INIT = fopen(".\\INIT\\lista de subscriptores.ini", "wb");
+
+                    pFile1INIT = fopen(".\\INIT\\lista de artista.init", "rb");
+                    pFile2INIT = fopen(".\\INIT\\lista de canciones.init", "rb");
+                    pFile3INIT = fopen(".\\INIT\\lista de historiales.init", "rb");
+                    pFile4INIT = fopen(".\\INIT\\lista de subscriptores.init", "rb");
+
+                    if(pFile1INIT==nullptr || pFile2INIT==nullptr || pFile3INIT==nullptr || pFile4INIT==nullptr){
+                        perror("Error al abrir archivos: ");
+                        system("pause");
+                        return false;
+                    }
+
+                    pFile1 = fopen("lista de artista.dat", "wb+");
+                    pFile2 = fopen("lista de canciones.dat", "wb+");
+                    pFile3 = fopen("lista de accesos.dat", "wb+");
+                    pFile4 = fopen("lista de subscriptores.dat", "wb+");
+
+                    if(pFile1==nullptr || pFile2==nullptr || pFile3==nullptr || pFile4==nullptr){
+                        perror("Error al abrir archivos: ");
+                        system("pause");
+                        return false;
+                    }
+
+                    ArchivoArtista archivoArtINI(".\\INIT\\lista de artista.init");
+                    ArchivoCancion archivoCanINI(".\\INIT\\lista de canciones.init");
+                    ArchivoHistorial archivoHisINI(".\\INIT\\lista de historiales.init");
+                    ArchivoSubscriptor archivSubINI(".\\INIT\\lista de subscriptores.init");
 
                     Artista regArt;
-                    int cantRegArt = archivoArt.getCantidadRegistros();
-                    for(int i=0; i<cantRegArt; i++){
-                        regArt = archivoArt.Leer(i);
-                        fwrite(&regArt, sizeof(Artista), 1, pFile1INIT);
-                    }
-
                     Cancion regCan;
-                    int cantRegCan = archivoCan.getCantidadRegistros();
-                    for(int i=0; i<cantRegCan; i++){
-                        regCan = archivoCan.Leer(i);
-                        fwrite(&regCan, sizeof(Cancion), 1, pFile2INIT);
-                    }
-
                     HistorialUsuario regHis;
-                    int cantRegHis = archivoHis.getCantidadRegistros();
-                    for(int i=0; i<cantRegHis; i++){
-                        regHis = archivoHis.Leer(i);
-                        fwrite(&regHis, sizeof(HistorialUsuario), 1, pFile3INIT);
-                    }
-
                     Subscriptor regSub;
-                    int cantRegSub = archivoSub.getCantidadRegistros();
-                    for(int i=0; i<cantRegSub; i++){
-                        regSub = archivoSub.Leer(i);
-                        fwrite(&regSub, sizeof(Subscriptor), 1, pFile4INIT);
+
+                    if(!validarInit(regArt, archivoArtINI, pFile1)){
+                        break;
+                    }
+                    if(!validarInit(regCan, archivoCanINI, pFile2)){
+                        break;
+                    }
+                    if(!validarInit(regHis, archivoHisINI, pFile3)){
+                        break;
+                    }
+                    if(!validarInit(regSub, archivSubINI, pFile4)){
+                        break;
                     }
 
-                    fclose(pFile1);
                     fclose(pFile1INIT);
-                    fclose(pFile2);
                     fclose(pFile2INIT);
-                    fclose(pFile3);
                     fclose(pFile3INIT);
-                    fclose(pFile4);
                     fclose(pFile4INIT);
+                    fclose(pFile1);
+                    fclose(pFile2);
+                    fclose(pFile3);
+                    fclose(pFile4);
+                    cout << "Se reinicializo correctamente los datos" << endl;
                     system("pause");
                     break;
                 }
@@ -1001,7 +1023,7 @@ bool ManagerConfiguracion::exportarData(){
                 }
             case 4:
                 {
-cls();
+                cls();
                 ///ADMIN VALIDATION
                 bool isAdmin = logon();
                 if(!isAdmin){
@@ -1167,7 +1189,136 @@ cls();
     while (!result);
 
 
-    system("pause");
     return result;
 }
 
+bool ManagerConfiguracion::validarInit(Artista reg, ArchivoArtista archivo, FILE *pFileINIT){
+    bool ok = false;
+    int sizeWrite;
+    int cantReg = archivo.getCantidadRegistros();
+    for(int i=0; i<cantReg; i++){
+        reg = archivo.Leer(i);
+        sizeWrite = fwrite(&reg, sizeof(Artista), 1, pFileINIT);
+        if(sizeWrite!=1){
+            cout << "No se guardo el archivo (Artistas)" << endl;
+            return false;
+        }
+    }
+
+    cout << "Se guardo el archivo exitosamente (Artistas)" << endl;
+    return true;
+}
+
+bool ManagerConfiguracion::validarInit(Cancion reg, ArchivoCancion archivo, FILE *pFileINIT){
+    bool ok = false;
+    int sizeWrite;
+    int cantReg = archivo.getCantidadRegistros();
+    for(int i=0; i<cantReg; i++){
+        reg = archivo.Leer(i);
+        sizeWrite = fwrite(&reg, sizeof(Cancion), 1, pFileINIT);
+        if(sizeWrite!=1){
+            cout << "No se guardo el archivo (Canciones)" << endl;
+            return false;
+        }
+    }
+
+    cout << "Se guardo el archivo exitosamente (Canciones)" << endl;
+    return true;
+}
+
+bool ManagerConfiguracion::validarInit(HistorialUsuario reg, ArchivoHistorial archivo, FILE *pFileINIT){
+    bool ok = false;
+    int sizeWrite;
+    int cantReg = archivo.getCantidadRegistros();
+    for(int i=0; i<cantReg; i++){
+        reg = archivo.Leer(i);
+        sizeWrite = fwrite(&reg, sizeof(HistorialUsuario), 1, pFileINIT);
+        if(sizeWrite!=1){
+            cout << "No se guardo el archivo (Historiales)" << endl;
+            return false;
+        }
+    }
+
+    cout << "Se guardo el archivo exitosamente (Historiales)" << endl;
+    return true;
+}
+
+bool ManagerConfiguracion::validarInit(Subscriptor reg, ArchivoSubscriptor archivo, FILE *pFileINIT){
+    bool ok = false;
+    int sizeWrite;
+    int cantReg = archivo.getCantidadRegistros();
+    for(int i=0; i<cantReg; i++){
+        reg = archivo.Leer(i);
+        sizeWrite = fwrite(&reg, sizeof(Subscriptor), 1, pFileINIT);
+        if(sizeWrite!=1){
+            cout << "No se guardo el archivo (Subscriptores)" << endl;
+            return false;
+        }
+    }
+
+    cout << "Se guardo el archivo exitosamente (Subscriptores)" << endl;
+    return true;
+}
+
+
+
+
+bool ManagerConfiguracion::validarBKP(Artista reg, ArchivoArtista archivo, FILE *pFile){
+    int cant = archivo.getCantidadRegistros();
+    int sizeWrite;
+    for(int i=0; i<cant; i++){
+        reg = archivo.Leer(i);
+        sizeWrite = fwrite(&reg, sizeof(Artista), 1, pFile);
+        if(sizeWrite!=1){
+            cout << "No se guardo el archivo (Artista)" << endl;
+            return false;
+        }
+    }
+    cout << "Se restauro el archivo exitosamente (Artista)" << endl;
+    return true;
+}
+
+bool ManagerConfiguracion::validarBKP(Cancion reg, ArchivoCancion archivo, FILE *pFile){
+    int cant = archivo.getCantidadRegistros();
+    int sizeWrite;
+    for(int i=0; i<cant; i++){
+        reg = archivo.Leer(i);
+        sizeWrite = fwrite(&reg, sizeof(Cancion), 1, pFile);
+        if(sizeWrite!=1){
+            cout << "No se guardo el archivo (Cancion)" << endl;
+            return false;
+        }
+    }
+    cout << "Se restauro el archivo exitosamente (Cancion)" << endl;
+    return true;
+}
+
+bool ManagerConfiguracion::validarBKP(HistorialUsuario reg, ArchivoHistorial archivo, FILE *pFile){
+    int cant = archivo.getCantidadRegistros();
+    int sizeWrite;
+    for(int i=0; i<cant; i++){
+        reg = archivo.Leer(i);
+        sizeWrite = fwrite(&reg, sizeof(HistorialUsuario), 1, pFile);
+        if(sizeWrite!=1){
+            cout << "No se guardo el archivo (Historial)" << endl;
+            return false;
+        }
+    }
+    cout << "Se restauro el archivo exitosamente (Historial)" << endl;
+    return true;
+}
+
+bool ManagerConfiguracion::validarBKP(Subscriptor reg, ArchivoSubscriptor archivo, FILE *pFile){
+    int cant = archivo.getCantidadRegistros();
+    int sizeWrite;
+    for(int i=0; i<cant; i++){
+        reg = archivo.Leer(i);
+        sizeWrite = fwrite(&reg, sizeof(Subscriptor), 1, pFile);
+        if(sizeWrite!=1){
+            cout << "No se guardo el archivo (Subscriptor)" << endl;
+            return false;
+        }
+    }
+    cout << "Se restauro el archivo exitosamente (Subscriptor)" << endl;
+    return true;
+}

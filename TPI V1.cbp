@@ -5,7 +5,7 @@
 		<Option title="TPI V1" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="clases/;clases/manager/;clases/menu/;clases/suscriptor/;clases/suscriptor/archivos/;clases/fecha/;clases/cancion/;clases/cancion/archivo/;clases/acceso/;clases/acceso/archivo/;clases/artista/;clases/manager/subscriptores/;clases/manager/canciones/;clases/manager/accesos/;clases/manager/artista/;clases/artista/archivo/;clases/manager/configuracion/" />
+		<Option virtualFolders="clases/;clases/configuracion/;clases/manager/;clases/menu/;clases/suscriptor/;clases/suscriptor/archivos/;clases/fecha/;clases/cancion/;clases/cancion/archivo/;clases/acceso/;clases/acceso/archivo/;clases/artista/;clases/manager/subscriptores/;clases/manager/canciones/;clases/manager/accesos/;clases/manager/artista/;clases/artista/archivo/;clases/reportes/" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/TPI V1" prefix_auto="1" extension_auto="1" />
@@ -108,10 +108,10 @@
 			<Option virtualFolder="clases/manager/canciones/" />
 		</Unit>
 		<Unit filename="managerConfiguracion.cpp">
-			<Option virtualFolder="clases/manager/configuracion/" />
+			<Option virtualFolder="clases/configuracion/" />
 		</Unit>
 		<Unit filename="managerConfiguracion.h">
-			<Option virtualFolder="clases/manager/configuracion/" />
+			<Option virtualFolder="clases/configuracion/" />
 		</Unit>
 		<Unit filename="managerSubscriptore.cpp">
 			<Option virtualFolder="clases/manager/subscriptores/" />
@@ -124,6 +124,12 @@
 		</Unit>
 		<Unit filename="menu.h">
 			<Option virtualFolder="clases/menu/" />
+		</Unit>
+		<Unit filename="reporte.cpp">
+			<Option virtualFolder="clases/reportes/" />
+		</Unit>
+		<Unit filename="reporte.h">
+			<Option virtualFolder="clases/reportes/" />
 		</Unit>
 		<Unit filename="rlutils.h" />
 		<Unit filename="suscriptor.cpp">

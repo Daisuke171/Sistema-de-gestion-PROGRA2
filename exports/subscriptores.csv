@@ -3,4 +3,54 @@ ID,DNI,Nombre,Apellido,telefono,email,Fecha de nacimiento
 2,46213154,Carlos,Benavidez,11214563,carlos1515@outlook.es,1/6/2005
 3,41451235,Amadeo,Dias,11241531,ama4512@gmail.com,2/4/1999
 4,123123,Agus,Benitez,1124156598,asdasdasd@gmail.com,2/9/2000
-5,451245124,,,,,1/1/1
+5,38221451,Sam,Collins,1124562555,samm121222@gmail.com,5/9/1989
+6,32876431,Laura,Fern ndez,1123456789,laura.fernandez@gmail.com,12/6/1988
+7,40876321,Mart¡n,G¢mez,1165432187,martin.gomez@hotmail.com,7/11/1992
+8,37812645,Carla,Dom¡nguez,1144235678,carladom@hotmail.com,25/3/1990
+9,29543108,Diego,Herrera,1158764321,diego.herrera@gmail.com,9/8/1985
+10,41672839,Valeria,M‚ndez,1132124545,vale.mendez@outlook.com,17/4/1996
+11,30218764,Sebasti n,Rodr¡guez,1167894321,sebas.rodriguez@yahoo.com,30/9/1987
+12,42718309,Luc¡a,Morales,1145619872,lucia.morales@gmail.com,4/2/1999
+13,33547129,Nicol s,L¢pez,1123456790,n.lopez@hotmail.com,18/10/1991
+14,37782146,Florencia,Sosa,1134567891,flor.sosa@gmail.com,21/5/1993
+15,28976531,Javier,Ruiz,1165432189,javi.ruiz@outlook.com,2/12/1984
+16,40987632,Mariana,Castro,1143217654,mari.castro@yahoo.com,13/6/1995
+17,31234876,Pablo,Aguirre,1122334455,pablo.aguirre@gmail.com,5/7/1989
+18,38890123,Camila,R¡os,1133112233,cami.rios@hotmail.com,8/3/1994
+19,29654321,Alejandro,Silva,1167891234,ale.silva@outlook.com,15/1/1986
+20,39987234,Bel‚n,Ortega,1144556677,belen.ortega@gmail.com,23/9/1997
+21,32278965,Tom s,Navarro,1155123344,tomy.navarro@yahoo.com,10/11/1990
+22,40765432,Julieta,Pereyra,1133998877,julipereyra@hotmail.com,1/8/1998
+23,31887766,Facundo,Cabrera,1166117722,facu.cabrera@gmail.com,6/4/1991
+24,40912387,Daniela,Romero,1122554466,dani.romero@outlook.com,27/10/1993
+25,29001234,Federico,Medina,1133665599,fede.medina@gmail.com,14/5/1982
+26,40122345,Ana,Su rez,1133344455,ana.suarez@gmail.com,3/7/1990
+27,31245678,Ricardo,Ben¡tez,1144556677,r.benitez@yahoo.com,29/1/1986
+28,42876543,Eliana,Mart¡nez,1166788899,eliana.martinez@hotmail.com,16/9/1997
+29,37654123,Lucas,Vega,1155123456,lucas.vega@outlook.com,11/6/1992
+30,30098765,Roc¡o,Paredes,1122233344,rocio.paredes@gmail.com,20/2/1991
+31,31908764,Tom s,Aranda,1144789652,tomas.aranda@yahoo.com,14/4/1993
+32,29345678,Gabriela,Salas,1133345566,gabriela.salas@hotmail.com,28/10/1985
+33,30543219,Ignacio,Peralta,1155987643,ignacio.peralta@gmail.com,6/11/1988
+34,39012876,Natalia,C ceres,1122567890,natalia.caceres@outlook.com,17/8/1994
+35,33456789,Esteban,Molina,1166654321,esteban.molina@gmail.com,9/3/1990
+36,37658901,Cintia,Escobar,1133667788,cintia.escobar@yahoo.com,22/12/1996
+37,29765432,Ramiro,Torres,1144123698,ramiro.torres@hotmail.com,13/5/1987
+38,28987654,Luciana,Villar,1166012345,luciana.villar@gmail.com,2/7/1992
+39,34345678,Federico,Luna,1123445566,federico.luna@outlook.com,19/1/1989
+40,40198765,Mar¡a,Quiroga,1133009988,maria.quiroga@yahoo.com,8/4/1995
+41,31098765,Leonardo,Arce,1155099887,leonardo.arce@gmail.com,12/6/1991
+42,32567890,Tatiana,Gim‚nez,1144337788,tatiana.gimenez@hotmail.com,25/2/1993
+43,28907654,Gustavo,Olmedo,1167345567,gustavo.olmedo@outlook.com,5/8/1986
+44,35871234,Romina,Reyes,1133211009,romina.reyes@gmail.com,30/10/1998
+45,39765432,Mat¡as,Cruz,1144598765,matias.cruz@yahoo.com,4/9/1984
+46,31874521,Sof¡a,Rivas,1122899077,sofia.rivas@hotmail.com,7/5/1997
+47,30345678,Dami n,Bustos,1155778899,damian.bustos@outlook.com,26/11/1988
+48,31456789,Carolina,Moreno,1133778899,caro.moreno@gmail.com,15/3/1990
+49,36543219,Hern n,Leiva,1166001122,hernan.leiva@yahoo.com,10/6/1983
+50,29876543,Brenda,Ojeda,1144553344,brenda.ojeda@outlook.com,23/8/1994
+51,32210987,Marcos,Carrizo,1122338899,marcos.carrizo@gmail.com,1/4/1991
+52,40012345,Melina,Berm£dez,1155120099,melina.bermudez@hotmail.com,18/9/1995
+53,32875431,Cristian,Funes,1144221133,cristian.funes@outlook.com,27/1/1986
+54,39128745,Noelia,Acosta,1133552233,noe.acosta@gmail.com,6/7/1992
+55,31325678,Axel,Palacios,1167894521,axel.palacios@yahoo.com,21/2/1990
