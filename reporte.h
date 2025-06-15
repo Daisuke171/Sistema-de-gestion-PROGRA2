@@ -1,12 +1,16 @@
 #ifndef REPORTE_H
 #define REPORTE_H
 
+#include <iostream>
+#include <cstring>
+#include "reporte.h"
+#include "rlutils.h"
 
-class Reporte{
+class ManagerReporte{
 private:
 
 public:
-
+    void mostrarSubmenuReportes();
 
 };
 

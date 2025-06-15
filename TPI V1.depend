@@ -122,7 +122,7 @@
 
 1747786891 c:\users\lain\desktop\gestormusica tpi test\menu.h
 
-1748277719 source:c:\users\lain\desktop\gestormusica tpi test\menu.cpp
+1749985805 source:c:\users\lain\desktop\gestormusica tpi test\menu.cpp
 	<iostream>
 	"menu.h"
 	"rlutils.h"
@@ -131,6 +131,7 @@
 	"managerAcceso.h"
 	"managerArtista.h"
 	"managerConfiguracion.h"
+	"reporte.h"
 
 1747559260 c:\users\lain\desktop\gestormusica tpi test\rlutils.h
 	<iostream>
@@ -207,10 +208,10 @@
 	"suscriptor.h"
 	"fecha.h"
 
-1748271780 c:\users\lain\desktop\gestormusica tpi test\manageracceso.h
+1749985528 c:\users\lain\desktop\gestormusica tpi test\manageracceso.h
 	"archivoAcceso.h"
 
-1749715150 source:c:\users\lain\desktop\gestormusica tpi test\manageracceso.cpp
+1749985597 source:c:\users\lain\desktop\gestormusica tpi test\manageracceso.cpp
 	<iostream>
 	<cstring>
 	"managerAcceso.h"
@@ -504,5 +505,9 @@
 	<cstring>
 	"reporte.h"
 
-1749719611 c:\users\lain\desktop\gestormusica tpi test\reporte.h
+1749985925 c:\users\lain\desktop\gestormusica tpi test\reporte.h
+	<iostream>
+	<cstring>
+	"reporte.h"
+	"rlutils.h"
 

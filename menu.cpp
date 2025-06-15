@@ -7,6 +7,7 @@ using namespace std;
 #include "managerAcceso.h"
 #include "managerArtista.h"
 #include "managerConfiguracion.h"
+#include "reporte.h"
 using namespace rlutil;
 
 
@@ -17,6 +18,7 @@ int Menu::mostrar(){
     ManagerHistorial l;
     ManagerArtista p;
     ManagerConfiguracion q;
+    ManagerReporte r;
     setBackgroundColor(MAGENTA);
     setColor(WHITE);
 
@@ -102,8 +104,7 @@ int Menu::mostrar(){
                 break;
             case 4:
                 cls();
-                cout << "REPORTES" << endl;
-                cin.get();
+                r.mostrarSubmenuReportes();
                 break;
             case 5:
                 cls();

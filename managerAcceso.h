@@ -13,13 +13,9 @@ public:
     void cargarHistorial();
     ///2 ver acceso en archivo
     void mostrarHistorial();
-    ///3 buscar acceso (cancion)
-    void filtrarHistorialPorCancion();
-    ///4 buscar acceso (artista)
-    void filtrarHistorialPorArtista();
-    ///5 eliminar acceso en archivo
+    ///3 eliminar acceso en archivo
     void eliminarHistorial();
-    ///6 sobreescribir acceso en archivo
+    ///4 sobreescribir acceso en archivo
     void modificarHistorial();
 };
 

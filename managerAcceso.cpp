@@ -37,16 +37,10 @@ void ManagerHistorial::mostrarSubmenuHistorial(){
         cout << "2- Mostrar Historial" << endl;
         i++;
         locate(tcols()/3,i);
-        cout << "3- Filtrar Listado de Historial por Cancion" << endl;
+        cout << "3- Eliminar Historial" << endl;
         i++;
         locate(tcols()/3,i);
-        cout << "4- Filtrar Listado de Historial por Artista" << endl;
-        i++;
-        locate(tcols()/3,i);
-        cout << "5- Eliminar Historial" << endl;
-        i++;
-        locate(tcols()/3,i);
-        cout << "5- Modificar Historial" << endl;
+        cout << "4- Modificar Historial" << endl;
         i++;
         locate(tcols()/3,i);
         cout << "0- Volver atras" << endl;
@@ -76,8 +70,8 @@ void ManagerHistorial::mostrarSubmenuHistorial(){
                 locate((tcols()/3)-2, 5+y);
                 cout << " ";
                 y++;
-                if(y>6){
-                    y=6;
+                if(y>4){
+                    y=4;
                 }
                 break;
         case 1: /// 1 = ENTER
@@ -92,21 +86,13 @@ void ManagerHistorial::mostrarSubmenuHistorial(){
                 break;
             case 2:
                 cls();
-                filtrarHistorialPorCancion();
+                eliminarHistorial();
                 break;
             case 3:
                 cls();
-                filtrarHistorialPorArtista();
-                break;
-            case 4:
-                cls();
-                eliminarHistorial();
-                break;
-            case 5:
-                cls();
                 modificarHistorial();
                 break;
-            case 6:
+            case 4:
                 cls();
                 exit=true;
                 break;
@@ -284,96 +270,6 @@ void ManagerHistorial::mostrarHistorial(){
     system("pause");
     delete []vectorHistorial;
 
-    cls();
-    fflush(stdin);
-}
-
-void ManagerHistorial::filtrarHistorialPorCancion(){
-    fflush(stdin);
-    std::string nombreCancion;
-    Cancion regCancion;
-    Subscriptor regSub;
-    ArchivoCancion archivo("lista de canciones.dat");
-    ArchivoHistorial archivo2("lista de accesos.dat");
-    ArchivoSubscriptor archivo3("lista de subscriptores.dat");
-    int cantRegistros = archivo2.getCantidadRegistros();
-    HistorialUsuario regHistorial;
-
-    cout << "Ingrese el nombre de la cancion que desee buscar en los accesos: ";
-    cin >> nombreCancion;
-
-    if(!archivo.buscarPorCancionNombre(nombreCancion, regCancion)){
-        cout << "La cancion con nombre " << nombreCancion << " no existe. No se puede crear el acceso" << endl;
-        system("pause");
-        return;
-    }
-
-    int j=0;
-    for(int i=0; i<cantRegistros; i++){
-        regHistorial = archivo2.Leer(i);
-
-        if(regHistorial.getEstado()){
-            if(regCancion.getNombre()==nombreCancion){
-                regSub = archivo3.Leer(regHistorial.getIdSub()-1);
-                regCancion = archivo.Leer(regHistorial.getIdSong()-1);
-
-                cout << "Acceso de usuario #" << regHistorial.getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
-                cout << "Cancion #" << regHistorial.getIdSong() << ": " << regCancion.getNombre() << endl;
-                cout << "Banda: " << regCancion.getAutor() << endl;
-                cout << "Fecha: " << regHistorial.getFecha() << " Hora: " << regHistorial.getHora() << endl;
-                cout << "--------------------------------------------" << endl;
-                j++;
-            }
-        }
-    }
-
-    if(j==0){
-        cout << "No se encontraron historiales a la cancion indicada" << endl;
-    }
-
-    system("pause");
-    cls();
-    fflush(stdin);
-}
-
-void ManagerHistorial::filtrarHistorialPorArtista(){
-    fflush(stdin);
-    std::string nombreArtista;
-    Artista reg;
-    ArchivoArtista archivo("lista de canciones.dat");
-    ArchivoHistorial archivo2("lista de accesos.dat");
-    int cantRegistros = archivo.getCantidadRegistros();
-    HistorialUsuario regHistorial;
-
-    cout << "Ingrese el artista de la cancion que desee buscar en los historiales: ";
-    cin >> nombreArtista;
-
-    if(!archivo.validarNombreArtista(nombreArtista, reg)){
-        cout << "La cancion con nombre " << nombreArtista << " no existe. No se puede crear el acceso" << endl;
-        system("pause");
-        return;
-    }
-
-    int j=0;
-    for(int i=0; i<cantRegistros; i++){
-        regHistorial = archivo2.Leer(i);
-
-        if(regHistorial.getEstado()){
-            if(reg.getNombre()==nombreArtista){
-                cout << "Historial de usuario " << regHistorial.getIdSub() << endl;
-                cout << "Cancion " << regHistorial.getIdSong() << endl;
-                cout << "Fecha: " <<regHistorial.getFecha() << " Hora: " << regHistorial.getHora() << endl;
-                cout << "--------------------------------------------" << endl;
-                j++;
-            }
-        }
-    }
-
-    if(j==0){
-        cout << "No se encontraron historiales con el artista indicado" << endl;
-    }
-
-    system("pause");
     cls();
     fflush(stdin);
 }
