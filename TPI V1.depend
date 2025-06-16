@@ -175,17 +175,21 @@
 1747579484 c:\users\lain\desktop\gestormusica tpi test\archivoscancion.h
 	"cancion.h"
 
-1749450211 c:\users\lain\desktop\gestormusica tpi test\cancion.h
+1750067254 c:\users\lain\desktop\gestormusica tpi test\cancion.h
 	"fecha.h"
 	<cstring>
+	"artista.h"
+	"archivoArtista.h"
 
-1749455182 source:c:\users\lain\desktop\gestormusica tpi test\cancion.cpp
+1750067133 source:c:\users\lain\desktop\gestormusica tpi test\cancion.cpp
 	<iostream>
 	<cstring>
 	"cancion.h"
 	"fecha.h"
+	"artista.h"
+	"archivoArtista.h"
 
-1749455182 source:c:\users\lain\desktop\gestormusica tpi test\managercanciones.cpp
+1750063925 source:c:\users\lain\desktop\gestormusica tpi test\managercanciones.cpp
 	<iostream>
 	<cstring>
 	"cancion.h"
@@ -502,7 +506,7 @@
 
 1749724355 c:\users\lain\desktop\gestormusica tpi test\useraccess.h
 
-1750059015 source:c:\users\lain\desktop\gestormusica tpi test\reporte.cpp
+1750066768 source:c:\users\lain\desktop\gestormusica tpi test\reporte.cpp
 	<iostream>
 	<cstring>
 	"reporte.h"
@@ -510,13 +514,20 @@
 	"suscriptor.h"
 	"archivosSuscriptor.h"
 	"arrayUtils.h"
+	"archivoArtista.h"
+	"artista.h"
+	"cancion.h"
+	"archivosCancion.h"
+	"acceso.h"
+	"archivoAcceso.h"
 
-1750049697 c:\users\lain\desktop\gestormusica tpi test\reporte.h
+1750064219 c:\users\lain\desktop\gestormusica tpi test\reporte.h
 	<iostream>
 	<cstring>
 	"reporte.h"
 	"rlutils.h"
 	"acceso.h"
 
-1750052839 c:\users\lain\desktop\gestormusica tpi test\arrayutils.h
+1750065702 c:\users\lain\desktop\gestormusica tpi test\arrayutils.h
+	<iostream>
 

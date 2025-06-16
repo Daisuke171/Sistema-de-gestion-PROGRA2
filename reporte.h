@@ -17,7 +17,7 @@ public:
     void cancionesMasEscuchadas();
     void promedioModaEdades();
     void cantidadCancionesPorArtista();
-    void artistasMasescuchados();
+    void artistasMasEscuchados();
     void generoMasEscuchado();
 
 

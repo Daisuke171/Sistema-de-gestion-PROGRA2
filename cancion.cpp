@@ -3,6 +3,8 @@
 using namespace std;
 #include "cancion.h"
 #include "fecha.h"
+#include "artista.h"
+#include "archivoArtista.h"
 
 Cancion::Cancion(){
     _idCancion = 0;

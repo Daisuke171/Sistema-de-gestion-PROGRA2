@@ -2,6 +2,8 @@
 #define CANCION_H_INCLUDED
 #include "fecha.h"
 #include <cstring>
+#include "artista.h"
+#include "archivoArtista.h"
 
 class Cancion{
 private:

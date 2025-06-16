@@ -5,6 +5,12 @@
 #include "suscriptor.h"
 #include "archivosSuscriptor.h"
 #include "arrayUtils.h"
+#include "archivoArtista.h"
+#include "artista.h"
+#include "cancion.h"
+#include "archivosCancion.h"
+#include "acceso.h"
+#include "archivoAcceso.h"
 using namespace std;
 using namespace rlutil;
 
@@ -82,8 +88,8 @@ void ManagerReporte::mostrarSubmenuReportes(){
             switch(y){
             case 0:
                 cls();
-//Canciones más escuchadas
-
+                //Canciones más escuchadas
+                cancionesMasEscuchadas();
                 break;
             case 1:
                 cls();
@@ -92,17 +98,18 @@ void ManagerReporte::mostrarSubmenuReportes(){
                 break;
             case 2:
                 cls();
-//Cantidad de canciones por artista
-
+                //Cantidad de canciones por artista
+                cantidadCancionesPorArtista();
                 break;
             case 3:
                 cls();
-//Artistas más escuchados
-
+                //Artistas más escuchados
+                artistasMasEscuchados();
                 break;
             case 4:
                 cls();
-//Genero mas escuchado
+                //Genero mas escuchado
+                generoMasEscuchado();
                 break;
             case 5:
                 cls();
@@ -202,16 +209,78 @@ void ManagerReporte::promedioModaEdades(){
 }
 
 void ManagerReporte::cantidadCancionesPorArtista(){
+    Cancion regCan;
+    ArchivoCancion archivoCancion("lista de canciones.dat");
+    Artista regArt;
+    ArchivoArtista archivoArtista("lista de artista.dat");
 
+    int cantArtistas = archivoArtista.getCantidadRegistros();
+    int cantCanciones = archivoCancion.getCantidadRegistros();
+
+    int *cantCancionesPorArtista = new int[cantArtistas];
+    llenarArray(cantCancionesPorArtista, cantArtistas);
+
+    int idArt;
+    for(int i=0; i<cantCanciones; i++) {
+        regCan = archivoCancion.Leer(i);
+        idArt = regCan.getIDArtista() - 1;
+        if(idArt>=0 && idArt<cantArtistas) {
+            cantCancionesPorArtista[idArt]++;
+        }
+    }
+
+
+    for(int i=0; i<cantArtistas; i++) {
+        regArt = archivoArtista.Leer(i);
+        cout << regArt.getNombre() << ": " << cantCancionesPorArtista[i] << endl;
+    }
+
+
+    delete []cantCancionesPorArtista;
     system("pause");
 }
 
-void ManagerReporte::artistasMasescuchados(){
+void ManagerReporte::artistasMasEscuchados(){
+    Artista regArt;
+    ArchivoArtista archivoArtista("lista de artista.dat");
+    HistorialUsuario regHistorial;
+    ArchivoHistorial archivoHistorial("lista de accesos.dat");
+    Cancion regCan;
+    ArchivoCancion archivoCancion("lista de canciones.dat");
+
+    int cantArtistas = archivoArtista.getCantidadRegistros();
+    int *vArtistasVistas = new int[cantArtistas];
+    llenarArray(vArtistasVistas, cantArtistas);
+
+    int cantHistoriales = archivoHistorial.getCantidadRegistros();
+
+    for(int i=0; i<cantHistoriales; i++){
+        regHistorial = archivoHistorial.Leer(i);
+        int idCancion = regHistorial.getIdSong()-1;
+        regCan = archivoCancion.Leer(idCancion);
+        int idArtista = regCan.getIDArtista()-1;
+
+        vArtistasVistas[idArtista]++;
+    }
+
+    for(int i=0; i<cantArtistas; i++){
+        regArt = archivoArtista.Leer(i);
+        cout << regArt.getNombre() << ": " << vArtistasVistas[i] << endl;
+    }
 
     system("pause");
 }
 
 void ManagerReporte::generoMasEscuchado(){
+    Artista regArt;
+    ArchivoArtista archivoArtista("lista de artista.dat");
+    HistorialUsuario regHistorial;
+    ArchivoHistorial archivoHistorial("lista de accesos.dat");
+    Cancion regCan;
+    ArchivoCancion archivoCancion("lista de canciones.dat");
+
+
+
 
     system("pause");
 }

@@ -133,10 +133,9 @@ void ManagerCanciones::cargarCancion(){
 
     cout << "Ingrese nombre de la cancion: ";
     getline(cin, nombre);
+
     cout << "Ingrese nombre del autor: ";
     getline(cin, autor);
-
-
 
     if(!archivoArtistas.validarNombreArtista(autor, regArtistas)){
         cout << "El artista no se encuentra en la base de datos. Desea crearlo? (0= no, 1=si)" << endl;
@@ -167,6 +166,7 @@ void ManagerCanciones::cargarCancion(){
         cls();
     }
 
+    ///verificar si no existe la cancion ya del mismo artista
 
     ///El if-else de arriba hace un cls() si o si
     cout << "ID Cancion: " << id << endl;

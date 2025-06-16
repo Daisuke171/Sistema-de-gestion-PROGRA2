@@ -1,6 +1,8 @@
 #ifndef ARRAYUTILS_H_INCLUDED
 #define ARRAYUTILS_H_INCLUDED
 
+#include <iostream>
+
 void ordenar(int *v, int tam){
     int posmin, aux;
 
@@ -55,6 +57,36 @@ void ordenar_m_fila(int (*m)[5], int fila, int col){
 
 }
 
+void llenarArray(int *v, int tam){
+    for(int i=0; i<tam; i++){
+        *(v+i)=0;
+    }
+}
 
+void mostrarArray(int *v, int tam){
+    for(int i=0; i<tam; i++){
+        std::cout << *(v+i) << std::endl;
+    }
+}
+
+int contarUnicos(int *v, int n) {
+    int unicos = 0;
+
+    for(int i=0; i<n; i++) {
+        bool yaContado=false;
+        // Verifica si v[i] ya fue contado antes
+        for(int j=0; j<i; j++) {
+            if(v[i]==v[j]) {
+                yaContado=true;
+                break;
+            }
+        }
+        if(!yaContado){
+            unicos++;
+        }
+    }
+
+    return unicos;
+}
 
 #endif // ARRAYUTILS_H_INCLUDED
