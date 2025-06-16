@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "fecha.h"
+#include <ctime>
 using namespace std;
 
 Fecha::Fecha(){
@@ -28,3 +29,16 @@ void Fecha::setDia(int dia){
 std::string Fecha::toString(){
     return to_string(_dia) + "/" + to_string(_mes) + "/" +to_string(_anio);
 }
+
+int Fecha::getAnio() const{
+    return _anio;
+}
+
+int Fecha::getMes() const{
+    return _mes;
+}
+
+int Fecha::getDia() const{
+    return _dia;
+}
+

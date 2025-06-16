@@ -102,19 +102,21 @@
 	<cstring>
 	"suscriptor.h"
 
-1748372387 c:\users\lain\desktop\gestormusica tpi test\suscriptor.h
+1750051889 c:\users\lain\desktop\gestormusica tpi test\suscriptor.h
 	<iostream>
 	"fecha.h"
 	<cstring>
 
-1747559260 c:\users\lain\desktop\gestormusica tpi test\fecha.h
+1750050622 c:\users\lain\desktop\gestormusica tpi test\fecha.h
 	<iostream>
 	<cstring>
+	<ctime>
 
-1747559260 source:c:\users\lain\desktop\gestormusica tpi test\fecha.cpp
+1750050622 source:c:\users\lain\desktop\gestormusica tpi test\fecha.cpp
 	<iostream>
 	<cstring>
 	"fecha.h"
+	<ctime>
 
 1747786892 source:c:\users\lain\desktop\gestormusica tpi test\main.cpp
 	<iostream>
@@ -147,7 +149,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1748372392 source:c:\users\lain\desktop\gestormusica tpi test\suscriptor.cpp
+1750051889 source:c:\users\lain\desktop\gestormusica tpi test\suscriptor.cpp
 	<iostream>
 	<cstring>
 	"suscriptor.h"
@@ -198,12 +200,12 @@
 1747574841 c:\users\lain\desktop\gestormusica tpi test\managercanciones.h
 	"archivosCancion.h"
 
-1747840894 source:c:\users\lain\desktop\gestormusica tpi test\acceso.cpp
+1750059376 source:c:\users\lain\desktop\gestormusica tpi test\acceso.cpp
 	<iostream>
 	<cstring>
 	"acceso.h"
 
-1747840894 c:\users\lain\desktop\gestormusica tpi test\acceso.h
+1750059376 c:\users\lain\desktop\gestormusica tpi test\acceso.h
 	"cancion.h"
 	"suscriptor.h"
 	"fecha.h"
@@ -482,7 +484,7 @@
 	"archivoArtista.h"
 	"archivosSuscriptor.h"
 
-1749724112 source:c:\users\lain\desktop\gestormusica tpi test\managerconfiguracion.cpp
+1750059376 source:c:\users\lain\desktop\gestormusica tpi test\managerconfiguracion.cpp
 	<iostream>
 	<cstring>
 	<cstdio>
@@ -500,14 +502,21 @@
 
 1749724355 c:\users\lain\desktop\gestormusica tpi test\useraccess.h
 
-1749719564 source:c:\users\lain\desktop\gestormusica tpi test\reporte.cpp
-	<iostream>
-	<cstring>
-	"reporte.h"
-
-1749985925 c:\users\lain\desktop\gestormusica tpi test\reporte.h
+1750059015 source:c:\users\lain\desktop\gestormusica tpi test\reporte.cpp
 	<iostream>
 	<cstring>
 	"reporte.h"
 	"rlutils.h"
+	"suscriptor.h"
+	"archivosSuscriptor.h"
+	"arrayUtils.h"
+
+1750049697 c:\users\lain\desktop\gestormusica tpi test\reporte.h
+	<iostream>
+	<cstring>
+	"reporte.h"
+	"rlutils.h"
+	"acceso.h"
+
+1750052839 c:\users\lain\desktop\gestormusica tpi test\arrayutils.h
 

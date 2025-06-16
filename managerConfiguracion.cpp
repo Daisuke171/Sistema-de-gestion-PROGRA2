@@ -953,11 +953,11 @@ bool ManagerConfiguracion::exportarData(){
                 for (int i = 0; i < regCant; i++) {
                     reg = archivoHis.Leer(i);
 
-                    fprintf(pFile, "%d,%d,%d,%d,%d\n",
+                    fprintf(pFile, "%d,%d,%d,%s,%d\n",
                             reg.getID(),
                             reg.getIdSong(),
                             reg.getIdSub(),
-                            reg.getFecha(),
+                            reg.getFecha().c_str(),
                             reg.getHora()
                             );
                 }

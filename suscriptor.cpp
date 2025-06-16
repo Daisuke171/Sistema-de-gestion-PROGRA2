@@ -89,8 +89,26 @@ string Subscriptor::getFechaNacimiento(){
     return _fechaNacimientoUsuario.toString();
 }
 
+Fecha Subscriptor::getFechaNacimiento() const{
+    return _fechaNacimientoUsuario;
+}
+
 bool Subscriptor::getEstado() const{
     return _estado;
 }
 
+int Subscriptor::getEdad(const int dia, const int mes, const int anio) const{
+    Subscriptor reg;
+    Fecha nacimiento = this->getFechaNacimiento();
 
+    int diaUser = nacimiento.getDia();
+    int mesUser = nacimiento.getMes();
+    int anioUser = nacimiento.getAnio();
+
+    int edad = anio - anioUser;
+    if(mes<mesUser || (mes==mesUser && dia<diaUser) ) {
+        edad--;
+    }
+
+    return edad;
+}

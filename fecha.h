@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <ctime>
 
 class Fecha{
 private:
@@ -17,6 +18,7 @@ public:
     int getAnio() const;
     int getMes() const;
     int getDia() const;
+
 
     ///setters
     void setAnio(int anio);

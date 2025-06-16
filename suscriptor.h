@@ -37,7 +37,10 @@ public:
     std::string getTelefono() const;
     std::string getEmail() const;
     std::string getFechaNacimiento();
+    Fecha getFechaNacimiento() const;
     bool getEstado() const;
+    int getEdad(const int dia, const int mes, const int anio) const;
+
 };
 
 
