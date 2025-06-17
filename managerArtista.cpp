@@ -263,14 +263,14 @@ void ManagerArtista::modificarArtista(){
     Artista reg;
     int cantRegistros = archivo.getCantidadRegistros();
 
-    cout << "Ingrese el ID del subscriptor que desee modificar: ";
+    cout << "Ingrese el ID del artista que desee modificar: ";
     cin >> idSearch;
     if(std::cin.fail()) {
         std::cin.clear();
         std::cin.ignore();
         std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
         while(true){
-            cout << "Ingrese el ID del subscriptor que desee modificar: ";
+            cout << "Ingrese el ID del artista que desee modificar: ";
             cin >> idSearch;
 
             if(std::cin.fail()){

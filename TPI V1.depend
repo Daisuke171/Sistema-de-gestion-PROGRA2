@@ -181,7 +181,7 @@
 	"artista.h"
 	"archivoArtista.h"
 
-1750067133 source:c:\users\lain\desktop\gestormusica tpi test\cancion.cpp
+1750067259 source:c:\users\lain\desktop\gestormusica tpi test\cancion.cpp
 	<iostream>
 	<cstring>
 	"cancion.h"
@@ -460,7 +460,7 @@
 	<cstring>
 	"artista.h"
 
-1749726430 source:c:\users\lain\desktop\gestormusica tpi test\managerartista.cpp
+1750151279 source:c:\users\lain\desktop\gestormusica tpi test\managerartista.cpp
 	<iostream>
 	<cstring>
 	"artista.h"
@@ -506,7 +506,7 @@
 
 1749724355 c:\users\lain\desktop\gestormusica tpi test\useraccess.h
 
-1750066768 source:c:\users\lain\desktop\gestormusica tpi test\reporte.cpp
+1750154374 source:c:\users\lain\desktop\gestormusica tpi test\reporte.cpp
 	<iostream>
 	<cstring>
 	"reporte.h"
@@ -528,6 +528,6 @@
 	"rlutils.h"
 	"acceso.h"
 
-1750065702 c:\users\lain\desktop\gestormusica tpi test\arrayutils.h
+1750152679 c:\users\lain\desktop\gestormusica tpi test\arrayutils.h
 	<iostream>
 

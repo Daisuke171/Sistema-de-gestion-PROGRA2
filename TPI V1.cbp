@@ -5,7 +5,7 @@
 		<Option title="TPI V1" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="clases/;clases/configuracion/;clases/manager/;clases/menu/;clases/suscriptor/;clases/suscriptor/archivos/;clases/fecha/;clases/cancion/;clases/cancion/archivo/;clases/acceso/;clases/acceso/archivo/;clases/artista/;clases/manager/subscriptores/;clases/manager/canciones/;clases/manager/accesos/;clases/manager/artista/;clases/artista/archivo/;clases/reportes/" />
+		<Option virtualFolders="clases/;clases/configuracion/;clases/manager/;clases/menu/;clases/suscriptor/;clases/suscriptor/archivos/;clases/fecha/;clases/cancion/;clases/cancion/archivo/;clases/acceso/;clases/acceso/archivo/;clases/artista/;clases/manager/subscriptores/;clases/manager/canciones/;clases/manager/accesos/;clases/manager/artista/;clases/artista/archivo/;clases/reportes/;clases/arrayUtils/" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/TPI V1" prefix_auto="1" extension_auto="1" />
@@ -64,6 +64,9 @@
 		</Unit>
 		<Unit filename="archivosSuscriptor.h">
 			<Option virtualFolder="clases/suscriptor/archivos/" />
+		</Unit>
+		<Unit filename="arrayUtils.h">
+			<Option virtualFolder="clases/arrayUtils/" />
 		</Unit>
 		<Unit filename="artista.cpp">
 			<Option virtualFolder="clases/artista/" />

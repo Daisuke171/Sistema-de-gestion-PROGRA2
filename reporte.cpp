@@ -131,6 +131,7 @@ void ManagerReporte::mostrarSubmenuReportes(){
 
 void ManagerReporte::cancionesMasEscuchadas(){
 
+
     system("pause");
 }
 
@@ -279,8 +280,113 @@ void ManagerReporte::generoMasEscuchado(){
     Cancion regCan;
     ArchivoCancion archivoCancion("lista de canciones.dat");
 
+    ///CREACION DE VECTOR CON GENEROS UNICOS
+    int cantArt = archivoArtista.getCantidadRegistros();
+
+    Artista *vArtistas = new Artista[cantArt];
+    archivoArtista.leerMuchos(vArtistas, cantArt);
+
+    if(vArtistas==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
+
+    std::string *vGeneros = new std::string[cantArt];
+    for(int i=0; i<cantArt; i++){
+        *(vGeneros+i) = vArtistas[i].getGenero();
+    }
+
+    int cantGenerosUnicos = contarUnicos(vGeneros, cantArt);
+
+
+    std::string* vGenerosUnicos = new std::string[cantGenerosUnicos];
+    vGenerosUnicos[0] = vGeneros[0];
+    int contadorUnicos = 1;
+
+    for(int i=1; i<cantArt; i++) {
+        bool seEncontro = false;
+
+        for(int j=0; j<contadorUnicos; j++) {
+            if(vGenerosUnicos[j]==vGeneros[i]) {
+                seEncontro = true;
+                break;
+            }
+        }
+
+        if(!seEncontro) {
+            vGenerosUnicos[contadorUnicos] = vGeneros[i];
+            contadorUnicos++;
+
+            if(contadorUnicos==cantGenerosUnicos) {
+                break;
+            }
+        }
+    }
+    ///CREACION DE VECTOR CON GENEROS UNICOS
 
 
 
-    system("pause");
+    ///ACTUALIZAMOS LA FRECUENCIA EN LA QUE FUE ESCUCHADA CADA GENERO
+    int cantHistoriales = archivoHistorial.getCantidadRegistros();
+    HistorialUsuario *vHistoriales = new HistorialUsuario[cantHistoriales];
+    archivoHistorial.leerMuchos(vHistoriales, cantHistoriales);
+
+    int cantCanciones = archivoCancion.getCantidadRegistros();
+    Cancion *vCanciones = new Cancion[cantCanciones];
+    archivoCancion.leerMuchos(vCanciones, cantCanciones);
+
+    int *vFrecuencias = new int[cantGenerosUnicos];
+    llenarArray(vFrecuencias, cantGenerosUnicos);
+    for(int i=0; i<cantHistoriales; i++){
+        for(int j=0; j<cantArt; j++){
+            if(vCanciones[j].getID()==vHistoriales[i].getIdSong()){
+                std::string genero = vArtistas[vCanciones[j].getIDArtista()].getGenero();
+                for(int g=0; g<cantGenerosUnicos; g++){
+                    if(genero==vGenerosUnicos[g]){
+                        vFrecuencias[g]++;
+                    }
+                }
+            }
+        }
+    }
+    ///ACTUALIZAMOS LA FRECUENCIA EN LA QUE FUE ESCUCHADA CADA GENERO
+
+
+    ///ORDENAMIENTO Y LISTADO FINAL
+    ordenarFrecuenciasYGeneros(vFrecuencias, vGenerosUnicos, cantGenerosUnicos);
+
+    int select;
+    cout << "Quiere ver todas las frecuencias o solamente el top 3? (0=todos, 1=top)" << endl;
+    cin >> select;
+    cls();
+    switch(select){
+    case 1:
+        {
+            for(int i=0; i<3; i++){
+                cout << "TOP " << i+1 << " " << vGenerosUnicos[i] << ": " << vFrecuencias[i] << endl;
+            }
+            break;
+        }
+    case 0:
+        {
+            for(int i=0; i<cantGenerosUnicos; i++){
+                cout << vGenerosUnicos[i] << ": " << vFrecuencias[i] << endl;
+            }
+            break;
+        }
+    default:
+        {
+            cout << "Opcion incorrecta" << endl;
+            break;
+        }
+    }
+    ///ORDENAMIENTO Y LISTADO FINAL
+
+    delete []vFrecuencias;
+    delete []vHistoriales;
+    delete []vGeneros;
+    delete []vGenerosUnicos;
+    delete []vArtistas;
+    delete []vCanciones;
+    system("pause>null");
 }
