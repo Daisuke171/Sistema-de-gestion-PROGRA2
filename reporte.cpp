@@ -130,8 +130,61 @@ void ManagerReporte::mostrarSubmenuReportes(){
 
 
 void ManagerReporte::cancionesMasEscuchadas(){
+    Cancion regCancion;
+    ArchivoCancion archivoCancion("lista de canciones.dat");
+    HistorialUsuario regHistorial;
+    ArchivoHistorial archivoHistorial("lista de accesos.dat");
+
+    int cantHistoriales = archivoHistorial.getCantidadRegistros();
+    HistorialUsuario *vHistoriales = new HistorialUsuario[cantHistoriales];
+    archivoHistorial.leerMuchos(vHistoriales, cantHistoriales);
+    int cantCanciones = archivoCancion.getCantidadRegistros();
+    int *vFrecuenciasCanciones = new int[cantCanciones];
+    llenarArray(vFrecuenciasCanciones, cantCanciones);
+
+    for(int i=0; i<cantHistoriales; i++){
+        int idCancionHistorial = vHistoriales[i].getIdSong() - 1;
+
+        *(vFrecuenciasCanciones+idCancionHistorial) += 1;
+    }
+
+    string *vCancionesNombres = new string[cantCanciones];
+    for(int i=0; i<cantCanciones; i++){
+        regCancion = archivoCancion.Leer(i);
+        *(vCancionesNombres+i) = regCancion.getNombre();
+    }
+    ordenarFrecuenciasYGeneros(vFrecuenciasCanciones, vCancionesNombres, cantCanciones);
+
+    int select;
+    cout << "Quiere ver todas las frecuencias o solamente el top 3? (0=todos, 1=top)" << endl;
+    cin >> select;
+    cls();
+    switch(select){
+    case 1:
+        {
+            for(int i=0; i<3; i++){
+                cout << "TOP " << i+1 << " " << vCancionesNombres[i] << ": " << vFrecuenciasCanciones[i] << " vistas" << endl;
+            }
+            break;
+        }
+    case 0:
+        {
+            for(int i=0; i<cantCanciones; i++){
+                cout << vCancionesNombres[i] << ": " << vFrecuenciasCanciones[i] << " vistas" << endl;
+            }
+            break;
+        }
+    default:
+        {
+            cout << "Opcion incorrecta" << endl;
+            break;
+        }
+    }
 
 
+    delete []vCancionesNombres;
+    delete []vHistoriales;
+    delete []vFrecuenciasCanciones;
     system("pause");
 }
 
@@ -264,10 +317,41 @@ void ManagerReporte::artistasMasEscuchados(){
         vArtistasVistas[idArtista]++;
     }
 
+    string *vArtistasNombres = new string[cantArtistas];
     for(int i=0; i<cantArtistas; i++){
         regArt = archivoArtista.Leer(i);
-        cout << regArt.getNombre() << ": " << vArtistasVistas[i] << endl;
+        *(vArtistasNombres+i) = regArt.getNombre();
     }
+
+    ordenarFrecuenciasYGeneros(vArtistasVistas, vArtistasNombres, cantArtistas);
+
+    int select;
+    cout << "Quiere ver todas las frecuencias o solamente el top 3? (0=todos, 1=top)" << endl;
+    cin >> select;
+    cls();
+    switch(select){
+    case 1:
+        {
+            for(int i=0; i<3; i++){
+                cout << "TOP " << i+1 << " " << vArtistasNombres[i] << ": " << vArtistasVistas[i] << " vistas" << endl;
+            }
+            break;
+        }
+    case 0:
+        {
+            for(int i=0; i<cantArtistas; i++){
+                cout << vArtistasNombres[i] << ": " << vArtistasVistas[i] << " vistas" << endl;
+            }
+            break;
+        }
+    default:
+        {
+            cout << "Opcion incorrecta" << endl;
+            break;
+        }
+    }
+
+
 
     system("pause");
 }
@@ -340,7 +424,7 @@ void ManagerReporte::generoMasEscuchado(){
     for(int i=0; i<cantHistoriales; i++){
         for(int j=0; j<cantArt; j++){
             if(vCanciones[j].getID()==vHistoriales[i].getIdSong()){
-                std::string genero = vArtistas[vCanciones[j].getIDArtista()].getGenero();
+                std::string genero = vArtistas[vCanciones[j].getIDArtista()-1].getGenero();
                 for(int g=0; g<cantGenerosUnicos; g++){
                     if(genero==vGenerosUnicos[g]){
                         vFrecuencias[g]++;

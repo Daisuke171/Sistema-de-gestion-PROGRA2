@@ -506,7 +506,7 @@
 
 1749724355 c:\users\lain\desktop\gestormusica tpi test\useraccess.h
 
-1750154374 source:c:\users\lain\desktop\gestormusica tpi test\reporte.cpp
+1750171850 source:c:\users\lain\desktop\gestormusica tpi test\reporte.cpp
 	<iostream>
 	<cstring>
 	"reporte.h"
@@ -528,6 +528,6 @@
 	"rlutils.h"
 	"acceso.h"
 
-1750152679 c:\users\lain\desktop\gestormusica tpi test\arrayutils.h
+1750170588 c:\users\lain\desktop\gestormusica tpi test\arrayutils.h
 	<iostream>
 

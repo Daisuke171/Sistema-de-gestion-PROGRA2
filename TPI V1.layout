@@ -2,9 +2,24 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="artista.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+	<File name="managerSubscriptore.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="174" topLine="0" />
+			<Cursor1 position="15501" topLine="424" />
+		</Cursor>
+	</File>
+	<File name="archivoArtista.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3137" topLine="124" />
+		</Cursor>
+	</File>
+	<File name="reporte.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="361" topLine="13" />
+		</Cursor>
+	</File>
+	<File name="fecha.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="477" topLine="18" />
 		</Cursor>
 	</File>
 	<File name="managerConfiguracion.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
@@ -12,31 +27,9 @@
 			<Cursor1 position="32422" topLine="856" />
 		</Cursor>
 	</File>
-	<File name="artista.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+	<File name="cancion.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="856" topLine="32" />
-		</Cursor>
-	</File>
-	<File name="reporte.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3536" topLine="21" />
-		</Cursor>
-		<Folding>
-			<Collapse line="21" />
-			<Collapse line="137" />
-			<Collapse line="211" />
-			<Collapse line="243" />
-			<Collapse line="274" />
-		</Folding>
-	</File>
-	<File name="managerArtista.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7624" topLine="279" />
-		</Cursor>
-	</File>
-	<File name="managerSubscriptore.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="240" topLine="8" />
+			<Cursor1 position="1757" topLine="65" />
 		</Cursor>
 	</File>
 	<File name="managerAcceso.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
@@ -44,9 +37,64 @@
 			<Cursor1 position="439" topLine="6" />
 		</Cursor>
 	</File>
-	<File name="managerSubscriptore.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="artista.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="15501" topLine="424" />
+			<Cursor1 position="174" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="menu.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="104" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="arrayUtils.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2751" topLine="127" />
+		</Cursor>
+	</File>
+	<File name="managerSubscriptore.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="240" topLine="8" />
+		</Cursor>
+	</File>
+	<File name="archivoArtista.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="204" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="archivoAcceso.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="311" topLine="7" />
+		</Cursor>
+	</File>
+	<File name="suscriptor.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1186" topLine="28" />
+		</Cursor>
+	</File>
+	<File name="archivoAcceso.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1607" topLine="64" />
+		</Cursor>
+	</File>
+	<File name="managerCanciones.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="320" topLine="8" />
+		</Cursor>
+	</File>
+	<File name="artista.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="856" topLine="32" />
+		</Cursor>
+	</File>
+	<File name="acceso.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="419" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="managerArtista.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="426" topLine="3" />
 		</Cursor>
 	</File>
 	<File name="managerConfiguracion.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
@@ -59,9 +107,14 @@
 			<Cursor1 position="270" topLine="16" />
 		</Cursor>
 	</File>
-	<File name="archivosSuscriptor.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+	<File name="menu.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="571" topLine="3" />
+			<Cursor1 position="2923" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="acceso.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1194" topLine="47" />
 		</Cursor>
 	</File>
 	<File name="managerAcceso.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
@@ -73,34 +126,9 @@
 			<Collapse line="110" />
 		</Folding>
 	</File>
-	<File name="acceso.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="cancion.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1194" topLine="47" />
-		</Cursor>
-	</File>
-	<File name="suscriptor.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1186" topLine="28" />
-		</Cursor>
-	</File>
-	<File name="menu.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="104" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="userAccess.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="475" topLine="3" />
-		</Cursor>
-	</File>
-	<File name="arrayUtils.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2751" topLine="127" />
-		</Cursor>
-	</File>
-	<File name="managerArtista.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="426" topLine="3" />
+			<Cursor1 position="1037" topLine="24" />
 		</Cursor>
 	</File>
 	<File name="archivosCancion.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
@@ -108,54 +136,39 @@
 			<Cursor1 position="1984" topLine="79" />
 		</Cursor>
 	</File>
-	<File name="archivoArtista.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="204" topLine="4" />
-		</Cursor>
-	</File>
-	<File name="suscriptor.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2682" topLine="50" />
-		</Cursor>
-	</File>
-	<File name="archivoArtista.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3137" topLine="124" />
-		</Cursor>
-	</File>
 	<File name="managerCanciones.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="7165" topLine="256" />
 		</Cursor>
 	</File>
-	<File name="archivoAcceso.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="archivosSuscriptor.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1607" topLine="64" />
+			<Cursor1 position="571" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="fecha.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="coco funciones.txt" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="477" topLine="18" />
+			<Cursor1 position="152" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="menu.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="reporte.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2923" topLine="12" />
+			<Cursor1 position="12627" topLine="276" />
 		</Cursor>
+		<Folding>
+			<Collapse line="131" />
+			<Collapse line="190" />
+			<Collapse line="264" />
+		</Folding>
 	</File>
 	<File name="archivosCancion.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="252" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="archivoAcceso.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="managerArtista.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="311" topLine="7" />
-		</Cursor>
-	</File>
-	<File name="acceso.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="419" topLine="4" />
+			<Cursor1 position="7624" topLine="279" />
 		</Cursor>
 	</File>
 	<File name="archivosSuscriptor.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
@@ -168,29 +181,14 @@
 			<Cursor1 position="555" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="cancion.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="userAccess.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1757" topLine="65" />
+			<Cursor1 position="475" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="reporte.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="suscriptor.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="361" topLine="13" />
-		</Cursor>
-	</File>
-	<File name="coco funciones.txt" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="152" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="managerCanciones.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="320" topLine="8" />
-		</Cursor>
-	</File>
-	<File name="cancion.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1037" topLine="24" />
+			<Cursor1 position="2682" topLine="50" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
