@@ -65,6 +65,9 @@
 		<Unit filename="archivosSuscriptor.h">
 			<Option virtualFolder="clases/suscriptor/archivos/" />
 		</Unit>
+		<Unit filename="arrayUtils.cpp">
+			<Option virtualFolder="clases/arrayUtils/" />
+		</Unit>
 		<Unit filename="arrayUtils.h">
 			<Option virtualFolder="clases/arrayUtils/" />
 		</Unit>
@@ -91,6 +94,10 @@
 		<Unit filename="fecha.h">
 			<Option virtualFolder="clases/fecha/" />
 		</Unit>
+		<Unit filename="lista de accesos.dat" />
+		<Unit filename="lista de artista.dat" />
+		<Unit filename="lista de canciones.dat" />
+		<Unit filename="lista de subscriptores.dat" />
 		<Unit filename="main.cpp" />
 		<Unit filename="managerAcceso.cpp">
 			<Option virtualFolder="clases/manager/accesos/" />

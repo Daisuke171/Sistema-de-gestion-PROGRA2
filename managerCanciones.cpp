@@ -8,6 +8,7 @@
 #include "artista.h"
 #include "archivoArtista.h"
 #include "managerArtista.h"
+#include "arrayUtils.h"
 
 using namespace std;
 using namespace rlutil;
@@ -299,7 +300,7 @@ void ManagerCanciones::mostrarCancion(){
         cout << "4- Por Anio" << endl;
         locate(tcols()/3,i);
         i++;
-        cout << "5- Volver Atras" << endl;
+        cout << "0- Volver Atras" << endl;
         locate(tcols()/3,i);
         i++;
 
@@ -314,6 +315,7 @@ void ManagerCanciones::mostrarCancion(){
         key = getkey();
         ///PUNTERO PARA SELECCIONAR OPCION :P
 
+        cls();
         switch (key){
             case 14: //up
                 locate((tcols()/3)-2, 5+y);
@@ -410,61 +412,209 @@ void ManagerCanciones::buscarCancion(){
     ArchivoCancion archivo("lista de canciones.dat");
     Cancion reg;
     int cantRegistros = archivo.getCantidadRegistros();
+    int cantidad = archivo.getCantidadRegistros();
 
-    cout << "Ingrese el ID que desea buscar: ";
-    cin >> idSearch;
-    if(std::cin.fail()) {
-    std::cin.clear();
-    std::cin.ignore();
-    std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-    while(true){
-        cout << "Ingrese el ID que desea buscar: ";
-        cin >> idSearch;
+    int key;
+    bool exit = false;
+    int y=0;
+    hidecursor();
 
-        if(std::cin.fail()){
-            std::cin.clear();
-            std::cin.ignore();
-            std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-        }
-        else{
-            break;
-        }
-    }
-    }
+    Cancion *vectorCanciones = new Cancion[cantidad];
+    archivo.leerMuchos(vectorCanciones, cantidad);
 
-    if (!archivo.validarID(idSearch, reg)){
-        cout << "La cancion con ID " << idSearch << " no existe." << endl;
-        system("pause");
-        return;
-    }
+    do{
+        system("cls");
+        int i=3;
+        locate(tcols()/3,i);
+        i++;
+        cout << "Velvet Note Search" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "1- Por Nombre" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "2- Por ID" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "3- Por Genero" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "4- Por Artista" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "5- Por Interprete" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "0- Volver Atras" << endl;
+        locate(tcols()/3,i);
+        i++;
 
-    int posicion=0;
-    bool found = false;
-    for(int i=0; i<cantRegistros; i++){
-        reg = archivo.Leer(i);
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i+2);
+        cout << "SELECCIONE UNA OPCION " << endl;
 
-        if(reg.getID()==idSearch){
-            if(reg.getEstado()==false){
-                cout << "La cancion fue dada de baja" << endl;
+
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+        locate((tcols()/3)-2, 5+y);
+        cout << (char)175;
+        key = getkey();
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+
+        switch (key){
+            case 14: //up
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y--;
+                if(y<0){
+                    y=0;
+                }
+                break;
+            case 15: //dwn
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y++;
+                if(y>5){
+                    y=5;
+                }
+                break;
+        case 1: /// 1 = ENTER
+            switch(y){
+            case 0:
+                {
+                cls();
+                std::string searchSTR;
+
+                cout << "Ingrese el nombre de la cancion que desea buscar: ";
+                getline(cin, searchSTR);
+                cout << endl;
+                for(int i=0; i<cantidad; i++){
+                    if(toLowerCase(searchSTR)==toLowerCase(vectorCanciones[i].getNombre())){
+                        cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
+                        cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
+                        cout << "Autor: " << vectorCanciones[i].getAutor() << '\t' << "ID Autor: " << vectorCanciones[i].getIDArtista() << '\t';
+                        cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
+                        cout << "Genero: " << vectorCanciones[i].getGenero() << endl;
+                        cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                fflush(stdin);
+                cin.clear();
                 system("pause");
-                found=true;
-            }
-            else{
-                cout << "Cancion ID:" << reg.getID() << " info" << endl;
-                cout << "Autor: " << reg.getAutor() << '\t' << "ID Autor: " << reg.getIDArtista() << '\t';
-                cout << " | Interprete: " << reg.getInterprete() << endl;
-                cout << "Fecha de publicacion: " << reg.getFechaPublicacion() << endl;
-                cout << "--------------------------------------------" << endl;
-                found=true;
+                break;
+                }
+            case 1:
+                {
+                cls();
+                int searchINT;
+                cout << "Ingrese el ID de la cancion: ";
+                cin >> searchINT;
+                cout << endl;
+                for(int i=0; i<cantidad; i++){
+                    if(searchINT==vectorCanciones[i].getID()){
+                        cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
+                        cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
+                        cout << "Autor: " << vectorCanciones[i].getAutor() << '\t' << "ID Autor: " << vectorCanciones[i].getIDArtista() << '\t';
+                        cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
+                        cout << "Genero: " << vectorCanciones[i].getGenero() << endl;
+                        cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                fflush(stdin);
+                cin.clear();
+                system("pause");
+                break;
+                }
+            case 2:
+                {
+                cls();
+                std::string searchSTR;
+                cout << "Ingrese el nombre del genero de las canciones que desea buscar: ";
+                getline(cin, searchSTR);
+                cout << endl;
+                for(int i=0; i<cantidad; i++){
+                    if(toLowerCase(searchSTR)==toLowerCase(vectorCanciones[i].getGenero())){
+                        cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
+                        cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
+                        cout << "Autor: " << vectorCanciones[i].getAutor() << '\t' << "ID Autor: " << vectorCanciones[i].getIDArtista() << '\t';
+                        cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
+                        cout << "Genero: " << vectorCanciones[i].getGenero() << endl;
+                        cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                fflush(stdin);
+                cin.clear();
+                system("pause");
+                break;
+                }
+            case 3:
+                {
+                cls();
+                std::string searchSTR;
+                cout << "Ingrese el nombre del artista de las canciones que desea buscar: ";
+                getline(cin, searchSTR);
+                cout << endl;
+                for(int i=0; i<cantidad; i++){
+                    if(toLowerCase(searchSTR)==toLowerCase(vectorCanciones[i].getAutor())){
+                        cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
+                        cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
+                        cout << "Autor: " << vectorCanciones[i].getAutor() << '\t' << "ID Autor: " << vectorCanciones[i].getIDArtista() << '\t';
+                        cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
+                        cout << "Genero: " << vectorCanciones[i].getGenero() << endl;
+                        cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                fflush(stdin);
+                cin.clear();
+                system("pause");
+                break;
+                }
+            case 4:
+                {
+                cls();
+                std::string searchSTR;
+                cout << "Ingrese el nombre del interprete de las canciones que desea buscar: ";
+                getline(cin, searchSTR);
+                cout << endl;
+                for(int i=0; i<cantidad; i++){
+                    if(toLowerCase(searchSTR)==toLowerCase(vectorCanciones[i].getInterprete())){
+                        cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
+                        cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
+                        cout << "Autor: " << vectorCanciones[i].getAutor() << '\t' << "ID Autor: " << vectorCanciones[i].getIDArtista() << '\t';
+                        cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
+                        cout << "Genero: " << vectorCanciones[i].getGenero() << endl;
+                        cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                fflush(stdin);
+                cin.clear();
+                system("pause");
+                break;
+                }
+            case 5:
+                exit=true;
+                break;
+            default:
+                cls();
+                cout << "OPCION INCORRECTA. VUELVA A INGRESAR" << endl;
+                system("pause");
+                break;
             }
         }
-        if(found) break;
+        fflush(stdin);
+        cin.clear();
     }
+    while(!exit);
 
+    delete []vectorCanciones;
 
-
-
-    system("pause");
     cls();
     fflush(stdin);
 }

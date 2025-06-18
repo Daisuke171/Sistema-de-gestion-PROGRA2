@@ -189,7 +189,7 @@
 	"artista.h"
 	"archivoArtista.h"
 
-1750237581 source:c:\users\lain\desktop\gestormusica tpi test\managercanciones.cpp
+1750250612 source:c:\users\lain\desktop\gestormusica tpi test\managercanciones.cpp
 	<iostream>
 	<cstring>
 	"cancion.h"
@@ -200,6 +200,7 @@
 	"artista.h"
 	"archivoArtista.h"
 	"managerArtista.h"
+	"arrayUtils.h"
 
 1747574841 c:\users\lain\desktop\gestormusica tpi test\managercanciones.h
 	"archivosCancion.h"
@@ -464,13 +465,14 @@
 	<cstring>
 	"artista.h"
 
-1750239644 source:c:\users\lain\desktop\gestormusica tpi test\managerartista.cpp
+1750252027 source:c:\users\lain\desktop\gestormusica tpi test\managerartista.cpp
 	<iostream>
 	<cstring>
 	"artista.h"
 	"archivoArtista.h"
 	"managerArtista.h"
 	"rlutils.h"
+	"arrayUtils.h"
 
 1747737712 c:\users\lain\desktop\gestormusica tpi test\managerartista.h
 	"archivoArtista.h"
