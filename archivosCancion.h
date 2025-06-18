@@ -19,6 +19,12 @@ public:
     bool buscarPorCancionID(int idBuscado, Cancion &resultado);
     bool buscarPorCancionNombre(std::string nombre, Cancion &resultado);
     bool guardarCancion(Cancion reg, int posicion); ///sobreescritura
+
+
+    ///ordenamiento
+    void ordenarCancionesPorGenero(Cancion *vCanciones, int tam);
+    void ordenarCancionesPorArtistas(Cancion *vCanciones, int tam);
+    void ordenarCancionesPorAnio(Cancion *vCanciones, int tam);
 };
 
 #endif // ARCHIVOSCANCION_H_INCLUDED

@@ -41,6 +41,7 @@ public:
     bool getEstado() const;
     int getEdad(const int dia, const int mes, const int anio) const;
 
+
 };
 
 

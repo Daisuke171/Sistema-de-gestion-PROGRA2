@@ -137,3 +137,41 @@ bool ArchivoCancion::guardarCancion(Cancion reg, int posicion){
     fclose(pArchivo);
     return ok;
 }
+
+
+
+void ArchivoCancion::ordenarCancionesPorGenero(Cancion *vCanciones, int tam){
+    for(int i=0; i<tam-1; i++) {
+        for(int j=0; j<tam-i-1; j++) {
+            if(vCanciones[j].getGenero() > vCanciones[j+1].getGenero()) {
+                Cancion aux = vCanciones[j];
+                vCanciones[j] = vCanciones[j + 1];
+                vCanciones[j+1] = aux;
+            }
+        }
+    }
+}
+
+void ArchivoCancion::ordenarCancionesPorArtistas(Cancion *vCanciones, int tam){
+    for(int i=0; i<tam-1; i++) {
+        for(int j=0; j<tam-i-1; j++) {
+            if(vCanciones[j].getAutor() > vCanciones[j+1].getAutor()) {
+                Cancion aux = vCanciones[j];
+                vCanciones[j] = vCanciones[j+1];
+                vCanciones[j+1] = aux;
+            }
+        }
+    }
+}
+
+void ArchivoCancion::ordenarCancionesPorAnio(Cancion *vCanciones, int tam){
+    for(int i=0; i<tam-1; i++) {
+        for(int j=0; j<tam-i-1; j++) {
+            if(vCanciones[j].getAnioPublicacion() > vCanciones[j+1].getAnioPublicacion()){
+                Cancion aux = vCanciones[j];
+                vCanciones[j] = vCanciones[j+1];
+                vCanciones[j+1] = aux;
+            }
+        }
+    }
+}

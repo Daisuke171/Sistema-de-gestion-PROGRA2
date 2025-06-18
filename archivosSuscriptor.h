@@ -20,6 +20,11 @@ public:
     bool validarID(int idBuscado, Subscriptor &resultado);
     int buscarSubPorID(int idBuscado, Subscriptor &resultado);
     bool guardarSubscriptor(Subscriptor reg, int posicion); ///sobreescritura
+
+    ///ordenamiento
+    void ordenarSubscriptoresPorDNI(Subscriptor *vSubscriptor, int tam);
+    void ordenarSubscriptoresPorNombre(Subscriptor *vSubscriptor, int tam);
+    void ordenarSubscriptoresPorApellido(Subscriptor *vSubscriptor, int tam);
 };
 
 #endif // ARCHIVOSSUSCRIPTOR_H_INCLUDED

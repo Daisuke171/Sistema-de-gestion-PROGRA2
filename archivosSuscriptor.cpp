@@ -119,3 +119,48 @@ bool ArchivoSubscriptor::guardarSubscriptor(Subscriptor reg, int posicion){
     fclose(pArchivo);
     return ok;
 }
+
+void ArchivoSubscriptor::ordenarSubscriptoresPorDNI(Subscriptor *vSubscriptor, int tam){
+    int posmin;
+
+    for(int i=0; i<tam-1; i++) {
+        posmin = i;
+        for(int j=i+1; j<tam; j++) {
+            if(vSubscriptor[j].getDni()<vSubscriptor[posmin].getDni()) {
+                posmin = j;
+            }
+        }
+
+        Subscriptor aux = vSubscriptor[i];
+        vSubscriptor[i] = vSubscriptor[posmin];
+        vSubscriptor[posmin] = aux;
+    }
+}
+
+void ArchivoSubscriptor::ordenarSubscriptoresPorNombre(Subscriptor *vSubscriptor, int tam){
+    for(int i=0; i<tam-1; i++) {
+        for(int j=0; j<tam-i-1; j++){
+            std::string nombre1 = vSubscriptor[j].getNombre();
+            std::string nombre2 = vSubscriptor[j+1].getNombre();
+            if(nombre1 > nombre2){
+                Subscriptor aux = vSubscriptor[j];
+                vSubscriptor[j] = vSubscriptor[j + 1];
+                vSubscriptor[j+1] = aux;
+            }
+        }
+    }
+}
+
+void ArchivoSubscriptor::ordenarSubscriptoresPorApellido(Subscriptor *vSubscriptor, int tam){
+    for(int i=0; i<tam-1; i++) {
+        for(int j=0; j<tam-i-1; j++){
+            std::string apellido1 = vSubscriptor[j].getApellido();
+            std::string apellido2 = vSubscriptor[j+1].getApellido();
+            if(apellido1 > apellido2){
+                Subscriptor aux = vSubscriptor[j];
+                vSubscriptor[j] = vSubscriptor[j + 1];
+                vSubscriptor[j+1] = aux;
+            }
+        }
+    }
+}

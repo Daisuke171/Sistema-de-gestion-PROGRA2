@@ -21,6 +21,10 @@ public:
     int buscarHistorialPorCancion(std::string cancion, HistorialUsuario &resultado);
     int buscarHistorialPorArtista(std::string artista, HistorialUsuario &resultado);
     bool guardarHistorial(HistorialUsuario reg, int posicion); ///sobreescritura
+
+    ///ordenamiento
+    void ordenarHistorialPorUsuario(HistorialUsuario *vHistoriales, int tam);
+    void ordenarHistorialPorFecha(HistorialUsuario *vHistoriales, int tam);
 };
 
 #endif // ARCHIVOACCESO_H_INCLUDED

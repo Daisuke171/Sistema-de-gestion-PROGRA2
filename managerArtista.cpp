@@ -169,18 +169,138 @@ void ManagerArtista::mostrarArtista(){
 
     _archivo.leerMuchos(vectorArtista, cantidad);
 
-    for(int i=0; i<cantidad; i++){
-        if(vectorArtista[i].getEstado()){
-            cout << "Artista ID:" << vectorArtista[i].getIDArtista() << " info" << endl;
-            cout << "Nombre de la banda: " << vectorArtista[i].getNombre() << endl;
-            cout << "Genero musicial: " << vectorArtista[i].getGenero() << endl;
-            cout << "Pais de origen: " << vectorArtista[i].getPais() << endl;
-            cout << "Email: " << vectorArtista[i].getEmail() << endl;
-            cout << "--------------------------------------------" << endl;
+    int key;
+    bool exit = false;
+    int y=0;
+    hidecursor();
+
+    do{
+        system("cls");
+        int i=3;
+        locate(tcols()/3,i);
+        i++;
+        cout << "Velvet Note Show" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "1- Por ID" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "2- Alfabeticamente" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "3- Por Genero" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "4- Por Pais" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "5- Volver Atras" << endl;
+        locate(tcols()/3,i);
+        i++;
+
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i+2);
+        cout << "SELECCIONE UNA OPCION " << endl;
+
+
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+        locate((tcols()/3)-2, 5+y);
+        cout << (char)175;
+        key = getkey();
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+
+        switch (key){
+            case 14: //up
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y--;
+                if(y<0){
+                    y=0;
+                }
+                break;
+            case 15: //dwn
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y++;
+                if(y>4){
+                    y=4;
+                }
+                break;
+        case 1: /// 1 = ENTER
+            switch(y){
+            case 0:
+                //POR ID DEFAULT
+                for(int i=0; i<cantidad; i++){
+                    if(vectorArtista[i].getEstado()){
+                        cout << "Artista ID:" << vectorArtista[i].getIDArtista() << " info" << endl;
+                        cout << "Nombre de la banda: " << vectorArtista[i].getNombre() << endl;
+                        cout << "Genero musicial: " << vectorArtista[i].getGenero() << endl;
+                        cout << "Pais de origen: " << vectorArtista[i].getPais() << endl;
+                        cout << "Email: " << vectorArtista[i].getEmail() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                system("pause");
+                break;
+            case 1:
+                _archivo.ordenarAlfabeticamente(vectorArtista, cantidad);
+                for(int i=0; i<cantidad; i++){
+                    if(vectorArtista[i].getEstado()){
+                        cout << "Artista ID:" << vectorArtista[i].getIDArtista() << " info" << endl;
+                        cout << "Nombre de la banda: " << vectorArtista[i].getNombre() << endl;
+                        cout << "Genero musicial: " << vectorArtista[i].getGenero() << endl;
+                        cout << "Pais de origen: " << vectorArtista[i].getPais() << endl;
+                        cout << "Email: " << vectorArtista[i].getEmail() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                system("pause");
+                break;
+            case 2:
+                _archivo.ordenarArtistasPorGenero(vectorArtista, cantidad);
+                for(int i=0; i<cantidad; i++){
+                    if(vectorArtista[i].getEstado()){
+                        cout << "Artista ID:" << vectorArtista[i].getIDArtista() << " info" << endl;
+                        cout << "Nombre de la banda: " << vectorArtista[i].getNombre() << endl;
+                        cout << "Genero musicial: " << vectorArtista[i].getGenero() << endl;
+                        cout << "Pais de origen: " << vectorArtista[i].getPais() << endl;
+                        cout << "Email: " << vectorArtista[i].getEmail() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                system("pause");
+                break;
+            case 3:
+                _archivo.ordenarArtistasPorPais(vectorArtista, cantidad);
+                for(int i=0; i<cantidad; i++){
+                    if(vectorArtista[i].getEstado()){
+                        cout << "Artista ID:" << vectorArtista[i].getIDArtista() << " info" << endl;
+                        cout << "Nombre de la banda: " << vectorArtista[i].getNombre() << endl;
+                        cout << "Genero musicial: " << vectorArtista[i].getGenero() << endl;
+                        cout << "Pais de origen: " << vectorArtista[i].getPais() << endl;
+                        cout << "Email: " << vectorArtista[i].getEmail() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                system("pause");
+                break;
+            case 4:
+                exit=true;
+                break;
+            default:
+                cls();
+                cout << "OPCION INCORRECTA. VUELVA A INGRESAR" << endl;
+                system("pause");
+                break;
+            }
         }
     }
+    while(!exit);
 
-    system("pause");
+
     delete []vectorArtista;
 
     cls();

@@ -226,20 +226,146 @@ void ManagerSubscriptores::mostrarSubscriptores(){
     }
 
     _archivo.leerMuchos(vectorSubscriptores, cantidad);
+    int key;
+    bool exit = false;
+    int y=0;
+    hidecursor();
 
-    for(int i=0; i<cantidad; i++){
-        if(vectorSubscriptores[i].getEstado()){
-            cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
-            cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
-            cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
-            cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
-            cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
-            cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
-            cout << "--------------------------------------------" << endl;
+    do{
+        system("cls");
+        int i=3;
+        locate(tcols()/3,i);
+        i++;
+        cout << "Velvet Note Show" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "1- Por ID" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "2- Por DNI" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "3- Por Nombre" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "4- Por Apellido" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "5- Volver Atras" << endl;
+        locate(tcols()/3,i);
+        i++;
+
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i+2);
+        cout << "SELECCIONE UNA OPCION " << endl;
+
+
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+        locate((tcols()/3)-2, 5+y);
+        cout << (char)175;
+        key = getkey();
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+
+        switch (key){
+            case 14: //up
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y--;
+                if(y<0){
+                    y=0;
+                }
+                break;
+            case 15: //dwn
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y++;
+                if(y>4){
+                    y=4;
+                }
+                break;
+        case 1: /// 1 = ENTER
+            switch(y){
+            case 0:
+                //POR ID DEFAULT
+                cls();
+                for(int i=0; i<cantidad; i++){
+                    if(vectorSubscriptores[i].getEstado()){
+                        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
+                        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
+                        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+                        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
+                        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
+                        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                system("pause");
+                break;
+            case 1:
+                cls();
+                _archivo.ordenarSubscriptoresPorDNI(vectorSubscriptores, cantidad);
+                for(int i=0; i<cantidad; i++){
+                    if(vectorSubscriptores[i].getEstado()){
+                        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
+                        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
+                        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+                        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
+                        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
+                        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                system("pause");
+                break;
+            case 2:
+                cls();
+                _archivo.ordenarSubscriptoresPorNombre(vectorSubscriptores, cantidad);
+                for(int i=0; i<cantidad; i++){
+                    if(vectorSubscriptores[i].getEstado()){
+                        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
+                        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
+                        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+                        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
+                        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
+                        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                system("pause");
+                break;
+            case 3:
+                cls();
+                _archivo.ordenarSubscriptoresPorApellido(vectorSubscriptores, cantidad);
+                for(int i=0; i<cantidad; i++){
+                    if(vectorSubscriptores[i].getEstado()){
+                        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
+                        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
+                        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+                        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
+                        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
+                        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                system("pause");
+                break;
+            case 4:
+                exit=true;
+                break;
+            default:
+                cls();
+                cout << "OPCION INCORRECTA. VUELVA A INGRESAR" << endl;
+                system("pause");
+                break;
+            }
         }
     }
+    while(!exit);
 
-    system("pause");
+
     delete []vectorSubscriptores;
 
     cls();

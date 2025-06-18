@@ -3,6 +3,7 @@
 using namespace std;
 #include "archivoArtista.h"
 #include "artista.h"
+#include "arrayUtils.h"
 
 ArchivoArtista::ArchivoArtista(std::string nombreArchivo){
     _nombreArchivo = nombreArchivo;
@@ -137,4 +138,47 @@ bool ArchivoArtista::guardarArtista(Artista reg, int posicion){
     bool ok = fwrite(&reg, sizeof(Artista), 1, pArchivo);
     fclose(pArchivo);
     return ok;
+}
+
+void ArchivoArtista::ordenarAlfabeticamente(Artista *vArtistas, int tam) {
+    for(int i=0; i<tam-1; i++) {
+        for(int j=0; j<tam-i-1; j++) {
+            std::string nombre1 = toLowerCase(vArtistas[j].getNombre());
+            std::string nombre2 = toLowerCase(vArtistas[j + 1].getNombre());
+
+            if(nombre1>nombre2) {
+                Artista aux = vArtistas[j];
+                vArtistas[j] = vArtistas[j + 1];
+                vArtistas[j + 1] = aux;
+            }
+        }
+    }
+}
+
+void ArchivoArtista::ordenarArtistasPorGenero(Artista *vArtistas, int tam){
+    for(int i=0; i<tam-1; i++) {
+        for(int j=0; j<tam-i-1; j++){
+            std::string genero1 = vArtistas[j].getGenero();
+            std::string genero2 = vArtistas[j+1].getGenero();
+            if(genero1 > genero2){
+                Artista aux = vArtistas[j];
+                vArtistas[j] = vArtistas[j + 1];
+                vArtistas[j+1] = aux;
+            }
+        }
+    }
+}
+
+void ArchivoArtista::ordenarArtistasPorPais(Artista *vArtistas, int tam){
+    for(int i=0; i<tam-1; i++) {
+        for(int j=0; j<tam-i-1; j++){
+            std::string pais1 = vArtistas[j].getPais();
+            std::string pais2 = vArtistas[j+1].getPais();
+            if(pais1 > pais2){
+                Artista aux = vArtistas[j];
+                vArtistas[j] = vArtistas[j + 1];
+                vArtistas[j+1] = aux;
+            }
+        }
+    }
 }

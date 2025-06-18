@@ -26,6 +26,9 @@ public:
     void setDia(int dia);
 
     std::string toString();
+    int getDiaDesdeSTR(std::string anioSTR);
+    int getMesDesdeSTR(std::string anioSTR);
+    int getAnioDesdeSTR(std::string anioSTR);
 };
 
 #endif // CLSFECHA_H_INCLUDED

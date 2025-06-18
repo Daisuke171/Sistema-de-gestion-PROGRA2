@@ -4,9 +4,11 @@ using namespace std;
 #include "acceso.h"
 #include "cancion.h"
 #include "artista.h"
+#include "fecha.h"
 #include "archivoAcceso.h"
 #include "archivosCancion.h"
 #include "archivoArtista.h"
+#include "arrayUtils.h"
 
 ArchivoHistorial::ArchivoHistorial(std::string nombreArchivo){
     _nombreArchivo = nombreArchivo;
@@ -142,4 +144,51 @@ bool ArchivoHistorial::validarID(int idBuscado, HistorialUsuario &resultado){
 
     fclose(pFile);
     return false;
+}
+
+void ArchivoHistorial::ordenarHistorialPorUsuario(HistorialUsuario *vHistoriales, int tam){
+    int posmin;
+
+    for(int i=0; i<tam-1; i++) {
+        posmin = i;
+        for(int j=i+1; j<tam; j++) {
+            if(vHistoriales[j].getIdSub()<vHistoriales[posmin].getIdSub()) {
+                posmin = j;
+            }
+        }
+
+        HistorialUsuario aux = vHistoriales[i];
+        vHistoriales[i] = vHistoriales[posmin];
+        vHistoriales[posmin] = aux;
+    }
+}
+
+void ArchivoHistorial::ordenarHistorialPorFecha(HistorialUsuario *vHistoriales, int tam){
+    for(int i=0; i<tam-1; i++) {
+        int posMin = i;
+
+        for(int j=i+1; j<tam; j++) {
+            std::string fecha1 = vHistoriales[posMin].getFecha();
+            std::string fecha2 = vHistoriales[j].getFecha();
+
+            int anio1 = getAnioDesdeSTR(fecha1);
+            int anio2 = getAnioDesdeSTR(fecha2);
+
+            int mes1 = getMesDesdeSTR(fecha1);
+            int mes2 = getMesDesdeSTR(fecha2);
+
+            int dia1 = getDiaDesdeSTR(fecha1);
+            int dia2 = getDiaDesdeSTR(fecha2);
+
+            if(anio2 < anio1 || (anio2 == anio1 && mes2 < mes1) || (anio2 == anio1 && mes2 == mes1 && dia2 < dia1)){
+                posMin = j;
+            }
+        }
+
+        if (posMin != i) {
+            HistorialUsuario aux = vHistoriales[i];
+            vHistoriales[i] = vHistoriales[posMin];
+            vHistoriales[posMin] = aux;
+        }
+    }
 }

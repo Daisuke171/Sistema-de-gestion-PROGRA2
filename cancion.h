@@ -35,6 +35,10 @@ public:
     std::string getInterprete() const;
     std::string getFechaPublicacion();
     bool getEstado() const;
+
+    std::string getGenero() const;
+    Fecha getFecha();
+    int getAnioPublicacion();
 };
 
 #endif // CANCION_H_INCLUDED

@@ -78,10 +78,58 @@ std::string Cancion::getInterprete() const{
     return _interprete;
 }
 
+Fecha Cancion::getFecha(){
+    Fecha _fechaPublicacion;
+}
+
 std::string Cancion::getFechaPublicacion(){
     return _fechaPublicacion.toString();
 }
 
 bool Cancion::getEstado() const{
     return _estadoCancion;
+}
+
+std::string Cancion::getGenero() const{
+    Artista regArt;
+    ArchivoArtista archivoArtista("lista de artista.dat");
+    std::string _genero;
+    int idArtista = this -> getIDArtista();
+
+    regArt = archivoArtista.Leer(idArtista-1);
+    _genero = regArt.getGenero();
+
+    return _genero;
+}
+
+int Cancion::getAnioPublicacion(){
+    std::string anioSTR = this -> getFechaPublicacion();
+    char slash = '/';
+    int slashInt = (int)slash;
+    int vAnio[4] = {};
+    int indexAnio = 0;
+
+    int contadorSlashes = 0;
+    for(int  i=0; i<anioSTR.length(); i++) {
+        if(anioSTR[i]==slash) {
+            contadorSlashes++;
+            continue;
+        }
+
+        if(contadorSlashes==2 && indexAnio<4) {
+            // Convertimos de char '2' a int 2 restando '0' que es 48 en int
+            vAnio[indexAnio] = anioSTR[i] - '0';
+            indexAnio++;
+        }
+    }
+
+    int anio = 0;
+    int unidades = 1000;
+
+    for(int i=0; i<4; i++){
+        anio += vAnio[i]*unidades;
+        unidades /= 10;
+    }
+
+    return anio;
 }

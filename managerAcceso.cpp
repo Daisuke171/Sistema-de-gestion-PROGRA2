@@ -11,6 +11,7 @@ using namespace std;
 #include "archivoAcceso.h"
 #include "archivosCancion.h"
 #include "archivoArtista.h"
+#include "arrayUtils.h"
 using namespace rlutil;
 
 void ManagerHistorial::mostrarSubmenuHistorial(){
@@ -256,18 +257,126 @@ void ManagerHistorial::mostrarHistorial(){
 
     _archivo.leerMuchos(vectorHistorial, cantidad);
 
-    for(int i=0; i<cantidad; i++){
-        regSub = archivo.Leer(vectorHistorial[i].getIdSub()-1);
-        regCancion = archivo2.Leer(vectorHistorial[i].getIdSong()-1);
-        cout << "ID HISTORIAL: " << vectorHistorial[i].getID() << endl;
-        cout << "Historial de usuario #" << vectorHistorial[i].getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
-        cout << "Cancion #" << vectorHistorial[i].getIdSong() << ": " << regCancion.getNombre() << endl;
-        cout << "Banda: " << regCancion.getAutor() << endl;
-        cout << "Fecha: " << vectorHistorial[i].getFecha() << " Hora: " << vectorHistorial[i].getHora() << endl;
-        cout << "--------------------------------------------" << endl;
-    }
 
-    system("pause");
+
+    int key;
+    bool exit = false;
+    int y=0;
+    hidecursor();
+
+    do{
+        system("cls");
+        int i=3;
+        locate(tcols()/3,i);
+        i++;
+        cout << "Velvet Note Show" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "1- Por ID" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "2- Por Usuario" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "3- Por Fecha" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "4- Volver Atras" << endl;
+        locate(tcols()/3,i);
+        i++;
+
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i+2);
+        cout << "SELECCIONE UNA OPCION " << endl;
+
+
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+        locate((tcols()/3)-2, 5+y);
+        cout << (char)175;
+        key = getkey();
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+
+        switch (key){
+            case 14: //up
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y--;
+                if(y<0){
+                    y=0;
+                }
+                break;
+            case 15: //dwn
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y++;
+                if(y>3){
+                    y=3;
+                }
+                break;
+        case 1: /// 1 = ENTER
+            switch(y){
+            case 0:
+                //POR ID DEFAULT
+                for(int i=0; i<cantidad; i++){
+                    regSub = archivo.Leer(vectorHistorial[i].getIdSub()-1);
+                    regCancion = archivo2.Leer(vectorHistorial[i].getIdSong()-1);
+                    cout << "ID HISTORIAL: " << vectorHistorial[i].getID() << endl;
+                    cout << "Historial de usuario #" << vectorHistorial[i].getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
+                    cout << "Cancion #" << vectorHistorial[i].getIdSong() << ": " << regCancion.getNombre() << endl;
+                    cout << "Banda: " << regCancion.getAutor() << endl;
+                    cout << "Fecha: " << vectorHistorial[i].getFecha() << " Hora: " << vectorHistorial[i].getHora() << endl;
+                    std::string fecha = vectorHistorial[i].getFecha();
+                    cout << "--------------------------------------------" << endl;
+                }
+                system("pause");
+                break;
+            case 1:
+                _archivo.ordenarHistorialPorUsuario(vectorHistorial, cantidad);
+                for(int i=0; i<cantidad; i++){
+                    regSub = archivo.Leer(vectorHistorial[i].getIdSub()-1);
+                    regCancion = archivo2.Leer(vectorHistorial[i].getIdSong()-1);
+                    cout << "ID HISTORIAL: " << vectorHistorial[i].getID() << endl;
+                    cout << "Historial de usuario #" << vectorHistorial[i].getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
+                    cout << "Cancion #" << vectorHistorial[i].getIdSong() << ": " << regCancion.getNombre() << endl;
+                    cout << "Banda: " << regCancion.getAutor() << endl;
+                    cout << "Fecha: " << vectorHistorial[i].getFecha() << " Hora: " << vectorHistorial[i].getHora() << endl;
+                    std::string fecha = vectorHistorial[i].getFecha();
+                    cout << "--------------------------------------------" << endl;
+                }
+                system("pause");
+                break;
+            case 2:
+                _archivo.ordenarHistorialPorFecha(vectorHistorial, cantidad);
+                for(int i=0; i<cantidad; i++){
+                    regSub = archivo.Leer(vectorHistorial[i].getIdSub()-1);
+                    regCancion = archivo2.Leer(vectorHistorial[i].getIdSong()-1);
+                    cout << "ID HISTORIAL: " << vectorHistorial[i].getID() << endl;
+                    cout << "Historial de usuario #" << vectorHistorial[i].getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
+                    cout << "Cancion #" << vectorHistorial[i].getIdSong() << ": " << regCancion.getNombre() << endl;
+                    cout << "Banda: " << regCancion.getAutor() << endl;
+                    cout << "Fecha: " << vectorHistorial[i].getFecha() << " Hora: " << vectorHistorial[i].getHora() << endl;
+                    std::string fecha = vectorHistorial[i].getFecha();
+                    cout << "--------------------------------------------" << endl;
+                }
+                system("pause");
+                break;
+            case 3:
+                exit=true;
+                break;
+            default:
+                cls();
+                cout << "OPCION INCORRECTA. VUELVA A INGRESAR" << endl;
+                system("pause");
+                break;
+            }
+        }
+    }
+    while(!exit);
+
+
     delete []vectorHistorial;
 
     cls();

@@ -8,6 +8,7 @@
 #include "artista.h"
 #include "archivoArtista.h"
 #include "managerArtista.h"
+
 using namespace std;
 using namespace rlutil;
 
@@ -269,16 +270,134 @@ void ManagerCanciones::mostrarCancion(){
 
     _archivo.leerMuchos(vectorCanciones, cantidad);
 
-    for(int i=0; i<cantidad; i++){
-        cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
-        cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
-        cout << "Autor: " << vectorCanciones[i].getAutor() << '\t' << "ID Autor: " << vectorCanciones[i].getIDArtista() << '\t';
-        cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
-        cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
-        cout << "--------------------------------------------" << endl;
-    }
 
-    system("pause");
+    int key;
+    bool exit = false;
+    int y=0;
+    hidecursor();
+
+    do{
+        system("cls");
+        int i=3;
+        locate(tcols()/3,i);
+        i++;
+        cout << "Velvet Note Show" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "1- Por ID" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "2- Por Genero" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "3- Por Artista" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "4- Por Anio" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "5- Volver Atras" << endl;
+        locate(tcols()/3,i);
+        i++;
+
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i+2);
+        cout << "SELECCIONE UNA OPCION " << endl;
+
+
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+        locate((tcols()/3)-2, 5+y);
+        cout << (char)175;
+        key = getkey();
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+
+        switch (key){
+            case 14: //up
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y--;
+                if(y<0){
+                    y=0;
+                }
+                break;
+            case 15: //dwn
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y++;
+                if(y>4){
+                    y=4;
+                }
+                break;
+        case 1: /// 1 = ENTER
+            switch(y){
+            case 0:
+                //POR ID DEFAULT
+                for(int i=0; i<cantidad; i++){
+                    cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
+                    cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
+                    cout << "Autor: " << vectorCanciones[i].getAutor() << '\t' << "ID Autor: " << vectorCanciones[i].getIDArtista() << '\t';
+                    cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
+                    cout << "Genero: " << vectorCanciones[i].getGenero() << endl;
+                    cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
+                    cout << "--------------------------------------------" << endl;
+                }
+                system("pause");
+                break;
+            case 1:
+                _archivo.ordenarCancionesPorGenero(vectorCanciones, cantidad);
+                for(int i=0; i<cantidad; i++){
+                    cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
+                    cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
+                    cout << "Autor: " << vectorCanciones[i].getAutor() << '\t' << "ID Autor: " << vectorCanciones[i].getIDArtista() << '\t';
+                    cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
+                    cout << "Genero: " << vectorCanciones[i].getGenero() << endl;
+                    cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
+                    cout << "--------------------------------------------" << endl;
+                }
+                system("pause");
+                break;
+            case 2:
+                _archivo.ordenarCancionesPorArtistas(vectorCanciones, cantidad);
+                for(int i=0; i<cantidad; i++){
+                    cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
+                    cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
+                    cout << "Autor: " << vectorCanciones[i].getAutor() << '\t' << "ID Autor: " << vectorCanciones[i].getIDArtista() << '\t';
+                    cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
+                    cout << "Genero: " << vectorCanciones[i].getGenero() << endl;
+                    cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
+                    cout << "--------------------------------------------" << endl;
+                }
+                system("pause");
+                break;
+            case 3:
+                _archivo.ordenarCancionesPorAnio(vectorCanciones, cantidad);
+                for(int i=0; i<cantidad; i++){
+                    cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
+                    cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
+                    cout << "Autor: " << vectorCanciones[i].getAutor() << '\t' << "ID Autor: " << vectorCanciones[i].getIDArtista() << '\t';
+                    cout << " | Interprete: " << vectorCanciones[i].getInterprete() << endl;
+                    cout << "Genero: " << vectorCanciones[i].getGenero() << endl;
+                    cout << "Fecha de publicacion: " << vectorCanciones[i].getFechaPublicacion() << endl;
+                    cout << "--------------------------------------------" << endl;
+                }
+                system("pause");
+                break;
+            case 4:
+                exit=true;
+                break;
+            default:
+                cls();
+                cout << "OPCION INCORRECTA. VUELVA A INGRESAR" << endl;
+                system("pause");
+                break;
+            }
+        }
+    }
+    while(!exit);
+
     delete []vectorCanciones;
 
     cls();
