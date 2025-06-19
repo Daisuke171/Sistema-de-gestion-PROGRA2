@@ -147,16 +147,8 @@ void ManagerCanciones::cargarCancion(){
     getline(cin, autor);
 
     if(!archivoArtistas.validarNombreArtista(autor, regArtistas)){
-        cout << "El artista no se encuentra en la base de datos. Desea crearlo? (0= no, 1=si)" << endl;
-        bool crearArtista = false;
-        cin >> crearArtista;
-        if(crearArtista){
-            manArtista.cargarArtista(autor);
-            idArtista = archivoArtistas.getCantidadRegistros(); ///como es un registro nuevo el ID es igual a la cantidad de registros
-        }
-        else{
-            return;
-        }
+        cout << "El artista no se encuentra en la base de datos" << endl;
+        return;
     }
     else{
         pFile = fopen("lista de artista.dat", "rb");
@@ -172,80 +164,39 @@ void ManagerCanciones::cargarCancion(){
         }
 
         fclose(pFile);
-        cls();
     }
-
-    ///verificar si no existe la cancion ya del mismo artista
-
-    ///El if-else de arriba hace un cls() si o si
-    cout << "ID Cancion: " << id << endl;
-    cout << "Ingrese nombre de la cancion: ";
-    cout << nombre << endl;
-    cout << "Ingrese nombre del autor: ";
-    cout << autor << endl;
-    ///El if-else de arriba hace un cls() si o si
 
     cout << "Ingrese nombre del interprete: ";
     getline(cin, interprete);
+
     cout << "Ingrese dia: ";
     cin >> dia;
-    if(std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore();
-        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-        while(true){
-            cout << "Ingrese dia: ";
-            cin >> dia;
-
-            if(std::cin.fail()){
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-            }
-            else{
-                break;
-            }
-        }
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
     }
+
     cout << "Ingrese mes: ";
     cin >> mes;
-    if(std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore();
-        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-        while(true){
-            cout << "Ingrese mes: ";
-            cin >> mes;
-
-            if(std::cin.fail()){
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-            }
-            else{
-                break;
-            }
-        }
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
     }
+
     cout << "Ingrese anio: ";
     cin >> anio;
-    if(std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore();
-        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-        while(true){
-            cout << "Ingrese anio: ";
-            cin >> anio;
-
-            if(std::cin.fail()){
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-            }
-            else{
-                break;
-            }
-        }
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
     }
 
     bool estado = true;

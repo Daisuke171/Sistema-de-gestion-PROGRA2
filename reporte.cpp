@@ -268,29 +268,31 @@ void ManagerReporte::cantidadCancionesPorArtista(){
     Artista regArt;
     ArchivoArtista archivoArtista("lista de artista.dat");
 
-    int cantArtistas = archivoArtista.getCantidadRegistros();
-    int cantCanciones = archivoCancion.getCantidadRegistros();
+    int cantCancionesReg = archivoCancion.getCantidadRegistros();
+    Cancion *vCanciones = new Cancion[cantCancionesReg];
+    archivoCancion.leerMuchos(vCanciones, cantCancionesReg);
 
-    int *cantCancionesPorArtista = new int[cantArtistas];
-    llenarArray(cantCancionesPorArtista, cantArtistas);
+    int cantArtistasReg = archivoArtista.getCantidadRegistros();
+    Artista *vArtistas = new Artista[cantArtistasReg];
+    archivoArtista.leerMuchos(vArtistas, cantArtistasReg);
 
-    int idArt;
-    for(int i=0; i<cantCanciones; i++) {
-        regCan = archivoCancion.Leer(i);
-        idArt = regCan.getIDArtista() - 1;
-        if(idArt>=0 && idArt<cantArtistas) {
-            cantCancionesPorArtista[idArt]++;
-        }
+    int *vCancionesPorArtista = new int[cantArtistasReg];
+    llenarArray(vCancionesPorArtista, cantArtistasReg);
+
+
+    for(int i=0; i<cantCancionesReg; i++){
+        cout << vCanciones[i].getNombre() << ": " << vCanciones[i].getIDArtista() <<endl;
     }
 
-
-    for(int i=0; i<cantArtistas; i++) {
-        regArt = archivoArtista.Leer(i);
-        cout << regArt.getNombre() << ": " << cantCancionesPorArtista[i] << endl;
+    /*
+    for(int i=0; i<cantArtistasReg; i++){
+        cout << vArtistas[i].getNombre() << ": " << vCancionesPorArtista[i] << endl;
     }
+*/
 
-
-    delete []cantCancionesPorArtista;
+    delete []vArtistas;
+    delete []vCancionesPorArtista;
+    delete []vCanciones;
     system("pause");
 }
 

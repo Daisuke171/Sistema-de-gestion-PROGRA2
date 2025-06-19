@@ -9,56 +9,55 @@ ID,Nombre,Genero,Email,Pais
 8,Number Girl,Rock,nambagaru@yahoo.co.jp,Japon
 9,Radiohead,Alternative Rock,radio@head.com,Inglaterra
 10,Hanumaan,Rock,hanumaan@yahoo.com,Japon
-11,,,,
-12,Kaguyahime,Folk,kaguyahime1987@yahoo.co.jp,Japon
-13,Sex Pistols,Punk Rock,johnnyrotten1986@hotmail.uk,Inglaterra
-14,L'ArcenCiel,Rock,Jap¢n,laruku_official@gmail.jp
-15,The Pillows,Alternative Rock,Jap¢n,pillows1999@yahoo.co.jp
-16,Toe,Math Rock,Jap¢n,toe_japan@outlook.com
-17,Asian Kung-Fu Generation,Indie Rock,Jap¢n,akfgmail@music.co.jp
-18,Supercar,Shoegaze,Jap¢n,supercar.jp@hotmail.com
-19,The Back Horn,Alternative Rock,Jap¢n,backhorn@bandmail.jp
-20,Bump of Chicken,Rock,Jap¢n,boc_official@gmail.jp
-21,RADWIMPS,Rock,Jap¢n,rad_radwimps@yahoo.co.jp
-22,Spitz,Pop Rock,Jap¢n,spitz1991@musicmail.jp
-23,Sakanaction,Electronic Rock,Jap¢n,sakana@outlook.jp
-24,King Gnu,Indie Pop,Jap¢n,kinggnu.info@gmail.jp
-25,Thee Michelle Gun Elephant,Garage Rock,Jap¢n,tmge@yahoo.co.jp
-26,Elephant Kashimashi,Rock,Jap¢n,elephantk@outlook.com
-27,ZAZEN BOYS,Experimental Rock,Jap¢n,zazen_boys@hotmail.co.jp
-28,Cornelius,Electronic,Jap¢n,cornelius1996@gmail.com
-29,Quruli,Alternative Rock,Jap¢n,quruli_contact@music.jp
-30,Ningen Isu,Heavy Metal,Jap¢n,ningenisu@rockmail.jp
-31,Envy,Post-Hardcore,Jap¢n,envyhxc@hotmail.com
-32,Mono,Post-Rock,Jap¢n,mono_instrumental@gmail.jp
-33,Glim Spanky,Blues Rock,Jap¢n,glimspanky@yahoo.jp
-34,Mass of the Fermenting Dregs,Shoegaze,Jap¢n,motfd@musicmail.jp
-35,Polkadot Stingray,J-Rock,Jap¢n,polkasting@gmail.com
-36,tricot,Math Rock,Jap¢n,tricot_jp@yahoo.co.jp
-37,Ling Tosite Sigure,Post-Hardcore,Jap¢n,lts@musicmail.jp
-38,Aimer,Pop Rock,Jap¢n,aimer_staff@outlook.jp
-39,Mr. Children,Pop Rock,Jap¢n,mrchildren@gmail.jp
-40,Ikimono Gakari,Pop Rock,Jap¢n,ikimono_band@music.co.jp
-41,MAN WITH A MISSION,Rock,Jap¢n,mwam_band@gmail.com
-42,UVERworld,Rock,Jap¢n,uver_contact@yahoo.jp
-43,SCANDAL,Pop Rock,Jap¢n,scandalband@hotmail.co.jp
-44,Nana Kitade,Gothic Rock,Jap¢n,nk_band@musicmail.jp
-45,BABYMETAL,Kawaii Metal,Jap¢n,babymetal.foxgod@gmail.jp
-46,Dir En Grey,Metal,Jap¢n,direngrey_contact@yahoo.jp
-47,BUCK-TICK,Visual Kei,Jap¢n,bucktick1987@hotmail.jp
-48,Luna Sea,Rock,Jap¢n,lunasea_band@musicmail.jp
-49,Malice Mizer,Gothic Rock,Jap¢n,malicemizer_official@yahoo.jp
-50,X Japan,Heavy Metal,Jap¢n,xjapan1980@outlook.jp
-51,VAMPS,Alternative Rock,Jap¢n,vampsband@gmail.com
-52,The Gazette,Visual Kei,Jap¢n,thegazette@musicmail.jp
-53,MUCC,Alternative Metal,Jap¢n,mucc_band@yahoo.jp
-54,SiM,Reggae Punk,Jap¢n,sim_japan@music.co.jp
-55,coldrain,Post-Hardcore,Jap¢n,coldrain_official@rockmail.jp
-56,Crossfaith,Metalcore,Jap¢n,crossfaith_band@gmail.com
-57,Fear, and Loathing in Las Vegas,Electronicore,Jap¢n,falilv.contact@music.jp
-58,FLOW,Rock,Jap¢n,flow_band@yahoo.co.jp
-59,Orange Range,Pop Rock,Jap¢n,orangerange@hotmail.jp
-60,Sambomaster,Rock,Jap¢n,sambo2000@outlook.jp
-61,Base Ball Bear,Indie Rock,Jap¢n,bbb_official@gmail.com
-62,Kana-Boon,Rock,Jap¢n,kanaboon.music@yahoo.co.jp
-63,Frederic,Indie Pop,Jap¢n,frederic.band@musicmail.jp
+11,Kaguyahime,Folk,kaguyahime1987@yahoo.co.jp,Japon
+12,Sex Pistols,Punk Rock,johnnyrotten1986@hotmail.uk,Inglaterra
+13,L'ArcenCiel,Rock,laruku_official@gmail.jp,Japon
+14,The Pillows,Alternative Rock,pillows1999@yahoo.co.jp,Japon
+15,Toe,Math Rock,toe_japan@outlook.com,Japon
+16,Asian Kung-Fu Generation,Indie Rock,akfgmail@music.co.jp,Japon
+17,Supercar,Shoegaze,supercar.jp@hotmail.com,Japon
+18,The Back Horn,Alternative Rock,backhorn@bandmail.jp,Japon
+19,Bump of Chicken,Rock,boc_official@gmail.jp,Japon
+20,RADWIMPS,Rock,rad_radwimps@yahoo.co.jp,Japon
+21,Spitz,Pop Rock,spitz1991@musicmail.jp,Japon
+22,Sakanaction,Electronic Rock,sakana@outlook.jp,Japon
+23,King Gnu,Indie Pop,kinggnu.info@gmail.jp,Japon
+24,Thee Michelle Gun Elephant,Garage Rock,tmge@yahoo.co.jp,Japon
+25,Elephant Kashimashi,Rock,elephantk@outlook.com,Japon
+26,ZAZEN BOYS,Experimental Rock,zazen_boys@hotmail.co.jp,Japon
+27,Cornelius,Electronic,cornelius1996@gmail.com,Japon
+28,Quruli,Alternative Rock,quruli_contact@music.jp,Japon
+29,Ningen Isu,Heavy Metal,ningenisu@rockmail.jp,Japon
+30,Envy,Post-Hardcore,envyhxc@hotmail.com,Japon
+31,Mono,Post-Rock,mono_instrumental@gmail.jp,Japon
+32,Glim Spanky,Blues Rock,glimspanky@yahoo.jp,Japon
+33,Mass of the Fermenting Dregs,Shoegaze,motfd@musicmail.jp,Japon
+34,Polkadot Stingray,J-Rock,polkasting@gmail.com,Japon
+35,tricot,Math Rock,tricot_jp@yahoo.co.jp,Japon
+36,Ling Tosite Sigure,Post-Hardcore,lts@musicmail.jp,Japon
+37,Aimer,Pop Rock,aimer_staff@outlook.jp,Japon
+38,Mr. Children,Pop Rock,mrchildren@gmail.jp,Japon
+39,Ikimono Gakari,Pop Rock,ikimono_band@music.co.jp,Japon
+40,MAN WITH A MISSION,Rock,mwam_band@gmail.com,Japon
+41,UVERworld,Rock,uver_contact@yahoo.jp,Japon
+42,SCANDAL,Pop Rock,scandalband@hotmail.co.jp,Japon
+43,Nana Kitade,Gothic Rock,nk_band@musicmail.jp,Japon
+44,BABYMETAL,Kawaii Metal,babymetal.foxgod@gmail.jp,Japon
+45,Dir En Grey,Metal,direngrey_contact@yahoo.jp,Japon
+46,BUCK-TICK,Visual Kei,bucktick1987@hotmail.jp,Japon
+47,Luna Sea,Rock,lunasea_band@musicmail.jp,Japon
+48,Malice Mizer,Gothic Rock,malicemizer_official@yahoo.jp,Japon
+49,X Japan,Heavy Metal,xjapan1980@outlook.jp,Japon
+50,VAMPS,Alternative Rock,vampsband@gmail.com,Japon
+51,The Gazette,Visual Kei,thegazette@musicmail.jp,Japon
+52,MUCC,Alternative Metal,mucc_band@yahoo.jp,Japon
+53,SiM,Reggae Punk,sim_japan@music.co.jp,Japon
+54,coldrain,Post-Hardcore,coldrain_official@rockmail.jp,Japon
+55,Crossfaith,Metalcore,crossfaith_band@gmail.com,Japon
+56,Fear, and Loathing in Las Vegas,Electronicore,falilv.contact@music.jp,Japon
+57,FLOW,Rock,flow_band@yahoo.co.jp,Japon
+58,Orange Range,Pop Rock,orangerange@hotmail.jp,Japon
+59,Sambomaster,Rock,sambo2000@outlook.jp,Japon
+60,Base Ball Bear,Indie Rock,bbb_official@gmail.com,Japon
+61,Kana-Boon,Rock,kanaboon.music@yahoo.co.jp,Japon
+62,Frederic,Indie Pop,frederic.band@musicmail.jp,Japon

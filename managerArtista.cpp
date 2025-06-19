@@ -117,7 +117,7 @@ void ManagerArtista::cargarArtista(){
     Artista reg;
     ArchivoArtista archivo("lista de artista.dat");
 
-  //  while(true){
+  ///  while(true){
     int idArtista = _archivo.getNewID();
     cout << "ID Artista: " << idArtista << endl;
 
@@ -126,7 +126,7 @@ void ManagerArtista::cargarArtista(){
     cout << "Ingrese nombre de la banda: ";
     getline(cin, nombreArtista);
 
-    ///Para ver si ya hay un registro con ese nombre
+    //Para ver si ya hay un registro con ese nombre
     if(archivo.validarNombreArtista(nombreArtista, reg)){
         cout << "El artista ya se encuentra en la base de datos." << endl;
         system("pause");
@@ -152,7 +152,7 @@ void ManagerArtista::cargarArtista(){
     else{
         cout << "ERROR: El subscriptor no se pudo guardar" << endl;
     }
-   // }
+   /// }
     fflush(stdin);
     system("pause");
     cls();
@@ -200,7 +200,7 @@ void ManagerArtista::mostrarArtista(){
         cout << "4- Por Pais" << endl;
         locate(tcols()/3,i);
         i++;
-        cout << "5- Volver Atras" << endl;
+        cout << "0- Volver Atras" << endl;
         locate(tcols()/3,i);
         i++;
 

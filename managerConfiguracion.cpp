@@ -705,22 +705,6 @@ bool ManagerConfiguracion::restaurarData(){
                     HistorialUsuario regHis;
                     Subscriptor regSub;
 
-/*
-                    ///EN CASO DE SOBREESCRIBIR INIT
-                    //cambiar archivos de arriba por wb+ y rb respectivamente
-                    //cambiar archivo y registro por el que queres sobreescribir el init
-                    //este por ej es para artistas
-                    bool ok;
-                    for(int i=0; i<archivoArt.getCantidadRegistros(); i++){
-                        regArt = archivoArt.Leer(i);
-                        ok = fwrite(&regArt, sizeof(Artista), 1, pFile1INIT);
-                        if(!ok){
-                            cout << "no se guardo bien" << endl;
-                            return false;
-                        }
-                    }
-*/
-
 
                     if(!validarInit(regArt, archivoArtINI, pFile1)){
                         break;
@@ -743,6 +727,7 @@ bool ManagerConfiguracion::restaurarData(){
                     fclose(pFile2);
                     fclose(pFile3);
                     fclose(pFile4);
+
                     cout << "Se reinicializo correctamente los datos" << endl;
                     system("pause");
                     break;
