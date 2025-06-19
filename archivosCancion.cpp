@@ -89,6 +89,25 @@ bool ArchivoCancion::validarID(int idBuscado, Cancion &resultado){
     return false;
 }
 
+bool ArchivoCancion::validarNombre(std::string nombreBuscado){
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+    if(pFile == nullptr){
+        perror("Error: No se pudo abrir archivo");
+        return false;
+    }
+
+    Cancion reg;
+    while(fread(&reg, sizeof(Cancion), 1, pFile) == 1){
+        if(reg.getNombre() == nombreBuscado){
+            fclose(pFile);
+            return true;
+        }
+    }
+
+    fclose(pFile);
+    return false;
+}
+
 int ArchivoCancion::getNewID(){
     return getCantidadRegistros() + 1;
 }
@@ -138,7 +157,22 @@ bool ArchivoCancion::guardarCancion(Cancion reg, int posicion){
     return ok;
 }
 
+void ArchivoCancion::ordenarDefaultID(Cancion *vCancion, int tam){
+    int posmin;
 
+    for(int i=0; i<tam-1; i++){
+        posmin = i;
+        for(int j=i+1; j<tam; j++){
+            if(vCancion[j].getID()<vCancion[posmin].getID()){
+                posmin = j;
+            }
+        }
+
+        Cancion aux = vCancion[i];
+        vCancion[i] = vCancion[posmin];
+        vCancion[posmin] = aux;
+    }
+}
 
 void ArchivoCancion::ordenarCancionesPorGenero(Cancion *vCanciones, int tam){
     for(int i=0; i<tam-1; i++) {

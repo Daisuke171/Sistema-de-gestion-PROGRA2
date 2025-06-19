@@ -9,7 +9,7 @@
 #include "archivoArtista.h"
 #include "managerArtista.h"
 #include "arrayUtils.h"
-
+#include "userAccess.h"
 using namespace std;
 using namespace rlutil;
 
@@ -135,6 +135,13 @@ void ManagerCanciones::cargarCancion(){
 
     cout << "Ingrese nombre de la cancion: ";
     getline(cin, nombre);
+
+    bool yaExiste = _archivo.validarNombre(nombre);
+    if(yaExiste){
+        cout << "El nombre ya existe" << endl;
+        system("pause>null");
+        return;
+    }
 
     cout << "Ingrese nombre del autor: ";
     getline(cin, autor);
@@ -337,6 +344,7 @@ void ManagerCanciones::mostrarCancion(){
             switch(y){
             case 0:
                 //POR ID DEFAULT
+                _archivo.ordenarDefaultID(vectorCanciones, cantidad);
                 for(int i=0; i<cantidad; i++){
                     cout << "Cancion ID:" << vectorCanciones[i].getID() << " info" << endl;
                     cout << "Nombre de la cancion: " << vectorCanciones[i].getNombre() << endl;
@@ -626,8 +634,22 @@ void ManagerCanciones::eliminarCancion(){
     Cancion reg;
     int cantRegistros = archivo.getCantidadRegistros();
 
+    bool ok = confirmation();
+
+    if(!ok){
+        return;
+    }
+
     cout << "Ingrese el ID de la cancion que desee dar de baja: ";
     cin >> idSearch;
+
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
+    }
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "La cancion con ID " << idSearch << " no existe." << endl;

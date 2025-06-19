@@ -12,6 +12,7 @@ using namespace std;
 #include "archivosCancion.h"
 #include "archivoArtista.h"
 #include "arrayUtils.h"
+#include "userAccess.h"
 using namespace rlutil;
 
 void ManagerHistorial::mostrarSubmenuHistorial(){
@@ -124,6 +125,14 @@ void ManagerHistorial::cargarHistorial(){
     cout << "Ingrese el ID del usuario: ";
     cin >> idUser;
 
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
+    }
+
     ///FUNCION PARA VER SI EL ID EXISTE
     if (!archivo2.validarID(idUser, s)){
         cout << "El usuario con ID " << idUser << " no existe. No se puede crear el acceso" << endl;
@@ -134,6 +143,14 @@ void ManagerHistorial::cargarHistorial(){
     cout << "Ingrese el ID de la cancion: ";
     cin >> idSong;
 
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
+    }
+
     ///FUNCION PARA VER SI EL ID EXISTE
     if (!archivo.buscarPorCancionID(idSong, c)){
         cout << "La cancion con ID " << idSong << " no existe. No se puede crear el acceso" << endl;
@@ -143,84 +160,44 @@ void ManagerHistorial::cargarHistorial(){
 
     cout << "Ingrese dia: ";
     cin >> dia;
-    if(std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore();
-        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-        while(true){
-            cout << "Ingrese dia: ";
-            cin >> dia;
-
-            if(std::cin.fail()){
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-            }
-            else{
-                break;
-            }
-        }
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
     }
+
     cout << "Ingrese mes: ";
     cin >> mes;
-    if(std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore();
-        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-        while(true){
-            cout << "Ingrese mes: ";
-            cin >> mes;
-
-            if(std::cin.fail()){
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-            }
-            else{
-                break;
-            }
-        }
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
     }
+
     cout << "Ingrese anio: ";
     cin >> anio;
-    if(std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore();
-        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-        while(true){
-            cout << "Ingrese anio: ";
-            cin >> anio;
-
-            if(std::cin.fail()){
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-            }
-            else{
-                break;
-            }
-        }
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
     }
+
     cout << "Ingrese hora: ";
     cin >> hora;
-    if(std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore();
-        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-        while(true){
-            cout << "Ingrese hora: ";
-            cin >> hora;
-
-            if(std::cin.fail()){
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-            }
-            else{
-                break;
-            }
-        }
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
     }
+
     HistorialUsuario reg;
     bool estado = true;
     reg = HistorialUsuario(id, idSong, idUser, Fecha(dia,mes,anio), hora, estado);
@@ -320,6 +297,7 @@ void ManagerHistorial::mostrarHistorial(){
             switch(y){
             case 0:
                 //POR ID DEFAULT
+                _archivo.ordenarDefaultID(vectorHistorial, cantidad);
                 for(int i=0; i<cantidad; i++){
                     regSub = archivo.Leer(vectorHistorial[i].getIdSub()-1);
                     regCancion = archivo2.Leer(vectorHistorial[i].getIdSong()-1);
@@ -390,25 +368,20 @@ void ManagerHistorial::eliminarHistorial(){
     HistorialUsuario reg;
     int cantRegistros = archivo.getCantidadRegistros();
 
+    bool ok = confirmation();
+
+    if(!ok){
+        return;
+    }
+
     cout << "Ingrese el ID del historial que desee dar de baja: ";
     cin >> idSearch;
-    if(std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore();
-        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-        while(true){
-            cout << "Ingrese el ID del historial que desee dar de baja: ";
-            cin >> idSearch;
-
-            if(std::cin.fail()){
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-            }
-            else{
-                break;
-            }
-        }
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
     }
 
     if (!archivo.validarID(idSearch, reg)){

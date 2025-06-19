@@ -140,6 +140,23 @@ bool ArchivoArtista::guardarArtista(Artista reg, int posicion){
     return ok;
 }
 
+void ArchivoArtista::ordenarDefaultID(Artista *vArtista, int tam){
+    int posmin;
+
+    for(int i=0; i<tam-1; i++){
+        posmin = i;
+        for(int j=i+1; j<tam; j++){
+            if(vArtista[j].getIDArtista()<vArtista[posmin].getIDArtista()){
+                posmin = j;
+            }
+        }
+
+        Artista aux = vArtista[i];
+        vArtista[i] = vArtista[posmin];
+        vArtista[posmin] = aux;
+    }
+}
+
 void ArchivoArtista::ordenarAlfabeticamente(Artista *vArtistas, int tam) {
     for(int i=0; i<tam-1; i++) {
         for(int j=0; j<tam-i-1; j++) {

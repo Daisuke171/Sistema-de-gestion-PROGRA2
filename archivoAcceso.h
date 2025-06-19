@@ -23,6 +23,7 @@ public:
     bool guardarHistorial(HistorialUsuario reg, int posicion); ///sobreescritura
 
     ///ordenamiento
+    void ordenarDefaultID(HistorialUsuario *vHistorial, int tam);
     void ordenarHistorialPorUsuario(HistorialUsuario *vHistoriales, int tam);
     void ordenarHistorialPorFecha(HistorialUsuario *vHistoriales, int tam);
 };

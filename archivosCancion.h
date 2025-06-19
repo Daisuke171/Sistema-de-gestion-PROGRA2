@@ -15,6 +15,7 @@ public:
     Cancion Leer(int posicion); ///lectura
     bool leerMuchos(Cancion reg[], int cantidad); ///lectura archivos
     bool validarID(int idBuscado, Cancion &resultado);
+    bool validarNombre(std::string nombreBuscado);
     int getNewID();
     bool buscarPorCancionID(int idBuscado, Cancion &resultado);
     bool buscarPorCancionNombre(std::string nombre, Cancion &resultado);
@@ -22,6 +23,7 @@ public:
 
 
     ///ordenamiento
+    void ordenarDefaultID(Cancion *vCancion, int tam);
     void ordenarCancionesPorGenero(Cancion *vCanciones, int tam);
     void ordenarCancionesPorArtistas(Cancion *vCanciones, int tam);
     void ordenarCancionesPorAnio(Cancion *vCanciones, int tam);

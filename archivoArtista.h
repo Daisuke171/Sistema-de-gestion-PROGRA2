@@ -25,6 +25,7 @@ public:
     ///ordenamiento
     //Ordenado por generos
     //Ordenado en orden alfabético
+    void ordenarDefaultID(Artista *vArtista, int tam);
     void ordenarAlfabeticamente(Artista *vArtistas, int tam);
     void ordenarArtistasPorGenero(Artista *vArtistas, int tam);
     void ordenarArtistasPorPais(Artista *vArtistas, int tam);

@@ -91,6 +91,26 @@ bool ArchivoSubscriptor::validarID(int idBuscado, Subscriptor &resultado){
     fclose(pFile);
     return false;
 }
+
+bool ArchivoSubscriptor::validarDNI(std::string dniBuscado){
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+    if(pFile == nullptr){
+        perror("Error: No se pudo abrir archivo");
+        return false;
+    }
+
+    Subscriptor reg;
+    while(fread(&reg, sizeof(Subscriptor), 1, pFile) == 1){
+        if(reg.getDni() == dniBuscado){
+            fclose(pFile);
+            return true;
+        }
+    }
+
+    fclose(pFile);
+    return false;
+}
+
 int ArchivoSubscriptor::buscarSubPorID(int idBuscado, Subscriptor &resultado){
     FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
     if(pFile == nullptr) return -1;
@@ -120,6 +140,23 @@ bool ArchivoSubscriptor::guardarSubscriptor(Subscriptor reg, int posicion){
     return ok;
 }
 
+void ArchivoSubscriptor::ordenarDefaultID(Subscriptor *vSubscriptor, int tam){
+    int posmin;
+
+    for(int i=0; i<tam-1; i++){
+        posmin = i;
+        for(int j=i+1; j<tam; j++){
+            if(vSubscriptor[j].getIDSub()<vSubscriptor[posmin].getIDSub()){
+                posmin = j;
+            }
+        }
+
+        Subscriptor aux = vSubscriptor[i];
+        vSubscriptor[i] = vSubscriptor[posmin];
+        vSubscriptor[posmin] = aux;
+    }
+}
+
 void ArchivoSubscriptor::ordenarSubscriptoresPorDNI(Subscriptor *vSubscriptor, int tam){
     int posmin;
 
@@ -146,6 +183,15 @@ void ArchivoSubscriptor::ordenarSubscriptoresPorNombre(Subscriptor *vSubscriptor
                 Subscriptor aux = vSubscriptor[j];
                 vSubscriptor[j] = vSubscriptor[j + 1];
                 vSubscriptor[j+1] = aux;
+            }
+            else if(nombre1 == nombre2){
+                std::string apellido1 = vSubscriptor[j].getApellido();
+                std::string apellido2 = vSubscriptor[j+1].getApellido();
+                if(apellido1 > apellido2){
+                    Subscriptor aux = vSubscriptor[j];
+                    vSubscriptor[j] = vSubscriptor[j + 1];
+                    vSubscriptor[j+1] = aux;
+                }
             }
         }
     }

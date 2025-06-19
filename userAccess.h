@@ -3,24 +3,8 @@
 using namespace std;
 #define msg(str) std::cout<<str<<std::endl;
 
-const char *admin = "agus23";
-const char *passwordAdmin = "admin";
+bool logon();
 
-bool logon(){
-    string user, password;
-
-    msg("INGRESE NOMBRE DEL ADMIN:");
-    cin>>user;
-
-    msg("INGRESE CONTRASENIA: ");
-    cin>>password;
-
-    if(user!=admin || password!=passwordAdmin){
-        return false;
-    }
-    else if(user==admin && password==passwordAdmin){
-        return true;
-    }
-}
+bool confirmation();
 
 #endif // USERACCESS_H_INCLUDED

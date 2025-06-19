@@ -6,6 +6,7 @@ using namespace std;
 #include "managerArtista.h"
 #include "rlutils.h"
 #include "arrayUtils.h"
+#include "userAccess.h"
 using namespace rlutil;
 
 void ManagerArtista::mostrarSubmenuArtista(){
@@ -116,6 +117,7 @@ void ManagerArtista::cargarArtista(){
     Artista reg;
     ArchivoArtista archivo("lista de artista.dat");
 
+  //  while(true){
     int idArtista = _archivo.getNewID();
     cout << "ID Artista: " << idArtista << endl;
 
@@ -134,11 +136,11 @@ void ManagerArtista::cargarArtista(){
     cout << "Ingrese genero musical: ";
     getline(cin, genero);
 
-    cout << "Ingrese email: ";
-    getline(cin, email);
-
     cout << "Ingrese pais de origen: ";
     getline(cin, pais);
+
+    cout << "Ingrese email: ";
+    getline(cin, email);
 
     bool estado = true;
 
@@ -150,7 +152,7 @@ void ManagerArtista::cargarArtista(){
     else{
         cout << "ERROR: El subscriptor no se pudo guardar" << endl;
     }
-
+   // }
     fflush(stdin);
     system("pause");
     cls();
@@ -235,6 +237,7 @@ void ManagerArtista::mostrarArtista(){
             switch(y){
             case 0:
                 //POR ID DEFAULT
+                _archivo.ordenarDefaultID(vectorArtista, cantidad);
                 for(int i=0; i<cantidad; i++){
                     if(vectorArtista[i].getEstado()){
                         cout << "Artista ID:" << vectorArtista[i].getIDArtista() << " info" << endl;
@@ -385,8 +388,8 @@ void ManagerArtista::buscarArtista(){
             case 0:
                 {
                 cls();
-                std::string searchSTR;
 
+                std::string searchSTR;
                 cout << "Ingrese el nombre del artista que desea buscar: ";
                 getline(cin, searchSTR);
                 cout << endl;
@@ -499,8 +502,22 @@ void ManagerArtista::eliminarArtista(){
     Artista reg;
     int cantRegistros = archivo.getCantidadRegistros();
 
+    bool ok = confirmation();
+
+    if(!ok){
+        return;
+    }
+
     cout << "Ingrese el ID del subscriptor que desee dar de baja: ";
     cin >> idSearch;
+
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
+    }
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "El artista con ID " << idSearch << " no existe." << endl;

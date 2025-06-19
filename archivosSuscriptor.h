@@ -18,10 +18,12 @@ public:
     Subscriptor Leer(int posicion); ///lectura
     int getNewID();
     bool validarID(int idBuscado, Subscriptor &resultado);
+    bool validarDNI(std::string dniBuscado);
     int buscarSubPorID(int idBuscado, Subscriptor &resultado);
     bool guardarSubscriptor(Subscriptor reg, int posicion); ///sobreescritura
 
     ///ordenamiento
+    void ordenarDefaultID(Subscriptor *vSubscriptor, int tam);
     void ordenarSubscriptoresPorDNI(Subscriptor *vSubscriptor, int tam);
     void ordenarSubscriptoresPorNombre(Subscriptor *vSubscriptor, int tam);
     void ordenarSubscriptoresPorApellido(Subscriptor *vSubscriptor, int tam);

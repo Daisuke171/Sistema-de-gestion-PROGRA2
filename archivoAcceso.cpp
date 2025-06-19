@@ -146,6 +146,23 @@ bool ArchivoHistorial::validarID(int idBuscado, HistorialUsuario &resultado){
     return false;
 }
 
+void ArchivoHistorial::ordenarDefaultID(HistorialUsuario *vHistorial, int tam){
+    int posmin;
+
+    for(int i=0; i<tam-1; i++){
+        posmin = i;
+        for(int j=i+1; j<tam; j++){
+            if(vHistorial[j].getID()<vHistorial[posmin].getID()){
+                posmin = j;
+            }
+        }
+
+        HistorialUsuario aux = vHistorial[i];
+        vHistorial[i] = vHistorial[posmin];
+        vHistorial[posmin] = aux;
+    }
+}
+
 void ArchivoHistorial::ordenarHistorialPorUsuario(HistorialUsuario *vHistoriales, int tam){
     int posmin;
 
