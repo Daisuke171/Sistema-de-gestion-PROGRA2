@@ -111,6 +111,25 @@ bool ArchivoSubscriptor::validarDNI(std::string dniBuscado){
     return false;
 }
 
+int ArchivoSubscriptor::devolverIDmediandeDNI(std::string dniBuscado){
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+    if(pFile == nullptr){
+        perror("Error: No se pudo abrir archivo");
+        return false;
+    }
+
+    Subscriptor reg;
+    while(fread(&reg, sizeof(Subscriptor), 1, pFile) == 1){
+        if(reg.getDni() == dniBuscado){
+            fclose(pFile);
+            return reg.getIDSub();
+        }
+    }
+
+    fclose(pFile);
+    return false;
+}
+
 int ArchivoSubscriptor::buscarSubPorID(int idBuscado, Subscriptor &resultado){
     FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
     if(pFile == nullptr) return -1;

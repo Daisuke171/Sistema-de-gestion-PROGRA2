@@ -39,10 +39,13 @@ void ManagerHistorial::mostrarSubmenuHistorial(){
         cout << "2- Mostrar Historial" << endl;
         i++;
         locate(tcols()/3,i);
-        cout << "3- Eliminar Historial" << endl;
+        cout << "3- Buscar Historial" << endl;
         i++;
         locate(tcols()/3,i);
-        cout << "4- Modificar Historial" << endl;
+        cout << "4- Eliminar Historial" << endl;
+        i++;
+        locate(tcols()/3,i);
+        cout << "5- Modificar Historial" << endl;
         i++;
         locate(tcols()/3,i);
         cout << "0- Volver atras" << endl;
@@ -72,8 +75,8 @@ void ManagerHistorial::mostrarSubmenuHistorial(){
                 locate((tcols()/3)-2, 5+y);
                 cout << " ";
                 y++;
-                if(y>4){
-                    y=4;
+                if(y>5){
+                    y=5;
                 }
                 break;
         case 1: /// 1 = ENTER
@@ -88,13 +91,17 @@ void ManagerHistorial::mostrarSubmenuHistorial(){
                 break;
             case 2:
                 cls();
-                eliminarHistorial();
+                buscarHistorial();
                 break;
             case 3:
                 cls();
-                modificarHistorial();
+                eliminarHistorial();
                 break;
             case 4:
+                cls();
+                modificarHistorial();
+                break;
+            case 5:
                 cls();
                 exit=true;
                 break;
@@ -510,3 +517,179 @@ void ManagerHistorial::modificarHistorial(){
     fflush(stdin);
 }
 
+void ManagerHistorial::buscarHistorial(){
+    fflush(stdin);
+    int cantidad = _archivo.getCantidadRegistros();
+    HistorialUsuario *vectorHistorial;
+    vectorHistorial = new HistorialUsuario[cantidad];
+
+    ArchivoSubscriptor archivo("lista de subscriptores.dat");
+    Subscriptor regSub;
+    ArchivoCancion archivo2("lista de canciones.dat");
+    Cancion regCancion;
+
+    if(vectorHistorial==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
+
+    _archivo.leerMuchos(vectorHistorial, cantidad);
+
+    int key;
+    bool exit = false;
+    int y=0;
+    hidecursor();
+
+    do{
+        system("cls");
+        int i=3;
+        locate(tcols()/3,i);
+        i++;
+        cout << "Velvet Note Show" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "1- Por DNI" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "2- Por Cancion" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "0- Salir" << endl;
+        locate(tcols()/3,i);
+        i++;
+
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i+2);
+        cout << "SELECCIONE UNA OPCION " << endl;
+
+
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+        locate((tcols()/3)-2, 5+y);
+        cout << (char)175;
+        key = getkey();
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+
+        switch (key){
+            case 14: //up
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y--;
+                if(y<0){
+                    y=0;
+                }
+                break;
+            case 15: //dwn
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y++;
+                if(y>2){
+                    y=2;
+                }
+                break;
+        case 1: /// 1 = ENTER
+            switch(y){
+            case 0:
+                {
+                cls();
+                std::string dniSearch;
+                cout << "Ingrese el DNI del usuario que desee buscar: ";
+                getline(cin, dniSearch);
+
+                if(!archivo.validarDNI(dniSearch)){
+                    cout << "Error: no existe el dni" << endl;
+                    break;
+                }
+
+                int cantUsuarios = archivo.getCantidadRegistros();
+
+                Subscriptor *vSubs = new Subscriptor[cantUsuarios];
+                archivo.leerMuchos(vSubs, cantUsuarios);
+
+                int idUser;
+
+                for(int j=0; j<cantUsuarios; j++){
+                    if(vSubs[j].getDni()==dniSearch){
+                        idUser = vSubs[j].getIDSub();
+                        break;
+                    }
+                }
+
+                for(int i=0; i<cantidad; i++){
+                    if(idUser==vectorHistorial[i].getIdSub()){
+                        regSub = archivo.Leer(vectorHistorial[i].getIdSub()-1);
+                        regCancion = archivo2.Leer(vectorHistorial[i].getIdSong()-1);
+                        cout << "ID HISTORIAL: " << vectorHistorial[i].getID() << endl;
+                        cout << "Historial de usuario #" << vectorHistorial[i].getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
+                        cout << "Cancion #" << vectorHistorial[i].getIdSong() << ": " << regCancion.getNombre() << endl;
+                        cout << "Banda: " << regCancion.getAutor() << endl;
+                        cout << "Fecha: " << vectorHistorial[i].getFecha() << " Hora: " << vectorHistorial[i].getHora() << endl;
+                        std::string fecha = vectorHistorial[i].getFecha();
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+
+                system("pause");
+                delete []vSubs;
+                break;
+                }
+            case 1:
+                {
+                cls();
+                std::string songSearch;
+                cout << "Ingrese el nombre de la cancion que desee buscar: ";
+                getline(cin, songSearch);
+
+                int cantSong = archivo.getCantidadRegistros();
+
+                Cancion *vCanciones = new Cancion[cantSong];
+                archivo2.leerMuchos(vCanciones, cantSong);
+
+                int idCancion;
+
+                for(int j=0; j<cantSong; j++){
+                    if(toLowerCase(vCanciones[j].getNombre())==toLowerCase(songSearch)){
+                        idCancion = vCanciones[j].getID();
+                        break;
+                    }
+                }
+
+                for(int i=0; i<cantidad; i++){
+                    if(idCancion==vectorHistorial[i].getIdSong()){
+                        regSub = archivo.Leer(vectorHistorial[i].getIdSub()-1);
+                        regCancion = archivo2.Leer(vectorHistorial[i].getIdSong()-1);
+                        cout << "ID HISTORIAL: " << vectorHistorial[i].getID() << endl;
+                        cout << "Historial de usuario #" << vectorHistorial[i].getIdSub() << ": "  << regSub.getNombre() << " " << regSub.getApellido() << endl;
+                        cout << "Cancion #" << vectorHistorial[i].getIdSong() << ": " << regCancion.getNombre() << endl;
+                        cout << "Banda: " << regCancion.getAutor() << endl;
+                        cout << "Fecha: " << vectorHistorial[i].getFecha() << " Hora: " << vectorHistorial[i].getHora() << endl;
+                        std::string fecha = vectorHistorial[i].getFecha();
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+
+                system("pause");
+                delete []vCanciones;
+                break;
+                }
+            case 2:
+                exit=true;
+                break;
+            default:
+                cls();
+                cout << "OPCION INCORRECTA. VUELVA A INGRESAR" << endl;
+                system("pause");
+                break;
+            }
+        }
+    }
+    while(!exit);
+
+
+    delete []vectorHistorial;
+
+    cls();
+    fflush(stdin);
+}

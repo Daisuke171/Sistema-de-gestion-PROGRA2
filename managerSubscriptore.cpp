@@ -634,13 +634,13 @@ void ManagerSubscriptores::eliminarSubscriptor(){
 
 void ManagerSubscriptores::modificarSubscriptor(){
     fflush(stdin);
-    int idSearch;
+    std::string dniSearch;
     ArchivoSubscriptor archivo("lista de subscriptores.dat");
     Subscriptor reg;
     int cantRegistros = archivo.getCantidadRegistros();
 
-    cout << "Ingrese el ID del subscriptor que desee modificar: ";
-    cin >> idSearch;
+    cout << "Ingrese el DNI del subscriptor que desee modificar: ";
+    getline(cin, dniSearch);
 
     if(cin.fail()){
         cin.clear();
@@ -650,8 +650,8 @@ void ManagerSubscriptores::modificarSubscriptor(){
         return;
     }
 
-    if (!archivo.validarID(idSearch, reg)){
-        cout << "El usuario con ID " << idSearch << " no existe." << endl;
+    if (!archivo.validarDNI(dniSearch)){
+        cout << "El usuario con DNI " << dniSearch << " no existe." << endl;
         system("pause");
         return;
     }
@@ -659,10 +659,11 @@ void ManagerSubscriptores::modificarSubscriptor(){
     int id;
     string nombre, apellido, telefono, email, dni;
     int dia, mes, anio;
-    reg = archivo.Leer(idSearch-1);
 
-    id = idSearch;
-    cout << "ID Subscriptor: " << id << endl;
+    int idSub = archivo.devolverIDmediandeDNI(dniSearch);
+
+    cout << "ID Subscriptor: " << idSub << endl;
+    reg = archivo.Leer(idSub-1);
 
     int option;
 
@@ -781,17 +782,25 @@ void ManagerSubscriptores::modificarSubscriptor(){
                     cls();
                     break;
                 }
+            case 0:
+                break;
             default:
                 {
                     cout << "Error: Ingrese una opcion valida" << endl;
-                    system("pause");
                     cls();
                     break;
                 }
         }
     }while(option!=0);
 
-    archivo.guardarSubscriptor(reg, idSearch-1);
+    if(!archivo.guardarSubscriptor(reg, idSub-1)){
+        cout << "El archivo no se pudo modifico" << endl;
+    }
+    else{
+        cout << "El archivo se modifico satisfactoriamente" << endl;
+    }
+
+
 
     system("pause");
     fflush(stdin);

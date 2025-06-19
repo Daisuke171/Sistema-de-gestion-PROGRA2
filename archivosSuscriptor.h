@@ -19,6 +19,7 @@ public:
     int getNewID();
     bool validarID(int idBuscado, Subscriptor &resultado);
     bool validarDNI(std::string dniBuscado);
+    int devolverIDmediandeDNI(std::string dniBuscado);
     int buscarSubPorID(int idBuscado, Subscriptor &resultado);
     bool guardarSubscriptor(Subscriptor reg, int posicion); ///sobreescritura
 

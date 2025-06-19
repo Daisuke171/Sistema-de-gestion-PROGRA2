@@ -91,13 +91,13 @@
 	<cstring>
 	"suscriptor.h"
 
-1750320048 source:c:\users\lain\desktop\gestormusica tpi test\archivossuscriptor.cpp
+1750339421 source:c:\users\lain\desktop\gestormusica tpi test\archivossuscriptor.cpp
 	<iostream>
 	<cstring>
 	"archivosSuscriptor.h"
 	"suscriptor.h"
 
-1750320048 c:\users\lain\desktop\gestormusica tpi test\archivossuscriptor.h
+1750338948 c:\users\lain\desktop\gestormusica tpi test\archivossuscriptor.h
 	<iostream>
 	<cstring>
 	"suscriptor.h"
@@ -156,7 +156,7 @@
 	"suscriptor.h"
 	"fecha.h"
 
-1750329424 source:c:\users\lain\desktop\gestormusica tpi test\managersubscriptore.cpp
+1750340240 source:c:\users\lain\desktop\gestormusica tpi test\managersubscriptore.cpp
 	"fecha.h"
 	"suscriptor.h"
 	"managerSubscriptore.h"
@@ -219,10 +219,10 @@
 	"suscriptor.h"
 	"fecha.h"
 
-1749985528 c:\users\lain\desktop\gestormusica tpi test\manageracceso.h
+1750340383 c:\users\lain\desktop\gestormusica tpi test\manageracceso.h
 	"archivoAcceso.h"
 
-1750329778 source:c:\users\lain\desktop\gestormusica tpi test\manageracceso.cpp
+1750341787 source:c:\users\lain\desktop\gestormusica tpi test\manageracceso.cpp
 	<iostream>
 	<cstring>
 	"managerAcceso.h"

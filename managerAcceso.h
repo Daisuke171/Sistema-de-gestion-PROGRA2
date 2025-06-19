@@ -17,6 +17,8 @@ public:
     void eliminarHistorial();
     ///4 sobreescribir acceso en archivo
     void modificarHistorial();
+
+    void buscarHistorial();
 };
 
 #endif // MANAGERACCESO_H_INCLUDED
