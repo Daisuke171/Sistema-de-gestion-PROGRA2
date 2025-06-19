@@ -819,16 +819,6 @@ bool ManagerConfiguracion::exportarData(){
             case 0:
                 {
                 cls();
-                ///ADMIN VALIDATION
-                bool isAdmin = logon();
-                if(!isAdmin){
-                    cout << "Usuario o contraseña incorrecta" << endl;
-                    system("pause");
-                    break;
-                }
-                else{
-                    cout << "Bienvenido Administrador" << endl;
-                }
 
                 FILE *pFile;
                 pFile = fopen(".\\exports\\artistas.csv", "wb+"); // "w" para escribir nuevo archivo

@@ -117,7 +117,7 @@ void ManagerArtista::cargarArtista(){
     Artista reg;
     ArchivoArtista archivo("lista de artista.dat");
 
-  ///  while(true){
+
     int idArtista = _archivo.getNewID();
     cout << "ID Artista: " << idArtista << endl;
 
@@ -152,7 +152,7 @@ void ManagerArtista::cargarArtista(){
     else{
         cout << "ERROR: El subscriptor no se pudo guardar" << endl;
     }
-   /// }
+
     fflush(stdin);
     system("pause");
     cls();
@@ -326,6 +326,10 @@ void ManagerArtista::buscarArtista(){
     hidecursor();
 
     Artista *vectorArtista = new Artista[cantidad];
+    if(vectorArtista==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        return;
+    }
     archivo.leerMuchos(vectorArtista, cantidad);
 
     do{
@@ -542,25 +546,14 @@ void ManagerArtista::modificarArtista(){
 
     cout << "Ingrese el ID del artista que desee modificar: ";
     cin >> idSearch;
-    if(std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore();
-        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-        while(true){
-            cout << "Ingrese el ID del artista que desee modificar: ";
-            cin >> idSearch;
-
-            if(std::cin.fail()){
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-            }
-            else{
-                break;
-            }
-        }
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
     }
-    cin.ignore();
+
     if (!archivo.validarID(idSearch, reg)){
         cout << "El artista con ID " << idSearch << " no existe." << endl;
         system("pause");

@@ -5,6 +5,7 @@
 #include <cstring>
 #include "rlutils.h"
 #include "userAccess.h"
+#include "arrayUtils.h"
 using namespace std;
 using namespace rlutil;
 
@@ -356,43 +357,238 @@ void ManagerSubscriptores::buscarSubscriptor(){
     int idSearch;
     ArchivoSubscriptor archivo("lista de subscriptores.dat");
     Subscriptor reg;
-    int cantRegistros = archivo.getCantidadRegistros();
+    int cantidad = archivo.getCantidadRegistros();
 
-    cout << "Ingrese el ID que desea buscar: ";
-    cin >> idSearch;
+    int key;
+    bool exit = false;
+    int y=0;
+    hidecursor();
 
-    if (!archivo.validarID(idSearch, reg)){
-        cout << "El usuario con ID " << idSearch << " no existe." << endl;
-        system("pause");
+    Subscriptor *vectorSubscriptores = new Subscriptor[cantidad];
+    if(vectorSubscriptores==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
         return;
     }
+    archivo.leerMuchos(vectorSubscriptores, cantidad);
 
-    int posicion=0;
-    bool found = false;
-    for(int i=0; i<cantRegistros; i++){
-        reg = archivo.Leer(i);
+    do{
+        system("cls");
+        int i=3;
+        locate(tcols()/3,i);
+        i++;
+        cout << "Velvet Note Search" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "1- Por nombre" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "2- Por apellido" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "3- Por ID" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "4- Por DNI" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "5- Por email" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "6- Por anio de nacimiento" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "0- Volver Atras" << endl;
+        locate(tcols()/3,i);
+        i++;
+        cout << "------------------------" << endl;
+        locate(tcols()/3,i+2);
+        cout << "SELECCIONE UNA OPCION " << endl;
 
-        if(reg.getIDSub()==idSearch){
-            if(reg.getEstado()==false){
-                cout << "El usuario fue dado de baja" << endl;
-                found=true;
-            }
-            else{
-                cout << "Subscriptor ID:" << reg.getIDSub() << " info" << endl;
-                cout << reg.getNombre() << " " << reg.getApellido() << endl;
-                cout << "Fecha de nacimiento: " << reg.getFechaNacimiento() << endl;
-                cout << "DNI: " << reg.getDni() << endl;
-                cout << "Email: " << reg.getEmail() << endl;
-                cout << "Telefono: " << reg.getTelefono() << endl;
-                cout << "--------------------------------------------" << endl;
-                found=true;
+
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+        locate((tcols()/3)-2, 5+y);
+        cout << (char)175;
+        key = getkey();
+        ///PUNTERO PARA SELECCIONAR OPCION :P
+
+        switch (key){
+            case 14: //up
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y--;
+                if(y<0){
+                    y=0;
+                }
+                break;
+            case 15: //dwn
+                locate((tcols()/3)-2, 5+y);
+                cout << " ";
+                y++;
+                if(y>6){
+                    y=6;
+                }
+                break;
+        case 1: /// 1 = ENTER
+            switch(y){
+            case 0:
+                {
+                cls();
+                std::string searchSTR;
+                cout << "Ingrese el nombre del subscriptor que desea buscar: ";
+                getline(cin, searchSTR);
+                cout << endl;
+                for(int i=0; i<cantidad; i++){
+                    if(toLowerCase(searchSTR)==toLowerCase(vectorSubscriptores[i].getNombre())){
+                        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
+                        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
+                        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+                        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
+                        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
+                        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                fflush(stdin);
+                cin.clear();
+                system("pause");
+                break;
+                }
+            case 1:
+                {
+                cls();
+                std::string searchSTR;
+                cout << "Ingrese el apellido del subscriptor que desea buscar: ";
+                cin >> searchSTR;
+                cout << endl;
+                for(int i=0; i<cantidad; i++){
+                    if(toLowerCase(searchSTR)==toLowerCase(vectorSubscriptores[i].getApellido())){
+                        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
+                        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
+                        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+                        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
+                        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
+                        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                fflush(stdin);
+                cin.clear();
+                system("pause");
+                break;
+                }
+            case 2:
+                {
+                cls();
+                int searchINT;
+                cout << "Ingrese el ID del subscriptor que desee buscar: ";
+                cin >> searchINT;
+                cout << endl;
+                for(int i=0; i<cantidad; i++){
+                    if(searchINT == vectorSubscriptores[i].getIDSub()){
+                        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
+                        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
+                        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+                        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
+                        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
+                        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                fflush(stdin);
+                cin.clear();
+                system("pause");
+                break;
+                }
+            case 3:
+                {
+                cls();
+                std::string searchSTR;
+                cout << "Ingrese el DNI del subscriptor que desea buscar: ";
+                getline(cin, searchSTR);
+                cout << endl;
+                for(int i=0; i<cantidad; i++){
+                    if(toLowerCase(searchSTR)==toLowerCase(vectorSubscriptores[i].getDni())){
+                        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
+                        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
+                        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+                        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
+                        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
+                        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                fflush(stdin);
+                cin.clear();
+                system("pause");
+                break;
+                }
+            case 4:
+                {
+                cls();
+                std::string searchSTR;
+                cout << "Ingrese el email del subscriptor que desea buscar: ";
+                getline(cin, searchSTR);
+                cout << endl;
+                for(int i=0; i<cantidad; i++){
+                    if(toLowerCase(searchSTR)==toLowerCase(vectorSubscriptores[i].getEmail())){
+                        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
+                        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
+                        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+                        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
+                        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
+                        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                fflush(stdin);
+                cin.clear();
+                system("pause");
+                break;
+                }
+            case 5:
+                {
+                cls();
+                int searchINT;
+                cout << "Ingrese el anio de nacimiento del subscriptor que desea buscar: ";
+                cin >> searchINT;
+                cout << endl;
+                for(int i=0; i<cantidad; i++){
+                    std::string anioSTR = vectorSubscriptores[i].getFechaNacimiento();
+                    int anioINT = getAnioDesdeSTR(anioSTR);
+
+                    if(searchINT == anioINT){
+                        cout << "Subscriptor ID:" << vectorSubscriptores[i].getIDSub() << " info" << endl;
+                        cout << vectorSubscriptores[i].getNombre() << " " << vectorSubscriptores[i].getApellido() << endl;
+                        cout << "Fecha de nacimiento: " << vectorSubscriptores[i].getFechaNacimiento() << endl;
+                        cout << "DNI: " << vectorSubscriptores[i].getDni() << endl;
+                        cout << "Email: " << vectorSubscriptores[i].getEmail() << endl;
+                        cout << "Telefono: " << vectorSubscriptores[i].getTelefono() << endl;
+                        cout << "--------------------------------------------" << endl;
+                    }
+                }
+                fflush(stdin);
+                cin.clear();
+                system("pause");
+                break;
+                }
+            case 6:
+                exit=true;
+                break;
+            default:
+                cls();
+                cout << "OPCION INCORRECTA. VUELVA A INGRESAR" << endl;
+                system("pause");
+                break;
             }
         }
-        if(found) break;
+        fflush(stdin);
+        cin.clear();
     }
+    while(!exit);
 
-
-    system("pause");
     cls();
     fflush(stdin);
 }
@@ -445,6 +641,14 @@ void ManagerSubscriptores::modificarSubscriptor(){
 
     cout << "Ingrese el ID del subscriptor que desee modificar: ";
     cin >> idSearch;
+
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
+    }
 
     if (!archivo.validarID(idSearch, reg)){
         cout << "El usuario con ID " << idSearch << " no existe." << endl;

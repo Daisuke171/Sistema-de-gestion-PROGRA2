@@ -137,9 +137,17 @@ void ManagerReporte::cancionesMasEscuchadas(){
 
     int cantHistoriales = archivoHistorial.getCantidadRegistros();
     HistorialUsuario *vHistoriales = new HistorialUsuario[cantHistoriales];
+    if(vHistoriales==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     archivoHistorial.leerMuchos(vHistoriales, cantHistoriales);
     int cantCanciones = archivoCancion.getCantidadRegistros();
     int *vFrecuenciasCanciones = new int[cantCanciones];
+    if(vFrecuenciasCanciones==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     llenarArray(vFrecuenciasCanciones, cantCanciones);
 
     for(int i=0; i<cantHistoriales; i++){
@@ -216,7 +224,15 @@ void ManagerReporte::promedioModaEdades(){
 
     ///MODA
     int* edadesUnicas = new int[cantReg];
+    if(edadesUnicas==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     int* frecuencias = new int[cantReg];
+    if(frecuencias==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     int totalUnicas = 0;
 
     ///creacion de arrays de edades unicas y su frecuencias
@@ -270,13 +286,25 @@ void ManagerReporte::cantidadCancionesPorArtista(){
 
     int cantCancionesReg = archivoCancion.getCantidadRegistros();
     Cancion *vCanciones = new Cancion[cantCancionesReg];
+    if(vCanciones==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     archivoCancion.leerMuchos(vCanciones, cantCancionesReg);
 
     int cantArtistasReg = archivoArtista.getCantidadRegistros();
     Artista *vArtistas = new Artista[cantArtistasReg];
+    if(vArtistas==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     archivoArtista.leerMuchos(vArtistas, cantArtistasReg);
 
     int *vCancionesPorArtista = new int[cantArtistasReg];
+    if(vCancionesPorArtista==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     llenarArray(vCancionesPorArtista, cantArtistasReg);
 
     int idArtistaEnCancion;
@@ -306,6 +334,10 @@ void ManagerReporte::artistasMasEscuchados(){
 
     int cantArtistas = archivoArtista.getCantidadRegistros();
     int *vArtistasVistas = new int[cantArtistas];
+    if(vArtistasVistas==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     llenarArray(vArtistasVistas, cantArtistas);
 
     int cantHistoriales = archivoHistorial.getCantidadRegistros();
@@ -320,6 +352,10 @@ void ManagerReporte::artistasMasEscuchados(){
     }
 
     string *vArtistasNombres = new string[cantArtistas];
+    if(vArtistasNombres==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     for(int i=0; i<cantArtistas; i++){
         regArt = archivoArtista.Leer(i);
         *(vArtistasNombres+i) = regArt.getNombre();
@@ -370,6 +406,7 @@ void ManagerReporte::generoMasEscuchado(){
     int cantArt = archivoArtista.getCantidadRegistros();
 
     Artista *vArtistas = new Artista[cantArt];
+
     archivoArtista.leerMuchos(vArtistas, cantArt);
 
     if(vArtistas==nullptr){
@@ -378,6 +415,10 @@ void ManagerReporte::generoMasEscuchado(){
     }
 
     std::string *vGeneros = new std::string[cantArt];
+    if(vGeneros==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     for(int i=0; i<cantArt; i++){
         *(vGeneros+i) = vArtistas[i].getGenero();
     }
@@ -386,6 +427,10 @@ void ManagerReporte::generoMasEscuchado(){
 
 
     std::string* vGenerosUnicos = new std::string[cantGenerosUnicos];
+    if(vGenerosUnicos==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     vGenerosUnicos[0] = vGeneros[0];
     int contadorUnicos = 1;
 
@@ -415,13 +460,25 @@ void ManagerReporte::generoMasEscuchado(){
     ///ACTUALIZAMOS LA FRECUENCIA EN LA QUE FUE ESCUCHADA CADA GENERO
     int cantHistoriales = archivoHistorial.getCantidadRegistros();
     HistorialUsuario *vHistoriales = new HistorialUsuario[cantHistoriales];
+    if(vHistoriales==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     archivoHistorial.leerMuchos(vHistoriales, cantHistoriales);
 
     int cantCanciones = archivoCancion.getCantidadRegistros();
     Cancion *vCanciones = new Cancion[cantCanciones];
+    if(vCanciones==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     archivoCancion.leerMuchos(vCanciones, cantCanciones);
 
     int *vFrecuencias = new int[cantGenerosUnicos];
+    if(vFrecuencias==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        exit(-1);
+    }
     llenarArray(vFrecuencias, cantGenerosUnicos);
     for(int i=0; i<cantHistoriales; i++){
         for(int j=0; j<cantArt; j++){

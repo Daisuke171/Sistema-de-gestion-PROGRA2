@@ -379,6 +379,10 @@ void ManagerCanciones::buscarCancion(){
     hidecursor();
 
     Cancion *vectorCanciones = new Cancion[cantidad];
+    if(vectorCanciones==nullptr){
+        cout << "Error en la asignacion de memoria" << endl;
+        return;
+    }
     archivo.leerMuchos(vectorCanciones, cantidad);
 
     do{
@@ -628,6 +632,14 @@ void ManagerCanciones::modificarCancion(){
     cout << "Ingrese el ID de la cancion que desee modificar: ";
     cin >> idSearch;
 
+    if(cin.fail()){
+        cin.clear();
+        cout << "Error: No se ingreso un numero" << endl;
+        system("pause>null");
+        fflush(stdin);
+        return;
+    }
+
     if (!archivo.validarID(idSearch, reg)){
         cout << "La cancion con ID " << idSearch << " no existe." << endl;
         system("pause");
@@ -649,7 +661,7 @@ void ManagerCanciones::modificarCancion(){
     switch(option){
     case 1:
         {
-            cin.ignore();
+            fflush(stdin);
             cout << "Ingrese nombre de la cancion: ";
             getline(cin, nombre);
             reg.setNombre(nombre);
@@ -657,7 +669,7 @@ void ManagerCanciones::modificarCancion(){
         }
     case 2:
         {
-            cin.ignore();
+            fflush(stdin);
             cout << "Ingrese nombre del autor: ";
             getline(cin, autor);
 
@@ -694,7 +706,7 @@ void ManagerCanciones::modificarCancion(){
         }
     case 3:
         {
-            cin.ignore();
+            fflush(stdin);
             cout << "Ingrese nombre del interprete: ";
             getline(cin, interprete);
             reg.setInterprete(interprete);
@@ -704,64 +716,34 @@ void ManagerCanciones::modificarCancion(){
         {
             cout << "Ingrese dia: ";
             cin >> dia;
-            if(std::cin.fail()) {
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-                while(true){
-                    cout << "Ingrese dia: ";
-                    cin >> dia;
-
-                    if(std::cin.fail()){
-                        std::cin.clear();
-                        std::cin.ignore();
-                        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-                    }
-                    else{
-                        break;
-                    }
-                }
+            if(cin.fail()){
+                cin.clear();
+                cout << "Error: No se ingreso un numero" << endl;
+                system("pause>null");
+                fflush(stdin);
+                return;
             }
+
             cout << "Ingrese mes: ";
             cin >> mes;
-            if(std::cin.fail()) {
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-                while(true){
-                    cout << "Ingrese mes: ";
-                    cin >> mes;
-
-                    if(std::cin.fail()){
-                        std::cin.clear();
-                        std::cin.ignore();
-                        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-                    }
-                    else{
-                        break;
-                    }
-                }
+            if(cin.fail()){
+                cin.clear();
+                cout << "Error: No se ingreso un numero" << endl;
+                system("pause>null");
+                fflush(stdin);
+                return;
             }
+
             cout << "Ingrese anio: ";
             cin >> anio;
-            if(std::cin.fail()) {
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-                while(true){
-                    cout << "Ingrese anio: ";
-                    cin >> anio;
-
-                    if(std::cin.fail()){
-                        std::cin.clear();
-                        std::cin.ignore();
-                        std::cout << "Entrada invalida. Por favor, ingrese un numero." << std::endl;
-                    }
-                    else{
-                        break;
-                    }
-                }
+            if(cin.fail()){
+                cin.clear();
+                cout << "Error: No se ingreso un numero" << endl;
+                system("pause>null");
+                fflush(stdin);
+                return;
             }
+
             reg.setFechaPublicacion(Fecha(dia,mes,anio));
             break;
         }

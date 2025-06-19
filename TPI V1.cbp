@@ -5,7 +5,7 @@
 		<Option title="TPI V1" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="clases/;clases/configuracion/;clases/manager/;clases/menu/;clases/suscriptor/;clases/suscriptor/archivos/;clases/fecha/;clases/cancion/;clases/cancion/archivo/;clases/acceso/;clases/acceso/archivo/;clases/artista/;clases/manager/subscriptores/;clases/manager/canciones/;clases/manager/accesos/;clases/manager/artista/;clases/artista/archivo/;clases/reportes/;clases/arrayUtils/" />
+		<Option virtualFolders="clases/;clases/configuracion/;clases/manager/;clases/menu/;clases/suscriptor/;clases/suscriptor/archivos/;clases/fecha/;clases/cancion/;clases/cancion/archivo/;clases/acceso/;clases/acceso/archivo/;clases/artista/;clases/manager/subscriptores/;clases/manager/canciones/;clases/manager/accesos/;clases/manager/artista/;clases/artista/archivo/;clases/reportes/;clases/arrayUtils/;clases/userAcces/" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/TPI V1" prefix_auto="1" extension_auto="1" />
@@ -40,6 +40,9 @@
 		</Unit>
 		<Unit filename="acceso.h">
 			<Option virtualFolder="clases/acceso/" />
+		</Unit>
+		<Unit filename="admin.h">
+			<Option virtualFolder="clases/userAcces/" />
 		</Unit>
 		<Unit filename="archivoAcceso.cpp">
 			<Option virtualFolder="clases/acceso/archivo/" />
@@ -148,7 +151,12 @@
 		<Unit filename="suscriptor.h">
 			<Option virtualFolder="clases/suscriptor/" />
 		</Unit>
-		<Unit filename="userAccess.h" />
+		<Unit filename="userAccess.cpp">
+			<Option virtualFolder="clases/userAcces/" />
+		</Unit>
+		<Unit filename="userAccess.h">
+			<Option virtualFolder="clases/userAcces/" />
+		</Unit>
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

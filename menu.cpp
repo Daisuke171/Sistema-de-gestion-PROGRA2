@@ -8,6 +8,7 @@ using namespace std;
 #include "managerArtista.h"
 #include "managerConfiguracion.h"
 #include "reporte.h"
+#include "userAccess.h"
 using namespace rlutil;
 
 
@@ -107,9 +108,22 @@ int Menu::mostrar(){
                 r.mostrarSubmenuReportes();
                 break;
             case 5:
+                {
                 cls();
+               ///ADMIN VALIDATION
+                bool isAdmin = logon();
+                if(!isAdmin){
+                    cout << "Usuario o contrasenia incorrecta" << endl;
+                    system("pause");
+                    break;
+                }
+                else{
+                    cout << "Bienvenido Administrador" << endl;
+                    system("pause");
+                }
                 q.mostrarSubmenuConfig();
                 break;
+                }
             case 6:
                 cls();
                 cout << "GRACIAS POR ELEGIR NUESTRO PROGRAMA :)" << endl;
