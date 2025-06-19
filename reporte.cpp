@@ -279,16 +279,16 @@ void ManagerReporte::cantidadCancionesPorArtista(){
     int *vCancionesPorArtista = new int[cantArtistasReg];
     llenarArray(vCancionesPorArtista, cantArtistasReg);
 
-
+    int idArtistaEnCancion;
     for(int i=0; i<cantCancionesReg; i++){
-        cout << vCanciones[i].getNombre() << ": " << vCanciones[i].getIDArtista() <<endl;
+        idArtistaEnCancion = vCanciones[i].getIDArtista()-1;
+        vCancionesPorArtista[idArtistaEnCancion]++;
     }
 
-    /*
+
     for(int i=0; i<cantArtistasReg; i++){
-        cout << vArtistas[i].getNombre() << ": " << vCancionesPorArtista[i] << endl;
+        cout << "ID " << vArtistas[i].getIDArtista() << " " << vArtistas[i].getNombre() << ": " << vCancionesPorArtista[i] << endl;
     }
-*/
 
     delete []vArtistas;
     delete []vCancionesPorArtista;
